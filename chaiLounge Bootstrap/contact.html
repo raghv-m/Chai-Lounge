@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .footer {
+            background-color: #1a1a1a;
+            padding: 2rem 0;
+            color: #f0f0f0;
+        }
+
+        .footer .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer .quick-links,
+        .footer .hours,
+        .footer .locations,
+        .footer .social {
+            margin-bottom: 1rem;
+        }
+
+        .footer h5 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: none;
+            color: #cccccc;
+        }
+
+        .footer .social-icons a {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+            color: #f0f0f0;
+        }
+
+        .footer .social-icons a:hover {
+            color: #bb883e;
+        }
+
+        .footer .locations p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .footer .row > div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .btn-custom {
+            background-color: #444444;
+            color: #ffffff;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #666666;
+            color: #ffffff;
+            border-color: #bb883e;
+        }
+
+        .mobile-menu {
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(44, 44, 44, 0.8));
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 1050;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-transform: uppercase;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu button:hover {
+            background-color: #444444;
+            color: #ffffff;
+            border-color: #bb883e;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: #ffffff;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #cccccc;
+        }
+
+        h1, h5 {
+            color: #bb883e;
+        }
+
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .btn-animate:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        .btn-animate:hover {
+            color: #ffffff;
+        }
+
+        .card-header {
+            color: #bb883e;
+        }
+
+        .hero-section {
+            background-image: url('./images/chaiLounge.jpg');
+            background-size: cover;
+            padding: 2rem;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 300px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-section {
+                height: 150px;
+            }
+        }
+        .footer {
+            background-color: #1a1a1a;
+            padding: 2rem 0;
+            color: #f0f0f0;
+        }
+
+        .footer .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #bb883e;
+        }
+
+        .footer .quick-links,
+        .footer .hours,
+        .footer .locations,
+        .footer .social {
+            margin-bottom: 1rem;
+        }
+
+        .footer h5 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #cccccc;
+            text-decoration: none;
+        }
+
+        .footer .social-icons a {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+            color: #f0f0f0;
+        }
+
+        .footer .social-icons a:hover {
+            color: #bb883e;
+        }
+
+        .footer .locations p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .footer .row > div {
+                margin-bottom: 1rem;
+            }
+        }
+        .mobile-menu {
+            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(44, 44, 44, 0.8));
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 1050;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-transform: uppercase;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu button:hover {
+            background-color: #444444;
+            color: #ffffff;
+            border-color: #bb883e;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: #ffffff;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            color: #cccccc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 text-white">
+
+    
+    <!-- Navbar -->
+    <nav class="bg-zinc-900 text-white p-4 flex justify-between items-center">
+        <a class="font-bold uppercase text-xl" href="#">Chai Lounge</a>
+        <div class="hidden lg:flex space-x-6">
+            <a class="nav-link hover:text-zinc-400" href="#">Menu</a>
+            <a class="nav-link hover:text-zinc-400" href="#">Locations</a>
+            <a class="nav-link hover:text-zinc-400" href="#">Gift Cards</a>
+            <a class="nav-link hover:text-zinc-400" href="#">About</a>
+            <a class="nav-link hover:text-zinc-400" href="#">Products</a>
+            <button class="btn btn-custom btn-animate">Reserve</button>
+            <button class="btn btn-custom btn-animate">Order Now</button>
+        </div>
+        <button class="lg:hidden text-white" id="mobile-menu-button">☰</button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#" class="close-menu" onclick="toggleMobileMenu()">&times;</a>
+        <a href="#">Menu</a>
+        <a href="#">Locations</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+        <button class="btn btn-custom btn-animate mt-2">Reserve</button>
+        <button class="btn btn-custom btn-animate mt-2">Order Now</button>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section"></div>
+
+    <!-- Contact Form -->
+    <div class="p-4 md:p-8">
+        <form id="contactForm" class="space-y-6">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name" class="block text-sm font-medium">Name <span class="text-red-500">*</span></label>
+                    <input type="text" id="name" name="name" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Name" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email" class="block text-sm font-medium">Email <span class="text-red-500">*</span></label>
+                    <input type="email" id="email" name="email" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Email Address" required />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone" class="block text-sm font-medium">Phone <span class="text-red-500">*</span></label>
+                    <input type="tel" id="phone" name="phone" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Phone Number" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="subject" class="block text-sm font-medium">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Subject" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message" class="block text-sm font-medium">Message</label>
+                <textarea id="message" name="message" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" rows="4" placeholder="Write Your Message Here"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-gold text-black py-2 rounded">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">CHAI LOUNGE</div>
+                </div>
+                <div class="col-md-3 quick-links">
+                    <h5>Quick Links</h5>
+                    <p><a href="#">Contact Us</a></p>
+                </div>
+                <div class="col-md-3 hours">
+                    <h5>Hours</h5>
+                    <p>Monday: 11:00 AM - Late</p>
+                    <p>Weekends: 11:00 AM - Late</p>
+                </div>
+                <div class="col-md-3 locations">
+                    <h5>Locations</h5>
+                    <p>Downtown Edmonton</p>
+                    <p>(604) 423-3300</p>
+                    <p>10119 Rice Howard Wy, Edmonton, AB T5J 0R5</p>
+                    <p><a href="mailto:info@chailounge.com">info@chailounge.com</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center social">
+                    <h5>Follow Us on Social</h5>
+                    <div class="social-icons">
+                        <a href="#" class="fab fa-facebook"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-tiktok"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
+                    <p>SITE BY <a href="#">RAGHAV</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            fetch('http://localhost:3000/send-contact-email', {
+                method: 'POST',
+                body: formData,
+            }).then(response => response.json())
+              .then(data => {
+                  alert('Application submitted successfully!');
+              }).catch(error => {
+                  console.error('Error:', error);
+                  alert('There was an error submitting your application. Please try again.');
+              });
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('show');
+        });
+
+        document.getElementById('close-mobile-menu').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.remove('show');
+        });
+    </script>
+</body>
+</html>

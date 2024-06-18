@@ -1,0 +1,60 @@
+body {
+    background-image: url('../background.webp');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.card-img-overlay {
+    background: none; /* Remove the overlay background */
+}
+
+.card-title, .card-text {
+    color: #ffffff;
+}
+
+.btn-custom {
+    border: 1px solid #bb883e;
+    color: #bb883e;
+}
+
+.btn-custom:hover {
+    background-color: #bb883e;
+    color: #ffffff;
+}
+
+.bg-gold {
+    background-color: #bb883e;
+}
+.bg-black {
+    background-color: #181818;
+}
+.text-white {
+    color: #ffffff;
+}
+.btn-gold {
+    background-color: #bb883e;
+    color: #000;
+    border: none;
+}
+.btn-outline-light {
+    border: 1px solid #ffffff;
+}
+.navbar-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar-toggler {
+    border: none;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+}
+@media (max-width: 991px) {
+    .order-reserve {
+        margin-right: 10px;
+    }
+}
