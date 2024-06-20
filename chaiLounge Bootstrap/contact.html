@@ -1,16 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chai Lounge</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Join Our Team - Chai Lounge</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        body {
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+        }
+
+        .bg-gold {
+            background-color: #bb883e;
+        }
+
+        .bg-black {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .text-white {
+            color: #f0f0f0;
+        }
+
+        .btn-gold {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-outline-light {
+            border: 1px solid #f0f0f0;
+        }
+
+        .navbar-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .page-header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            color: #bb883e;
+        }
+
+        .content {
+            padding: 2rem 0;
+        }
+
+        .content h2 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            background-color: #333;
+            color: #f0f0f0;
+            border: 1px solid #bb883e;
+        }
+
+        .form-control:focus {
+            border-color: #bb883e;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #a57435;
+        }
+
+        .contact-info {
+            color: #f0f0f0;
+        }
+
+        .contact-info h5 {
+            color: #bb883e;
+        }
+
+        .contact-info img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 767.98px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.25rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1rem;
+            }
+
+            .form-control {
+                font-size: 0.875rem;
+            }
+
+            .btn-submit {
+                font-size: 0.875rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+            }
+
+            .content {
+                padding: 1rem 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1.25rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+            }
+
+            .btn-submit {
+                font-size: 1rem;
+            }
+        }
+
         .footer {
-            background-color: #1a1a1a;
+            background-color: #000;
             padding: 2rem 0;
             color: #f0f0f0;
         }
@@ -39,18 +196,12 @@
         }
 
         .footer a:hover {
-            text-decoration: none;
-            color: #cccccc;
+            text-decoration: underline;
         }
 
         .footer .social-icons a {
             margin-right: 0.5rem;
             font-size: 1.5rem;
-            color: #f0f0f0;
-        }
-
-        .footer .social-icons a:hover {
-            color: #bb883e;
         }
 
         .footer .locations p {
@@ -58,27 +209,46 @@
         }
 
         @media (max-width: 767.98px) {
-            .footer .row > div {
+            .footer .row>div {
                 margin-bottom: 1rem;
             }
         }
 
-        .btn-custom {
-            background-color: #444444;
-            color: #ffffff;
-            text-transform: uppercase;
-            border: 1px solid transparent;
-            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            text-align: left;
+            padding: 1rem;
         }
 
-        .btn-custom:hover {
-            background-color: #666666;
-            color: #ffffff;
-            border-color: #bb883e;
+        .overlay h3 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .overlay p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .overlay .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
         }
 
         .mobile-menu {
-            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(44, 44, 44, 0.8));
+            background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(8px);
             position: fixed;
             top: 0;
@@ -120,247 +290,101 @@
             right: 20px;
             font-size: 2em;
             color: #ffffff;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            color: #cccccc;
-        }
-
-        h1, h5 {
-            color: #bb883e;
-        }
-
-        .btn-animate {
-            position: relative;
-            overflow: hidden;
-            transition: color 0.4s;
-        }
-
-        .btn-animate::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .btn-animate:hover::before {
-            width: 0;
-            height: 0;
-        }
-
-        .btn-animate:hover {
-            color: #ffffff;
-        }
-
-        .card-header {
-            color: #bb883e;
-        }
-
-        .hero-section {
-            background-image: url('./images/chaiLounge.jpg');
-            background-size: cover;
-            padding: 2rem;
-            background-position: center center;
-            background-repeat: no-repeat;
-            height: 300px;
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 767.98px) {
-            .hero-section {
-                height: 150px;
-            }
-        }
-        .footer {
-            background-color: #1a1a1a;
-            padding: 2rem 0;
-            color: #f0f0f0;
-        }
-
-        .footer .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #bb883e;
-        }
-
-        .footer .quick-links,
-        .footer .hours,
-        .footer .locations,
-        .footer .social {
-            margin-bottom: 1rem;
-        }
-
-        .footer h5 {
-            color: #bb883e;
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: #f0f0f0;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #cccccc;
-            text-decoration: none;
-        }
-
-        .footer .social-icons a {
-            margin-right: 0.5rem;
-            font-size: 1.5rem;
-            color: #f0f0f0;
-        }
-
-        .footer .social-icons a:hover {
-            color: #bb883e;
-        }
-
-        .footer .locations p {
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 767.98px) {
-            .footer .row > div {
-                margin-bottom: 1rem;
-            }
-        }
-        .mobile-menu {
-            background: linear-gradient(to right, rgba(26, 26, 26, 0.8), rgba(44, 44, 44, 0.8));
-            backdrop-filter: blur(8px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            z-index: 1050;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu.show {
-            display: flex;
-        }
-
-        .mobile-menu a,
-        .mobile-menu button {
-            color: #ffffff;
-            font-size: 1.5em;
-            margin: 10px 0;
-            text-transform: uppercase;
-            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
-        }
-
-        .mobile-menu a:hover,
-        .mobile-menu button:hover {
-            background-color: #444444;
-            color: #ffffff;
-            border-color: #bb883e;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            color: #ffffff;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
-            text-decoration: none;
-        }
-
-        .nav-link:hover {
-            color: #cccccc;
-            text-decoration: none;
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 text-white">
 
-    
-    <!-- Navbar -->
-    <nav class="bg-zinc-900 text-white p-4 flex justify-between items-center">
-        <a class="font-bold uppercase text-xl" href="#">Chai Lounge</a>
-        <div class="hidden lg:flex space-x-6">
-            <a class="nav-link hover:text-zinc-400" href="#">Menu</a>
-            <a class="nav-link hover:text-zinc-400" href="#">Locations</a>
-            <a class="nav-link hover:text-zinc-400" href="#">Gift Cards</a>
-            <a class="nav-link hover:text-zinc-400" href="#">About</a>
-            <a class="nav-link hover:text-zinc-400" href="#">Products</a>
-            <button class="btn btn-custom btn-animate">Reserve</button>
-            <button class="btn btn-custom btn-animate">Order Now</button>
+<body>
+    <div class="bg-gold text-center py-2">
+        <span>Apply Today and see our exciting staff in action.. <a href="#" class="text-white"></a></span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black navbar-custom">
+        <a class="navbar-brand" href="#">CHAI LOUNGE</a>
+
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">MENU</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LOCATION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CAREERS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT US</a>
+                </li>
+            </ul>
         </div>
-        <button class="lg:hidden text-white" id="mobile-menu-button">☰</button>
+        <div class="d-flex order-reserve">
+            <a class="nav-link btn btn-outline-light" href="#">RESERVE</a>
+            <a class="nav-link btn btn-gold" href="#">ORDER NOW</a>
+        </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
+        <button class="btn btn-custom btn-animate mt-2">Reserve</button>
+        <button class="btn btn-custom btn-animate mt-2">Order Now</button>
         <a href="#" class="close-menu" onclick="toggleMobileMenu()">&times;</a>
         <a href="#">Menu</a>
         <a href="#">Locations</a>
         <a href="#">Gift Cards</a>
         <a href="#">About</a>
         <a href="#">Products</a>
-        <button class="btn btn-custom btn-animate mt-2">Reserve</button>
-        <button class="btn btn-custom btn-animate mt-2">Order Now</button>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero-section"></div>
-
-    <!-- Contact Form -->
-    <div class="p-4 md:p-8">
-        <form id="contactForm" class="space-y-6">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="name" class="block text-sm font-medium">Name <span class="text-red-500">*</span></label>
-                    <input type="text" id="name" name="name" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Name" required />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="email" class="block text-sm font-medium">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" name="email" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Email Address" required />
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="phone" class="block text-sm font-medium">Phone <span class="text-red-500">*</span></label>
-                    <input type="tel" id="phone" name="phone" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Your Phone Number" required />
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="subject" class="block text-sm font-medium">Subject</label>
-                    <input type="text" id="subject" name="subject" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" placeholder="Subject" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="message" class="block text-sm font-medium">Message</label>
-                <textarea id="message" name="message" class="form-control mt-1 block w-full bg-black border border-zinc-700 rounded py-2 px-3 text-zinc-300" rows="4" placeholder="Write Your Message Here"></textarea>
-            </div>
-            <div>
-                <button type="submit" class="w-full bg-gold text-black py-2 rounded">SUBMIT</button>
-            </div>
-        </form>
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact Our Team Today in Edmonton</h1>
+        </div>
     </div>
 
-    <!-- Footer -->
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <img src="./contact.webp" alt="Chai Lounge">
+                    <div class="overlay">
+                        <h3>Downtown Location</h3>
+                        <p><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Font_Awesome_5_solid_map-marker-alt.svg" alt="Location Icon" class="icon">
+                            10119 Rice Howard Wy, T5J 0R5</p>
+                        <p>Edmonton, Alberta</p>
+                        <p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Font_Awesome_5_solid_envelope.svg" alt="Mail Icon" class="icon"> <a href="mailto:info@chailounge.com" style="color: #f0f0f0;">info@chailounge.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Submit Your Concern</h2>
+                <form id="applicationForm" action="/send-email" method="POST">
+                    <div class="form-group">
+                        <label for="firstName">Name</label>
+                        <input type="text" class="form-control" id="firstName" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Write Your Message Here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -397,7 +421,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
-                    <p>SITE BY <a href="#">RAGHAV</a></p>
+                    <p>SITE BY COLONY</p>
                 </div>
             </div>
         </div>
@@ -407,33 +431,35 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        document.getElementById('applicationForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = new FormData(this);
-            fetch('http://localhost:3000/send-contact-email', {
+
+            fetch('http://localhost:3000/send-email', {
                 method: 'POST',
                 body: formData,
             }).then(response => response.json())
-              .then(data => {
-                  alert('Application submitted successfully!');
-              }).catch(error => {
-                  console.error('Error:', error);
-                  alert('There was an error submitting your application. Please try again.');
-              });
+                .then(data => {
+                    alert('Application submitted successfully!');
+                }).catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your application. Please try again.');
+                });
         });
 
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('show');
         }
 
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             document.getElementById('mobileMenu').classList.toggle('show');
         });
 
-        document.getElementById('close-mobile-menu').addEventListener('click', function() {
+        document.getElementById('close-mobile-menu').addEventListener('click', function () {
             document.getElementById('mobileMenu').classList.remove('show');
         });
     </script>
 </body>
+
 </html>
