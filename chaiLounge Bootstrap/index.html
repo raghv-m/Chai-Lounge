@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,6 +47,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            background-color: #000; /* Ensure the navbar has the same background */
         }
 
         .custom-toggler .navbar-toggler-icon {
@@ -143,6 +144,51 @@
             .content {
                 padding: 1rem 0;
             }
+
+            .card-carousel-container {
+                display: block;
+            }
+
+            .card-carousel {
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                position: relative;
+            }
+
+            .card-carousel .card {
+                min-width: 100%;
+                transition: transform 0.5s ease;
+                background: transparent;
+            }
+
+            .card-carousel .arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 2rem;
+                color: #bb883e;
+                cursor: pointer;
+                z-index: 10;
+            }
+
+            .card-carousel .arrow-left {
+                left: 10px;
+            }
+
+            .card-carousel .arrow-right {
+                right: 10px;
+            }
+
+            .desktop-car {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-carousel-container {
+                display: none;
+            }
         }
 
         @media (min-width: 768px) and (max-width: 991.98px) {
@@ -227,8 +273,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: start;
-            text-align: left;
+            align-items: center;
+            text-align: center;
             padding: 1rem;
         }
 
@@ -250,7 +296,7 @@
         }
 
         .mobile-menu {
-            background: linear-gradient(to bottom, rgba(187, 136, 62, 0.8), rgba(51, 51, 51, 0.8));
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(8px);
             position: fixed;
             top: 0;
@@ -268,24 +314,19 @@
 
         .mobile-menu.show {
             display: flex;
-            justify-content: center;
         }
 
-        .mobile-menu a,
-        .mobile-menu button {
+        .mobile-menu a {
             color: #ffffff;
-            font-size: 0.5rem;
-            margin: 10px 0;
+            font-size: 1.5rem;
+            margin: 15px 0;
             text-transform: uppercase;
-            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
             text-align: center;
+            transition: color 0.3s ease;
         }
 
-        .mobile-menu a:hover,
-        .mobile-menu button:hover {
-            background-color: #444444;
-            color: #989797;
-            border-color: #bb883e;
+        .mobile-menu a:hover {
+            color: #bb883e;
         }
 
         .close-menu {
@@ -294,6 +335,7 @@
             right: 20px;
             font-size: 2em;
             color: #ffffff;
+            cursor: pointer;
         }
 
         .btn-animate {
@@ -323,24 +365,24 @@
 
         .btn-animate:hover {
             color: #ffffff;
-            
         }
 
         .card-header {
             color: #bb883e;
         }
-        
+
         a:hover {
             text-decoration: none;
             color: rgb(112, 112, 112);
         }
+
         .logo-container {
             display: flex;
             align-items: center;
         }
 
         .logo-img {
-            height: 4rem; /* Adjust this value to better match the height of the buttons */
+            height: 4rem;
             width: auto;
         }
 
@@ -348,6 +390,587 @@
             font-size: 1rem;
             line-height: 1.5rem;
         }
+
+        @media (min-width: 768px) {
+            .mobile-menu .card-carousel {
+                display: none;
+            }
+        }
+
+        .card-container {
+            display: flex;
+            overflow-x: hidden;
+            padding: 20px;
+            scroll-snap-type: x mandatory;
+            position: relative;
+            background-color: #000; /* Ensure consistent background color */
+        }
+
+        .card {
+            flex: 0 0 auto;
+            width: 300px;
+            margin-right: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            scroll-snap-align: center;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h2 {
+            margin: 15px 0;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            color: #ffcc00;
+            text-decoration: none;
+            border: 1px solid #ffcc00;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #ffcc00;
+            color: #333;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            pointer-events: none;
+        }
+
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+            pointer-events: none;
+        }
+
+        .card-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #bb883e;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+        body {
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+}
+
+.bg-gold {
+    background-color: #bb883e;
+}
+
+.bg-black {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.text-white {
+    color: #f0f0f0;
+}
+
+.btn-gold {
+    background-color: #bb883e;
+    color: #000;
+    border: none;
+}
+
+.btn-outline-light {
+    border: 1px solid #f0f0f0;
+}
+
+.navbar-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #000; /* Ensure the navbar has the same background */
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.page-header {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    color: #bb883e;
+}
+
+.content {
+    padding: 2rem 0;
+}
+
+.content h2 {
+    color: #bb883e;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #bb883e;
+}
+
+.form-control:focus {
+    border-color: #bb883e;
+    box-shadow: none;
+}
+
+.btn-submit {
+    background-color: #bb883e;
+    color: #000;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: #a57435;
+}
+
+.contact-info {
+    color: #f0f0f0;
+}
+
+.contact-info h5 {
+    color: #bb883e;
+}
+
+.contact-info img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+@media (max-width: 767.98px) {
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .content h2 {
+        font-size: 1.25rem;
+    }
+
+    .contact-info h5 {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 0.875rem;
+    }
+
+    .btn-submit {
+        font-size: 0.875rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+        padding: 0 1rem;
+    }
+
+    .content {
+        padding: 1rem 0;
+    }
+
+    .card-carousel-container {
+        display: block;
+    }
+
+    .card-carousel {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .card-carousel .card {
+        min-width: 100%;
+        transition: transform 0.5s ease;
+        background: transparent;
+    }
+
+    .card-carousel .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: #bb883e;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .card-carousel .arrow-left {
+        left: 10px;
+    }
+
+    .card-carousel .arrow-right {
+        right: 10px;
+    }
+
+    .desktop-car {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-carousel-container {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info h5 {
+        font-size: 1.25rem;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    .btn-submit {
+        font-size: 1rem;
+    }
+}
+
+.footer {
+    background-color: #000;
+    padding: 2rem 0;
+    color: #f0f0f0;
+}
+
+.footer .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer .quick-links,
+.footer .hours,
+.footer .locations,
+.footer .social {
+    margin-bottom: 1rem;
+}
+
+.footer h5 {
+    color: #bb883e;
+    margin-bottom: 1rem;
+}
+
+.footer a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: rgb(111, 111, 111);
+    text-decoration: none;
+}
+
+.footer .social-icons a {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.footer .locations p {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+    .footer .row>div {
+        margin-bottom: 1rem;
+    }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+.overlay h3 {
+    color: #bb883e;
+    margin-bottom: 1rem;
+}
+
+.overlay p {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.overlay .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.mobile-menu {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1050;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu.show {
+    display: flex;
+}
+
+.mobile-menu a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    color: #bb883e;
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-animate {
+    position: relative;
+    overflow: hidden;
+    transition: color 0.4s;
+    border: #bb883e;
+}
+
+.btn-animate::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.4s;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border: #bb883e;
+}
+
+.btn-animate:hover::before {
+    width: 0;
+    height: 0;
+}
+
+.btn-animate:hover {
+    color: #ffffff;
+}
+
+.card-header {
+    color: #bb883e;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(112, 112, 112);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 4rem;
+    width: auto;
+}
+
+.md\:flex.space-x-4.items-center a {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu .card-carousel {
+        display: none;
+    }
+}
+
+.card-container {
+    display: flex;
+    overflow-x: hidden;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    position: relative;
+    background-color: #000; /* Ensure consistent background color */
+}
+
+.card {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h2 {
+    margin: 15px 0;
+}
+
+.card a {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    color: #ffcc00;
+    text-decoration: none;
+    border: 1px solid #ffcc00;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card a:hover {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
+
+.card-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    pointer-events: none;
+}
+
+.card-container::-webkit-scrollbar {
+    display: none;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: #bb883e;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+
     </style>
 </head>
 
@@ -363,7 +986,7 @@
                     <img src="./C.png" alt="Chai Lounge Logo" class="logo-img">
                 </a>
             </div>
-             <div class="hidden md:flex space-x-4 items-center">
+            <div class="hidden md:flex space-x-4 items-center">
                 <a href="#" class="py-2">MENU</a>
                 <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
                 <a href="./careers.html" class="py-2">CAREERS</a>
@@ -379,25 +1002,32 @@
                 </button>
             </div>
         </div>
-        <div class="md:hidden mobile-menu" id="navbar-menu" hidden>
-            <a href="#" class="block py-2 pl-4 pr-2 text-sm hover:bg-zinc-700">MENU</a>
-            <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm hover:bg-zinc-700">LOCATION</a>
-            <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm hover:bg-zinc-700">CAREERS</a>
-            <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm hover:bg-zinc-700">CONTACT US</a>
+        <div class="md:hidden mobile-menu" id="navbar-menu">
+            <span class="close-menu" id="close-menu">&times;</span>
+            <a href="#" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
+            <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
+            <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
         </div>
     </nav>
 
     <script>
         const toggleButton = document.getElementById('navbar-toggle');
         const menu = document.getElementById('navbar-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+
         toggleButton.addEventListener('click', () => {
-            menu.hidden = !menu.hidden;
+            menu.classList.toggle('show');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            menu.classList.remove('show');
         });
     </script>
 
     <!-- Main Content -->
-    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20">
-        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg">
+    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
             <p class="text-offwhite-500 uppercase tracking-widest">CHAI STOPPE</p>
             <h1 class="text-5xl font-bold mt-2 card-header">Introducing Tasty Chai</h1>
             <p class="mt-4 text-lg">
@@ -405,24 +1035,279 @@
             </p>
             <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">View 5PM Menu</button>
         </div>
-        <div class="lg:w-1/2 mt-8 lg:mt-0">
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
             <img src="./banner.jpg" alt="Chef preparing food" class="rounded-lg shadow-lg" />
         </div>
     </div>
 
+    <!-- Scrollable Cards -->
+  
+    <div class="scroll-container relative">
+        <h2 class="text-center text-4xl font-bold mb-4">Browse Through</h2>
+        <button class="scroll-left absolute left-4 top-1/2 transform -translate-y-1/2 bg-transparent text-gold text-4xl font-bold">‹</button>
+        <div class="scroll-wrapper flex overflow-hidden relative">
+            
+            <!-- New Card: Americano Coffee -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./americanosq.jpg" alt="Americano Coffee" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Americano Coffee</p>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- New Card: Nutella Almond Pancake -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./Pancakes.webp" alt="Nutella Almond Pancake" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Nutella Almond Pancake</p>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card: Secret Menu -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./secretMenu.jpg" alt="Secret Menu" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Secret Menu</p>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                Visit Cafe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card: Spicy Paneer Wrap -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./paneer.jpg" alt="Spicy Paneer Wrap" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Spicy Paneer Wrap</p>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card: Street Eats -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./vadapav.webp" alt="Street Eats" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Street Eats</p>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                View Menu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Card: Bowl/Wrap -->
+            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
+                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
+                    <div class="card-image">
+                        <img src="./butterchicken.jpg" alt="Bowl/Wrap" class="rounded-lg shadow-lg responsive-img" />
+                    </div>
+                    <div class="card-buttons text-center">
+                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
+                            <p class="text-offwhite-500 text-3xl uppercase tracking-widest font-bold mt-2 card-header">Feature</p>
+                            <h1 class="text-2xl font-bold mt-2 card-header text-white">BOWL/WRAP</h1>
+                            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">
+                                Order Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+        <button class="scroll-right absolute right-4 top-1/2 transform -translate-y-1/2 bg-transparent text-gold text-4xl font-bold">›</button>
+    </div>
+    
+    <style>
+      .scroll-container {
+        position: relative;
+        padding: 20px;
+      }
+    
+      .scroll-wrapper {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+    
+      .scroll {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: 100%;
+        max-width: 480px; /* Ensure uniform width */
+        margin: 0 10px; /* Ensure uniform margin */
+      }
+    
+      .responsive-img {
+        width: 100%;
+        height: 360px; /* Ensure uniform height */
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+      }
+    
+      .scroll-wrapper::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+      }
+    
+      .scroll-wrapper {
+        -ms-overflow-style: none;  /* Hide scrollbar */
+        scrollbar-width: none;  /* Hide scrollbar */
+      }
+    
+      .card-buttons {
+        margin-top: 20px;
+      }
+    
+      .card-text {
+        text-align: center;
+      }
+    
+      .scroll-left, .scroll-right {
+        cursor: pointer;
+        color: gold;
+        font-size: 4rem; /* Make the arrows larger */
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        transition: color 0.3s;
+      }
+    
+      .scroll-left:hover, .scroll-right:hover {
+        color: darkgoldenrod;
+      }
+    
+      .scroll-container .scroll {
+        animation: fadeIn 1s ease-in-out;
+      }
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    
+      /* Hide cards and arrows in desktop view */
+      @media (min-width: 1024px) {
+        .scroll-wrapper, .scroll-left, .scroll-right {
+          display: none;
+        }
+      }
+    
+      /* Show cards and arrows in mobile view */
+      @media (max-width: 1024px) {
+        .scroll-wrapper, .scroll-left, .scroll-right {
+          display: flex;
+        }
+      }
+    </style>
+    
+    <script>
+      const scrollWrapper = document.querySelector('.scroll-wrapper');
+      const scrollLeft = document.querySelector('.scroll-left');
+      const scrollRight = document.querySelector('.scroll-right');
+    
+      scrollLeft.addEventListener('click', function() {
+        if (scrollWrapper.scrollLeft === 0) {
+          scrollWrapper.scrollLeft = scrollWrapper.scrollWidth;
+        }
+        scrollWrapper.scrollBy({
+          left: -scrollWrapper.clientWidth, // Scroll by the width of one card
+          behavior: 'smooth'
+        });
+      });
+    
+      scrollRight.addEventListener('click', function() {
+        if (scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth) {
+          scrollWrapper.scrollLeft = 0;
+        }
+        scrollWrapper.scrollBy({
+          left: scrollWrapper.clientWidth, // Scroll by the width of one card
+          behavior: 'smooth'
+        });
+      });
+    </script>
+    
+    
+    <script>
+      const scrollWrapper = document.querySelector('.scroll-wrapper');
+      const scrollLeft = document.querySelector('.scroll-left');
+      const scrollRight = document.querySelector('.scroll-right');
+    
+      scrollLeft.addEventListener('click', function() {
+        scrollWrapper.scrollBy({
+          left: -scrollWrapper.clientWidth, // Scroll by the width of one card
+          behavior: 'smooth'
+        });
+      });
+    
+      scrollRight.addEventListener('click', function() {
+        scrollWrapper.scrollBy({
+          left: scrollWrapper.clientWidth, // Scroll by the width of one card
+          behavior: 'smooth'
+        });
+      });
+    </script>
+    
+    
+
     <!-- More Content -->
-    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20">
+    <div class="desktop-cards desktop-car flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
         <div class="lg:w-2/3 flex flex-col lg:flex-row items-center lg:items-start">
-            <div class="lg:w-1/2 p-8">
+            <div class="lg:w-1/2 p-8 m-4">
                 <p class="text-offwhite-500 uppercase tracking-widest">Feature</p>
                 <h1 class="text-5xl font-bold mt-2 card-header">BOWL/WRAP</h1>
-                <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="tel:+15874159649"target="_blank" rel="noopener noreferrer">Order Now</a></button>
+                <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">Order Now</a></button>
             </div>
-            <div class="lg:w-1/2 mt-8 lg:mt-0">
+            <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
                 <img src="./butterChicken.webp" alt="Bowl/Wrap" class="rounded-lg shadow-lg" />
             </div>
         </div>
-        <div class="lg:w-1/3 flex flex-col space-y-8 mt-8 lg:mt-0 lg:ml-8">
+        <div class="lg:w-1/3 flex flex-col space-y-8 mt-8 lg:mt-0 lg:ml-8 m-4">
             <div class="flex flex-col items-center">
                 <img src="./vadapav.webp" alt="Street Eats" class="rounded-lg shadow-lg" />
                 <p class="mt-4 text-lg">Street Eats</p>
@@ -437,11 +1322,11 @@
     </div>
 
     <!-- More Content -->
-    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20">
-        <div class="lg:w-1/2 mt-8 lg:mt-0">
+    <div class="desktop-cards flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
             <img src="./careers.webp" alt="Join Our Team" class="rounded-lg shadow-lg" />
         </div>
-        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg">
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
             <p class="text-offwhite-500 uppercase tracking-widest">Join Our Team</p>
             <h1 class="text-5xl font-bold mt-2 card-header">Become a Part of Chai Lounge</h1>
             <p class="mt-4 text-lg">
@@ -452,11 +1337,11 @@
     </div>
 
     <!-- More Content -->
-    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20">
-        <div class="lg:w-1/2 mt-8 lg:mt-0">
+    <div class="desktop-cards flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
             <img src="./getIntouch.webp" alt="Contact Us" class="rounded-lg shadow-lg" />
         </div>
-        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg">
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
             <p class="text-offwhite-500 uppercase tracking-widest">Contact Us</p>
             <h1 class="text-5xl font-bold mt-2 card-header">Get in Touch</h1>
             <p class="mt-4 text-lg">
@@ -478,7 +1363,7 @@
                     <p><a href="./contact.html">Contact Us</a></p>
                     <p><a href="./careers.html">Careers</a></p>
                 </div>
-                <div class="col-md3 hours">
+                <div class="col-md-3 hours">
                     <h5>Hours</h5>
                     <p>Monday To Friday: 08:00 AM - 10:00 PM</p>
                     <p>Weekends: 08:00 AM - Late</p>
@@ -487,7 +1372,7 @@
                     <h5>Locations</h5>
                     <p>Downtown Edmonton</p>
                     <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener noreferrer">10119 Rice Howard Wy, Edmonton, AB T5J 0R5</a></p>
-                    <p><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">(587)415-9649</a></p>
+                    <p><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">(587) 415-9649</a></p>
                     <p><a href="mailto:info@chailounge.com">info@chailounge.com</a></p>
                 </div>
             </div>
@@ -514,18 +1399,30 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('show');
-        }
+    const toggleButton = document.getElementById('navbar-toggle');
+    const menu = document.getElementById('navbar-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+    const prevCard = document.getElementById('prevCard');
+    const nextCard = document.getElementById('nextCard');
+    const cards = document.querySelector('.card-container');
 
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            document.getElementById('mobileMenu').classList.toggle('show');
-        });
+    toggleButton.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
 
-        document.getElementById('close-mobile-menu').addEventListener('click', function () {
-            document.getElementById('mobileMenu').classList.remove('show');
-        });
-    </script>
+    closeMenuButton.addEventListener('click', () => {
+        menu.classList.remove('show');
+    });
+
+    prevCard.addEventListener('click', () => {
+        cards.scrollBy({ left: -cards.clientWidth, behavior: 'smooth' });
+    });
+
+    nextCard.addEventListener('click', () => {
+        cards.scrollBy({ left: cards.clientWidth, behavior: 'smooth' });
+    });
+</script>
+
 </body>
 
 </html>
