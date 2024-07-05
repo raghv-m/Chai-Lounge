@@ -48,6 +48,7 @@
             top: 0;
             z-index: 1000;
             background-color: #000; /* Ensure the navbar has the same background */
+            padding: 0.5rem 1rem; /* Adjusted padding to make navbar smaller */
         }
 
         .custom-toggler .navbar-toggler-icon {
@@ -386,590 +387,10 @@
             width: auto;
         }
 
-        .md\\:flex.space-x-4.items-center a {
+        .md\:flex.space-x-4.items-center a {
             font-size: 1rem;
             line-height: 1.5rem;
         }
-
-        @media (min-width: 768px) {
-            .mobile-menu .card-carousel {
-                display: none;
-            }
-        }
-
-        .card-container {
-            display: flex;
-            overflow-x: hidden;
-            padding: 20px;
-            scroll-snap-type: x mandatory;
-            position: relative;
-            background-color: #000; /* Ensure consistent background color */
-        }
-
-        .card {
-            flex: 0 0 auto;
-            width: 300px;
-            margin-right: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            scroll-snap-align: center;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .card h2 {
-            margin: 15px 0;
-        }
-
-        .card a {
-            display: inline-block;
-            margin-bottom: 15px;
-            padding: 10px 20px;
-            color: #ffcc00;
-            text-decoration: none;
-            border: 1px solid #ffcc00;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .card a:hover {
-            background-color: #ffcc00;
-            color: #333;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-            pointer-events: none;
-        }
-
-        .card-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-            pointer-events: none;
-        }
-
-        .card-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: #bb883e;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .arrow-left {
-            left: 10px;
-        }
-
-        .arrow-right {
-            right: 10px;
-        }
-        body {
-    color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    background: #000;
-}
-
-.bg-gold {
-    background-color: #bb883e;
-}
-
-.bg-black {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.text-white {
-    color: #f0f0f0;
-}
-
-.btn-gold {
-    background-color: #bb883e;
-    color: #000;
-    border: none;
-}
-
-.btn-outline-light {
-    border: 1px solid #f0f0f0;
-}
-
-.navbar-custom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: #000; /* Ensure the navbar has the same background */
-}
-
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-collapse {
-    justify-content: flex-end;
-}
-
-.page-header {
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.page-header h1 {
-    margin: 0;
-    color: #bb883e;
-}
-
-.content {
-    padding: 2rem 0;
-}
-
-.content h2 {
-    color: #bb883e;
-    margin-bottom: 1rem;
-}
-
-.form-control {
-    background-color: #333;
-    color: #f0f0f0;
-    border: 1px solid #bb883e;
-}
-
-.form-control:focus {
-    border-color: #bb883e;
-    box-shadow: none;
-}
-
-.btn-submit {
-    background-color: #bb883e;
-    color: #000;
-    border: none;
-}
-
-.btn-submit:hover {
-    background-color: #a57435;
-}
-
-.contact-info {
-    color: #f0f0f0;
-}
-
-.contact-info h5 {
-    color: #bb883e;
-}
-
-.contact-info img {
-    width: 100%;
-    border-radius: 5px;
-}
-
-@media (max-width: 767.98px) {
-    .page-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .content h2 {
-        font-size: 1.25rem;
-    }
-
-    .contact-info h5 {
-        font-size: 1rem;
-    }
-
-    .form-control {
-        font-size: 0.875rem;
-    }
-
-    .btn-submit {
-        font-size: 0.875rem;
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
-        padding: 0 1rem;
-    }
-
-    .content {
-        padding: 1rem 0;
-    }
-
-    .card-carousel-container {
-        display: block;
-    }
-
-    .card-carousel {
-        display: flex;
-        overflow: hidden;
-        width: 100%;
-        position: relative;
-    }
-
-    .card-carousel .card {
-        min-width: 100%;
-        transition: transform 0.5s ease;
-        background: transparent;
-    }
-
-    .card-carousel .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 2rem;
-        color: #bb883e;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-    .card-carousel .arrow-left {
-        left: 10px;
-    }
-
-    .card-carousel .arrow-right {
-        right: 10px;
-    }
-
-    .desktop-car {
-        display: none !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .card-carousel-container {
-        display: none;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .page-header h1 {
-        font-size: 2rem;
-    }
-
-    .content h2 {
-        font-size: 1.5rem;
-    }
-
-    .contact-info h5 {
-        font-size: 1.25rem;
-    }
-
-    .form-control {
-        font-size: 1rem;
-    }
-
-    .btn-submit {
-        font-size: 1rem;
-    }
-}
-
-.footer {
-    background-color: #000;
-    padding: 2rem 0;
-    color: #f0f0f0;
-}
-
-.footer .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.footer .quick-links,
-.footer .hours,
-.footer .locations,
-.footer .social {
-    margin-bottom: 1rem;
-}
-
-.footer h5 {
-    color: #bb883e;
-    margin-bottom: 1rem;
-}
-
-.footer a {
-    color: #f0f0f0;
-    text-decoration: none;
-}
-
-.footer a:hover {
-    color: rgb(111, 111, 111);
-    text-decoration: none;
-}
-
-.footer .social-icons a {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-}
-
-.footer .locations p {
-    margin-bottom: 0.5rem;
-}
-
-@media (max-width: 767.98px) {
-    .footer .row>div {
-        margin-bottom: 1rem;
-    }
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-}
-
-.overlay h3 {
-    color: #bb883e;
-    margin-bottom: 1rem;
-}
-
-.overlay p {
-    margin: 0.5rem 0;
-    display: flex;
-    align-items: center;
-}
-
-.overlay .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-.mobile-menu {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 1050;
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: all 0.3s ease;
-}
-
-.mobile-menu.show {
-    display: flex;
-}
-
-.mobile-menu a {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin: 15px 0;
-    text-transform: uppercase;
-    text-align: center;
-    transition: color 0.3s ease;
-}
-
-.mobile-menu a:hover {
-    color: #bb883e;
-}
-
-.close-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 2em;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.btn-animate {
-    position: relative;
-    overflow: hidden;
-    transition: color 0.4s;
-    border: #bb883e;
-}
-
-.btn-animate::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.4s;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border: #bb883e;
-}
-
-.btn-animate:hover::before {
-    width: 0;
-    height: 0;
-}
-
-.btn-animate:hover {
-    color: #ffffff;
-}
-
-.card-header {
-    color: #bb883e;
-}
-
-a:hover {
-    text-decoration: none;
-    color: rgb(112, 112, 112);
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 4rem;
-    width: auto;
-}
-
-.md\:flex.space-x-4.items-center a {
-    font-size: 1rem;
-    line-height: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .mobile-menu .card-carousel {
-        display: none;
-    }
-}
-
-.card-container {
-    display: flex;
-    overflow-x: hidden;
-    padding: 20px;
-    scroll-snap-type: x mandatory;
-    position: relative;
-    background-color: #000; /* Ensure consistent background color */
-}
-
-.card {
-    flex: 0 0 auto;
-    width: 300px;
-    margin-right: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    scroll-snap-align: center;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-}
-
-.card h2 {
-    margin: 15px 0;
-}
-
-.card a {
-    display: inline-block;
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    color: #ffcc00;
-    text-decoration: none;
-    border: 1px solid #ffcc00;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.card a:hover {
-    background-color: #ffcc00;
-    color: #333;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    pointer-events: none;
-}
-
-.card-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    pointer-events: none;
-}
-
-.card-container::-webkit-scrollbar {
-    display: none;
-}
-
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: #bb883e;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.arrow-left {
-    left: 10px;
-}
-
-.arrow-right {
-    right: 10px;
-}
 
     </style>
 </head>
@@ -987,7 +408,7 @@ a:hover {
                 </a>
             </div>
             <div class="hidden md:flex space-x-4 items-center">
-                <a href="#" class="py-2">MENU</a>
+                <a href="./menu.pdf" target="_blank" class="py-2">MENU</a>
                 <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
                 <a href="./careers.html" class="py-2">CAREERS</a>
                 <a href="./contact.html" class="py-2">CONTACT US</a>
@@ -1004,7 +425,7 @@ a:hover {
         </div>
         <div class="md:hidden mobile-menu" id="navbar-menu">
             <span class="close-menu" id="close-menu">&times;</span>
-            <a href="#" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="./menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
             <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
             <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
             <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
@@ -1041,230 +462,256 @@ a:hover {
     </div>
 
     <!-- Scrollable Cards -->
-    <div class="scroll-container relative">
-        <h2 class="text-center text-4xl font-bold mb-4">Browse Through</h2>
-        <div class="scroll-wrapper flex overflow-auto relative">
-            
-            <!-- Updated Card: Americano Coffee -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./americanosq.jpg" alt="Americano Coffee" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Americano Coffee</p>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                Order Now
-                            </button>
-                        </div>
+   <div class="custom-scroll-container relative">
+    <h2 class="custom-text-center font custom-font-bold custom-mb-2">TRY NOW</h2>
+    <div class="custom-scroll-wrapper flex overflow-auto relative">
+        
+        <!-- Updated Card: Americano Coffee -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./americanosq.jpg" alt="Americano Coffee" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Americano Coffee</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
                     </div>
                 </div>
             </div>
-    
-            <!-- Updated Card: Nutella Almond Pancake -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./Pancakes.webp" alt="Nutella Almond Pancake" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Nutella Almond Pancake</p>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Updated Card: Secret Menu -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./secretMenu.jpg" alt="Secret Menu" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Secret Menu</p>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                Visit Cafe
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Updated Card: Spicy Paneer Wrap -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./paneer.jpg" alt="Spicy Paneer Wrap" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Spicy Paneer Wrap</p>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Updated Card: Street Eats -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./vadapav.webp" alt="Street Eats" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Street Eats</p>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                View Menu
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Updated Card: Bowl/Wrap -->
-            <div class="scroll flex flex-col items-center justify-center min-h-screen text-white">
-                <div class="cards flex flex-col items-center justify-center min-h-screen text-white">
-                    <div class="card-image">
-                        <img src="./butterchicken.jpg" alt="Bowl/Wrap" class="rounded-lg shadow-lg responsive-img" />
-                    </div>
-                    <div class="card-buttons text-center p-4">
-                        <div class="card-text flex flex-col items-center justify-center text-white p-4">
-                            <p class="text-offwhite-500 text-xl uppercase tracking-widest font-bold mt-2 card-header">Feature</p>
-                            <h1 class="text-2xl font-bold mt-2 card-header text-white">BOWL/WRAP</h1>
-                            <button class="btn btn-custom btn-animate mt-2 bg-transparent text-yellow-500 uppercase hover:text-white">
-                                Order Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
         </div>
+
+        <!-- Updated Card: Nutella Almond Pancake -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./Pancakes.webp" alt="Nutella Almond Pancake" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Nutella Almond Pancake</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Secret Menu -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./secretMenu.jpg" alt="Secret Menu" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Secret Menu</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Spicy Paneer Wrap -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./paneer.jpg" alt="Spicy Paneer Wrap" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Spicy Paneer Wrap</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Street Eats -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./vadapav.webp" alt="Street Eats" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Street Eats</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a>   
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Bowl/Wrap -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./butterchicken.jpg" alt="Bowl/Wrap" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+        
+                        <h1 class="custom-text-2xl custom-font-bold mt-1 custom-card-header text-white">BOWL/WRAP</h1>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">Order Now</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+</div>
+
     <style>
-        .scroll-container {
-    position: relative;
-    padding: 20px;
-}
-
-.scroll-wrapper {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-}
-
-.scroll {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    width: 100%;
-    max-width: 480px; /* Ensure uniform width */
-    margin: 0 10px; /* Ensure uniform margin */
-}
-
-.responsive-img {
-    width: 100%;
-    height: 360px; /* Ensure uniform height */
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-    display: none; /* Hide scrollbar */
-}
-
-.scroll-wrapper {
-    -ms-overflow-style: none;  /* Hide scrollbar */
-    scrollbar-width: none;  /* Hide scrollbar */
-}
-
-.card-buttons {
-    margin-top: 20px;
-    text-align: center; /* Center align text */
-}
-
-.card-text {
-    text-align: center; /* Center align text */
-}
-
-.btn {
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-
-.btn:hover {
-    color: white;
-}
-
-.scroll-container .scroll {
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
+    .custom-scroll-container {
+        position: relative;
+        padding: 10px;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Hide cards and arrows in desktop view */
-@media (min-width: 1024px) {
-    .scroll-wrapper, .scroll-left, .scroll-right {
+    .font{
+        font-size: 4rem;
+        margin: 2rem;
+        justify-content: center;
+        align-items: center;
         display: none;
     }
-}
-
-/* Show cards in mobile view */
-@media (max-width: 1024px) {
-    .scroll-wrapper {
+    .custom-scroll-wrapper {
         display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
     }
-}
-
+    
+    .custom-scroll-card {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: 100%;
+        max-width: 480px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .custom-responsive-img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .custom-scroll-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .custom-scroll-wrapper {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .custom-card-buttons {
+        margin-top: 2px;
+        text-align: center;
+    }
+    
+    .custom-card-text {
+        text-align: center;
+    }
+    
+    .custom-btn {
+        background: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+    
+    .custom-btn:hover {
+        color: white;
+    }
+    
+    .custom-scroll-container .custom-scroll-card {
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .custom-scroll-wrapper, .custom-scroll-left, .custom-scroll-right {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 1024px) {
+        .custom-scroll-wrapper {
+            display: flex;
+        }
+    }
     </style>
     
-<script>
-    const scrollWrapper = document.querySelector('.scroll-wrapper');
-
-function autoScroll() {
-    if (scrollWrapper.scrollLeft + scrollWrapper.clientWidth >= scrollWrapper.scrollWidth) {
-        scrollWrapper.scrollLeft = 0;
-    } else {
-        scrollWrapper.scrollBy({
-            left: scrollWrapper.clientWidth, // Scroll by the width of one card
-            behavior: 'smooth'
+    <script>
+    const customScrollWrapper = document.querySelector('.custom-scroll-wrapper');
+    const customCards = document.querySelectorAll('.custom-scroll-card');
+    
+    function setActiveCard() {
+        customCards.forEach(card => card.classList.remove('active'));
+    
+        const cardWidth = customCards[0].offsetWidth;
+        const scrollCenter = customScrollWrapper.scrollLeft + customScrollWrapper.offsetWidth / 2;
+    
+        customCards.forEach(card => {
+            const cardCenter = card.offsetLeft + cardWidth / 2;
+            if (Math.abs(cardCenter - scrollCenter) < cardWidth / 2) {
+                card.classList.add('active');
+            }
         });
     }
-}
-
-setInterval(autoScroll, 3000); // Adjust the interval as needed
-
-// Enable manual scrolling
-scrollWrapper.addEventListener('wheel', (evt) => {
-    evt.preventDefault();
-    scrollWrapper.scrollLeft += evt.deltaY;
-});
-
-</script>
+    
+    customScrollWrapper.addEventListener('scroll', setActiveCard);
+    
+    setActiveCard();
+    
+    function autoScroll() {
+        if (customScrollWrapper.scrollLeft + customScrollWrapper.clientWidth >= customScrollWrapper.scrollWidth) {
+            customScrollWrapper.scrollLeft = 0;
+        } else {
+            customScrollWrapper.scrollBy({
+                left: customScrollWrapper.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    setInterval(autoScroll, 3000);
+    
+    customScrollWrapper.addEventListener('wheel', (evt) => {
+        evt.preventDefault();
+        customScrollWrapper.scrollLeft += evt.deltaY;
+    });
+    </script>
+    
     
 
     <!-- More Content -->
@@ -1374,9 +821,7 @@ scrollWrapper.addEventListener('wheel', (evt) => {
     const toggleButton = document.getElementById('navbar-toggle');
     const menu = document.getElementById('navbar-menu');
     const closeMenuButton = document.getElementById('close-menu');
-    const prevCard = document.getElementById('prevCard');
-    const nextCard = document.getElementById('nextCard');
-    const cards = document.querySelector('.card-container');
+
 
     toggleButton.addEventListener('click', () => {
         menu.classList.toggle('show');
@@ -1386,13 +831,6 @@ scrollWrapper.addEventListener('wheel', (evt) => {
         menu.classList.remove('show');
     });
 
-    prevCard.addEventListener('click', () => {
-        cards.scrollBy({ left: -cards.clientWidth, behavior: 'smooth' });
-    });
-
-    nextCard.addEventListener('click', () => {
-        cards.scrollBy({ left: cards.clientWidth, behavior: 'smooth' });
-    });
 </script>
 
 </body>

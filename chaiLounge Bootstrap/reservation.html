@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Reserve a Table - Chai Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
@@ -13,7 +14,8 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background: #000; /* Fallback color */
+            background: #000;
+            padding: 20px;
         }
         .bg-gold {
             background-color: #bb883e;
@@ -28,6 +30,27 @@
             background-color: #bb883e;
             color: #000;
             border: none;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .btn-gold:hover::before {
+            width: 0;
+            height: 0;
+        }
+        .btn-gold:hover {
+            color: #ffffff;
         }
         .btn-outline-light {
             border: 1px solid #f0f0f0;
@@ -39,9 +62,14 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            background-color: #000;
+            padding: 0.5rem 1rem;
+        }
+        .logo-img {
+            height: 50px;
         }
         .custom-toggler .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
         }
         .navbar-toggler {
             border: none;
@@ -77,12 +105,32 @@
             background-color: #bb883e;
             color: #000;
             border: none;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .btn-submit:hover::before {
+            width: 0;
+            height: 0;
         }
         .btn-submit:hover {
-            background-color: #a57435;
+            color: #ffffff;
         }
         .contact-info {
             color: #f0f0f0;
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
         .contact-info h5 {
             color: #bb883e;
@@ -182,26 +230,61 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: start;
-            text-align: left;
+            align-items: center;
+            text-align: center;
             padding: 1rem;
         }
-
         .overlay h3 {
             color: #bb883e;
             margin-bottom: 1rem;
         }
-
         .overlay p {
             margin: 0.5rem 0;
             display: flex;
             align-items: center;
         }
-
         .overlay .icon {
             width: 20px;
             height: 20px;
             margin-right: 10px;
+        }
+        .mobile-menu {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 1050;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu.show {
+            display: flex;
+        }
+        .mobile-menu a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            margin: 15px 0;
+            text-transform: uppercase;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu a:hover {
+            color: #bb883e;
+        }
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: #ffffff;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -210,34 +293,51 @@
         <span>Reserve your table today and enjoy an unforgettable dining experience.. <a href="#" class="text-white"></a></span>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black navbar-custom">
-        <a class="navbar-brand" href="#">CHAI LOUNGE</a>
-       
-        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">MENU</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">LOCATION</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CAREERS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT US</a>
-                </li>
-            </ul>
+    <nav class="bg-black text-white navbar-custom">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="text-2xl font-bold py-4">
+                <a href="./index.html" target="_blank" rel="noopener noreferrer">
+                    <img src="./C.png" alt="Chai Lounge Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="./menu.pdf" target="_blank" class="py-2">MENU</a>
+                <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
+                <a href="./careers.html" class="py-2">CAREERS</a>
+                <a href="./contact.html" class="py-2">CONTACT US</a>
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER NOW</a>
+            </div>
+            <div class="flex md:hidden items-center space-x-2">
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER</a>
+                <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
-        <div class="d-flex order-reserve">
-            <a class="nav-link btn btn-outline-light" href="#">RESERVE</a>
-            <a class="nav-link btn btn-gold" href="#">ORDER NOW</a>
+        <div class="md:hidden mobile-menu" id="navbar-menu">
+            <span class="close-menu" id="close-menu">&times;</span>
+            <a href="./menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
+            <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
+            <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
         </div>
     </nav>
+
+    <script>
+        const toggleButton = document.getElementById('navbar-toggle');
+        const menu = document.getElementById('navbar-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        toggleButton.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            menu.classList.remove('show');
+        });
+    </script>
 
     <div class="page-header">
         <div class="container">
@@ -278,7 +378,9 @@
                         <label for="specialRequests">Special Requests</label>
                         <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requests"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-submit">Reserve</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-submit">Reserve</button>
+                    </div>
                 </form>
             </div>
             <div class="col-md-6">
@@ -286,10 +388,9 @@
                     <img src="./chailounge.webp" alt="Chai Lounge">
                     <div class="overlay">
                         <h3>Downtown Location</h3>
-                        <p><img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Font_Awesome_5_solid_map-marker-alt.svg" alt="Location Icon" class="icon">
-                            10119 Rice Howard Wy, T5J 0R5</p>
+                        <p> 10119 Rice Howard Wy, T5J 0R5</p>
                         <p>Edmonton, Alberta</p>
-                        <p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Font_Awesome_5_solid_envelope.svg" alt="Mail Icon" class="icon"> <a href="mailto:info@chailounge.com" style="color: #f0f0f0;">info@chailounge.com</a></p>
+                        <p>info@chailounge.com</a></p>
                     </div>
                 </div>
             </div>
@@ -304,19 +405,19 @@
                 </div>
                 <div class="col-md-3 quick-links">
                     <h5>Quick Links</h5>
-                    <p><a href="#">Contact Us</a></p>
-                    
+                    <p><a href="./contact.html">Contact Us</a></p>
+                    <p><a href="./careers.html">Careers</a></p>
                 </div>
                 <div class="col-md-3 hours">
                     <h5>Hours</h5>
-                    <p>Monday: 11:00 AM - Late</p>
-                    <p>Weekends: 11:00 AM - Late</p>
+                    <p>Monday To Friday: 08:00 AM - 10:00 PM</p>
+                    <p>Weekends: 08:00 AM - Late</p>
                 </div>
                 <div class="col-md-3 locations">
                     <h5>Locations</h5>
                     <p>Downtown Edmonton</p>
-                    <p>(604) 423-3300</p>
-                    <p>10119 Rice Howard Wy, Edmonton, AB T5J 0R5</p>
+                    <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener noreferrer">10119 Rice Howard Wy, Edmonton, AB T5J 0R5</a></p>
+                    <p><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">(587) 415-9649</a></p>
                     <p><a href="mailto:info@chailounge.com">info@chailounge.com</a></p>
                 </div>
             </div>
@@ -325,7 +426,7 @@
                     <h5>Follow Us on Social</h5>
                     <div class="social-icons">
                         <a href="#" class="fab fa-facebook"></a>
-                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="https://www.instagram.com/chailounge.ca/?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fab fa-instagram"></a>
                         <a href="#" class="fab fa-tiktok"></a>
                     </div>
                 </div>
@@ -333,7 +434,7 @@
             <div class="row">
                 <div class="col-12 text-center">
                     <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
-                    <p>SITE BY COLONY</p>
+                    <p><a href="https://www.linkedin.com/in/raghav-mahajan-17611b24b/" target="_blank">SITE BY RAGHAV</a></p>
                 </div>
             </div>
         </div>
