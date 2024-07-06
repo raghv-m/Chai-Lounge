@@ -15,46 +15,30 @@
             padding: 0;
             height: 100%;
             background: #000;
-            padding: 20px;
         }
+
         .bg-gold {
             background-color: #bb883e;
         }
+
         .bg-black {
             background-color: rgba(0, 0, 0, 0.9);
         }
+
         .text-white {
             color: #f0f0f0;
         }
+
         .btn-gold {
             background-color: #bb883e;
             color: #000;
             border: none;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.4s;
         }
-        .btn-gold::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .btn-gold:hover::before {
-            width: 0;
-            height: 0;
-        }
-        .btn-gold:hover {
-            color: #ffffff;
-        }
+
         .btn-outline-light {
             border: 1px solid #f0f0f0;
         }
+
         .navbar-custom {
             display: flex;
             justify-content: space-between;
@@ -63,162 +47,182 @@
             top: 0;
             z-index: 1000;
             background-color: #000;
-            padding: 0.5rem 1rem;
+            width: 100%;
         }
+
         .logo-img {
             height: 50px;
         }
+
         .custom-toggler .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
         }
+
         .navbar-toggler {
             border: none;
         }
+
         .navbar-collapse {
             justify-content: flex-end;
         }
+
         .page-header {
             padding: 2rem 0;
             text-align: center;
         }
+
         .page-header h1 {
             margin: 0;
             color: #bb883e;
         }
+
         .content {
             padding: 2rem 0;
         }
+
         .content h2 {
             color: #bb883e;
             margin-bottom: 1rem;
         }
+
         .form-control {
             background-color: #333;
             color: #f0f0f0;
             border: 1px solid #bb883e;
         }
+
         .form-control:focus {
             border-color: #bb883e;
             box-shadow: none;
         }
+
         .btn-submit {
             background-color: #bb883e;
             color: #000;
             border: none;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.4s;
         }
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .btn-submit:hover::before {
-            width: 0;
-            height: 0;
-        }
+
         .btn-submit:hover {
-            color: #ffffff;
+            background-color: #a57435;
         }
+
         .contact-info {
             color: #f0f0f0;
             padding: 1rem;
             margin-bottom: 1rem;
         }
+
         .contact-info h5 {
             color: #bb883e;
         }
+
         .contact-info img {
             width: 100%;
             border-radius: 5px;
         }
+
         @media (max-width: 767.98px) {
             .page-header h1 {
                 font-size: 1.5rem;
             }
+
             .content h2 {
                 font-size: 1.25rem;
             }
+
             .contact-info h5 {
                 font-size: 1rem;
             }
+
             .form-control {
                 font-size: 0.875rem;
             }
+
             .btn-submit {
                 font-size: 0.875rem;
             }
+
             .form-group {
                 margin-bottom: 1rem;
                 padding: 0 1rem;
             }
+
             .content {
                 padding: 1rem 0;
             }
         }
+
         @media (min-width: 768px) and (max-width: 991.98px) {
             .page-header h1 {
                 font-size: 2rem;
             }
+
             .content h2 {
                 font-size: 1.5rem;
             }
+
             .contact-info h5 {
                 font-size: 1.25rem;
             }
+
             .form-control {
                 font-size: 1rem;
             }
+
             .btn-submit {
                 font-size: 1rem;
             }
         }
+
         .footer {
             background-color: #000;
             padding: 2rem 0;
             color: #f0f0f0;
         }
+
         .footer .logo {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
         }
+
         .footer .quick-links,
         .footer .hours,
         .footer .locations,
         .footer .social {
             margin-bottom: 1rem;
         }
+
         .footer h5 {
             color: #bb883e;
             margin-bottom: 1rem;
         }
+
         .footer a {
             color: #f0f0f0;
             text-decoration: none;
         }
+
         .footer a:hover {
             text-decoration: underline;
         }
+
         .footer .social-icons a {
             margin-right: 0.5rem;
             font-size: 1.5rem;
         }
+
         .footer .locations p {
             margin-bottom: 0.5rem;
         }
+
         @media (max-width: 767.98px) {
-            .footer .row > div {
+            .footer .row>div {
                 margin-bottom: 1rem;
             }
         }
+
+        
         .overlay {
             position: absolute;
             top: 0;
@@ -234,23 +238,27 @@
             text-align: center;
             padding: 1rem;
         }
+
         .overlay h3 {
             color: #bb883e;
             margin-bottom: 1rem;
         }
+
         .overlay p {
             margin: 0.5rem 0;
             display: flex;
             align-items: center;
         }
+
         .overlay .icon {
             width: 20px;
             height: 20px;
             margin-right: 10px;
         }
+
         .mobile-menu {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             left: 0;
@@ -264,36 +272,69 @@
             flex-direction: column;
             transition: all 0.3s ease;
         }
+
         .mobile-menu.show {
             display: flex;
         }
-        .mobile-menu a {
+
+        .mobile-menu a,
+        .mobile-menu button {
             color: #ffffff;
-            font-size: 1.5rem;
-            margin: 15px 0;
+            font-size: 1.5em;
+            margin: 10px 0;
             text-transform: uppercase;
-            text-align: center;
-            transition: color 0.3s ease;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
         }
-        .mobile-menu a:hover {
-            color: #bb883e;
+
+        .mobile-menu a:hover,
+        .mobile-menu button:hover {
+            background-color: #444444;
+            color: #ffffff;
+            border-color: #bb883e;
         }
+
         .close-menu {
             position: absolute;
             top: 20px;
             right: 20px;
             font-size: 2em;
             color: #ffffff;
-            cursor: pointer;
+        }
+
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .btn-animate:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        .btn-animate:hover {
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <div class="bg-gold text-center py-2">
+    <div class="bg-gold text-center py-2 w-full">
         <span>Apply Today and see our exciting staff in action.. <a href="#" class="text-white"></a></span>
     </div>
 
-    <nav class="bg-black text-white navbar-custom">
+    <nav class="bg-black text-white navbar-custom w-full">
         <div class="container mx-auto px-4 flex items-center justify-between">
             <div class="text-2xl font-bold py-4">
                 <a href="./index.html" target="_blank" rel="noopener noreferrer">
@@ -318,7 +359,7 @@
         </div>
         <div class="md:hidden mobile-menu" id="navbar-menu">
             <span class="close-menu" id="close-menu">&times;</span>
-            <a href="././Chai Lounge new menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="./Chai Lounge new menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
             <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
             <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
             <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
@@ -341,7 +382,7 @@
 
     <div class="page-header">
         <div class="container">
-            <h1>Join the Team in Edmonton</h1>
+            <h1 class="text-5xl">Join the Team in Edmonton</h1>
         </div>
     </div>
 
@@ -359,7 +400,7 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h2>Submit Your Resume</h2>
+                <h2 class="text-3xl form-group ">Submit Your Resume</h2>
                 <form id="applicationForm" action="/send-email" method="POST">
                     <div class="form-group">
                         <label for="firstName">Name</label>
@@ -387,7 +428,6 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-submit">Submit</button>
                     </div>
-                   
                 </form>
             </div>
         </div>
