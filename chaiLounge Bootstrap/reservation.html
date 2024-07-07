@@ -257,49 +257,55 @@
         }
 
         .mobile-menu {
-            background: rgba(26, 26, 26, 0.8);
-            backdrop-filter: blur(20px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            z-index: 1050;
-            padding: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
+    background: rgba(0, 0, 0, 1); /* Pitch black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translateY(-100%);
+    z-index: 1050;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Slow and visible animations */
+}
 
-        .mobile-menu.show {
-            display: flex;
-        }
+.mobile-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .mobile-menu a,
-        .mobile-menu button {
-            color: #ffffff;
-            font-size: 1.5em;
-            margin: 10px 0;
-            text-transform: uppercase;
-            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
-        }
+.mobile-menu a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
 
-        .mobile-menu a:hover,
-        .mobile-menu button:hover {
-            background-color: #444444;
-            color: #ffffff;
-            border-color: #bb883e;
-        }
+.mobile-menu a:hover {
+    color: #808080; /* Gray hover color */
+}
 
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2em;
-            color: #ffffff;
-        }
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 1.3s ease-in-out;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg); /* Rotate animation on hover */
+}
+
 
         .btn-animate {
             position: relative;
