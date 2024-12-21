@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reserve a Table - Chai Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+        }
+
+        .bg-gold {
+            background-color: #bb883e;
+        }
+
+        .bg-black {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .text-white {
+            color: #f0f0f0;
+        }
+
+        .btn-gold {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-outline-light {
+            border: 1px solid #f0f0f0;
+        }
+
+        .navbar-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #000;
+            width: 100%;
+        }
+
+        .logo-img {
+            height: 50px;
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .page-header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            color: #bb883e;
+        }
+
+        .content {
+            padding: 2rem 0;
+        }
+
+        .content h2 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            background-color: #333;
+            color: #f0f0f0;
+            border: 1px solid #bb883e;
+        }
+
+        .form-control:focus {
+            border-color: #bb883e;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #a57435;
+        }
+
+        .contact-info {
+            color: #f0f0f0;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info h5 {
+            color: #bb883e;
+        }
+
+        .contact-info img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 767.98px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.25rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1rem;
+            }
+
+            .form-control {
+                font-size: 0.875rem;
+            }
+
+            .btn-submit {
+                font-size: 0.875rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+            }
+
+            .content {
+                padding: 1rem 0;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1.25rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+            }
+
+            .btn-submit {
+                font-size: 1rem;
+            }
+        }
+
+        .footer {
+            background-color: #000;
+            padding: 2rem 0;
+            color: #f0f0f0;
+        }
+
+        .footer .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer .quick-links,
+        .footer .hours,
+        .footer .locations,
+        .footer .social {
+            margin-bottom: 1rem;
+        }
+
+        .footer h5 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer .locations p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .footer .row>div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .overlay h3 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .overlay p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .overlay .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .mobile-menu {
+    background: rgba(0, 0, 0, 1); /* Pitch black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translateY(-100%);
+    z-index: 1050;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Slow and visible animations */
+}
+
+.mobile-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #808080; /* Gray hover color */
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 1.3s ease-in-out;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg); /* Rotate animation on hover */
+}
+
+
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+        }
+
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .btn-animate:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        .btn-animate:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gold text-center py-2">
+        <span>Reserve your table today and enjoy an unforgettable dining experience.. <a href="#" class="text-white"></a></span>
+    </div>
+
+    <nav class="bg-black text-white navbar-custom">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="text-2xl font-bold py-4">
+                <a href="./index.html" target="_blank" rel="noopener noreferrer">
+                    <img src="./C.png" alt="Chai Lounge Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="./menu.pdf" target="_blank" class="py-2">MENU</a>
+                <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
+                <a href="./careers.html" class="py-2">CAREERS</a>
+                <a href="./contact.html" class="py-2">CONTACT US</a>
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER NOW</a>
+            </div>
+            <div class="flex md:hidden items-center space-x-2">
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER</a>
+                <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden mobile-menu" id="navbar-menu">
+            <span class="close-menu" id="close-menu">&times;</span>
+            <a href="./menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
+            <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
+            <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
+        </div>
+    </nav>
+
+    <script>
+        const toggleButton = document.getElementById('navbar-toggle');
+        const menu = document.getElementById('navbar-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        toggleButton.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            menu.classList.remove('show');
+        });
+    </script>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="text-5xl">Reserve a Table</h1>
+        </div>
+    </div>
+
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <img src="./chailounge.webp" alt="Chai Lounge">
+                    <div class="overlay">
+                        <h3>Downtown Location</h3>
+                        <p> 10119 Rice Howard Wy, T5J 0R5</p>
+                        <p>Edmonton, Alberta</p>
+                        <p>info@chailounge.com</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-2xl form-group">Table Reservation Form</h2>
+                <form id="reservationForm" action="/send-reservation-email" method="POST">
+                    <div class="form-group">
+                        <label for="reservationDate">Date</label>
+                        <input type="date" class="form-control" id="reservationDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationTime">Time</label>
+                        <input type="time" class="form-control" id="reservationTime" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationName">Name</label>
+                        <input type="text" class="form-control" id="reservationName" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationEmail">Email</label>
+                        <input type="email" class="form-control" id="reservationEmail" name="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationPhone">Phone</label>
+                        <input type="tel" class="form-control" id="reservationPhone" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reservationPeople">Number of People</label>
+                        <input type="number" class="form-control" id="reservationPeople" name="numberOfGuests" placeholder="Number of People" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="specialRequests">Special Requests</label>
+                        <textarea class="form-control" id="specialRequests" name="specialRequests" rows="4" placeholder="Any special requests"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-submit">Reserve</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">CHAI LOUNGE</div>
+                </div>
+                <div class="col-md-3 quick-links">
+                    <h5>Quick Links</h5>
+                    <p><a href="./contact.html">Contact Us</a></p>
+                    <p><a href="./careers.html">Careers</a></p>
+                </div>
+                <div class="col-md-3 hours">
+                    <h5>Hours</h5>
+                    <p>Monday To Friday: 08:00 AM - 10:00 PM</p>
+                    <p>Weekends: 08:00 AM - Late</p>
+                </div>
+                <div class="col-md-3 locations">
+                    <h5>Locations</h5>
+                    <p>Downtown Edmonton</p>
+                    <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener noreferrer">10119 Rice Howard Wy, Edmonton, AB T5J 0R5</a></p>
+                    <p><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">(587) 415-9649</a></p>
+                    <p><a href="mailto:info@chailounge.com">info@chailounge.com</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center social">
+                    <h5>Follow Us on Social</h5>
+                    <div class="social-icons">
+                        <a href="#" class="fab fa-facebook"></a>
+                        <a href="https://www.instagram.com/chailounge.ca/?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-tiktok"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
+                    <p><a href="https://www.linkedin.com/in/raghav-mahajan-17611b24b/" target="_blank">SITE BY RAGHAV</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch('http://localhost:3000/send-reservation-email', {
+                method: 'POST',
+                body: formData,
+            }).then(response => response.json())
+              .then(data => {
+                  alert('Reservation submitted successfully!');
+              }).catch(error => {
+                  console.error('Error:', error);
+                  alert('There was an error submitting your reservation. Please try again.');
+              });
+        });
+    </script>
+</body>
+</html>

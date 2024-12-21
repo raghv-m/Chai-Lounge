@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Lounge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+        }
+
+        .bg-gold {
+            background-color: #bb883e;
+        }
+
+        .bg-black {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .text-white {
+            color: #f0f0f0;
+        }
+
+        .btn-gold {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-outline-light {
+            border: 1px solid #f0f0f0;
+        }
+
+        .navbar-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #000; /* Ensure the navbar has the same background */
+            padding: 0.5rem 1rem; /* Adjusted padding to make navbar smaller */
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(187, 136, 62, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-collapse {
+            justify-content: flex-end;
+        }
+
+        .page-header {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            color: #bb883e;
+        }
+
+        .content {
+            padding: 2rem 0;
+        }
+
+        .content h2 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            background-color: #333;
+            color: #f0f0f0;
+            border: 1px solid #bb883e;
+        }
+
+        .form-control:focus {
+            border-color: #bb883e;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background-color: #bb883e;
+            color: #000;
+            border: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #a57435;
+        }
+
+        .contact-info {
+            color: #f0f0f0;
+        }
+
+        .contact-info h5 {
+            color: #bb883e;
+        }
+
+        .contact-info img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 767.98px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.25rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1rem;
+            }
+
+            .form-control {
+                font-size: 0.875rem;
+            }
+
+            .btn-submit {
+                font-size: 0.875rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+            }
+
+            .content {
+                padding: 1rem 0;
+            }
+
+            .card-carousel-container {
+                display: block;
+            }
+
+            .card-carousel {
+                display: flex;
+                overflow: hidden;
+                width: 100%;
+                position: relative;
+            }
+
+            .card-carousel .card {
+                min-width: 100%;
+                transition: transform 0.5s ease;
+                background: transparent;
+            }
+
+            .card-carousel .arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 2rem;
+                color: #bb883e;
+                cursor: pointer;
+                z-index: 10;
+            }
+
+            .card-carousel .arrow-left {
+                left: 10px;
+            }
+
+            .card-carousel .arrow-right {
+                right: 10px;
+            }
+
+            .desktop-car {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-carousel-container {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info h5 {
+                font-size: 1.25rem;
+            }
+
+            .form-control {
+                font-size: 1rem;
+            }
+
+            .btn-submit {
+                font-size: 1rem;
+            }
+        }
+
+        .footer {
+            background-color: #000;
+            padding: 2rem 0;
+            color: #f0f0f0;
+        }
+
+        .footer .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer .quick-links,
+        .footer .hours,
+        .footer .locations,
+        .footer .social {
+            margin-bottom: 1rem;
+        }
+
+        .footer h5 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: rgb(111, 111, 111);
+            text-decoration: none;
+        }
+
+        .footer .social-icons a {
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer .locations p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 767.98px) {
+            .footer .row>div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .overlay h3 {
+            color: #bb883e;
+            margin-bottom: 1rem;
+        }
+
+        .overlay p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .overlay .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .mobile-menu {
+    background: rgba(0, 0, 0, 1); /* Pitch black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translateY(-100%);
+    z-index: 1050;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Slow and visible animations */
+}
+
+.mobile-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu a {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+.mobile-menu a:hover {
+    color: #808080; /* Gray hover color */
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg); /* Rotate animation on hover */
+}
+
+
+
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s;
+            border: #bb883e;
+        }
+
+        .btn-animate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            transform: translate(-50%, -50%) rotate(45deg);
+            border: #bb883e;
+        }
+
+        .btn-animate:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        .btn-animate:hover {
+            color: #ffffff;
+        }
+
+        .card-header {
+            color: #bb883e;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: rgb(112, 112, 112);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: left;
+        }
+
+        .logo-img {
+            height: 2rem;
+            width: auto;
+        }
+
+        .md\:flex.space-x-4.items-center a {
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="bg-gold text-center py-2">
+        <span>We are open now come give us a visit today to enjoy a great dining experience.. <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="text-white">Visit Us</a></span>
+    </div>
+
+    <nav class="bg-black text-white navbar-custom">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <div class="text-2xl font-bold py-4">
+                <a href="./index.html" target="_blank" rel="noopener noreferrer">
+                    <img src="./C.png" alt="Chai Lounge Logo" class="logo-img">
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="./Chai Lounge new menu.pdf" target="_blank" class="py-2">MENU</a>
+                <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
+                <a href="./careers.html" class="py-2">CAREERS</a>
+                <a href="./contact.html" class="py-2">CONTACT US</a>
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER NOW</a>
+            </div>
+            <div class="flex md:hidden items-center space-x-2">
+                <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
+                <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER</a>
+                <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="md:hidden mobile-menu" id="navbar-menu">
+            <span class="close-menu" id="close-menu">&times;</span>
+             <a href="./Chai Lounge new menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
+            <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
+            <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
+            <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
+        </div>
+    </nav>
+
+    <script>
+        const toggleButton = document.getElementById('navbar-toggle');
+        const menu = document.getElementById('navbar-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+
+        toggleButton.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            menu.classList.remove('show');
+        });
+    </script>
+
+    <!-- Main Content -->
+    <div class="flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
+            <p class="text-offwhite-500 uppercase tracking-widest">CHAI STOPPE</p>
+            <h1 class="text-5xl font-bold mt-2 card-header">Introducing Tasty Chai</h1>
+            <p class="mt-4 text-lg">
+                Exclusively at Chai Lounge. Come and experience the latest culinary delights curated by our master chefs for your experience.
+            </p>
+            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">View 5PM Menu</button>
+        </div>
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
+            <img src="./banner.jpg" alt="Chef preparing food" class="rounded-lg shadow-lg" />
+        </div>
+    </div>
+
+    <!-- Scrollable Cards -->
+   <div class="custom-scroll-container relative">
+    <h2 class="custom-text-center font custom-font-bold custom-mb-2">TRY NOW</h2>
+    <div class="custom-scroll-wrapper flex overflow-auto relative">
+        
+        <!-- Updated Card: Americano Coffee -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./americanosq.jpg" alt="Americano Coffee" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Americano Coffee</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Nutella Almond Pancake -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./Pancakes.webp" alt="Nutella Almond Pancake" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Nutella Almond Pancake</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Secret Menu -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./secretMenu.jpg" alt="Secret Menu" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Secret Menu</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Spicy Paneer Wrap -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./paneer.jpg" alt="Spicy Paneer Wrap" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Spicy Paneer Wrap</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Street Eats -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./vadapav.webp" alt="Street Eats" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+                        <p class="custom-text-offwhite-500 custom-text-xl uppercase tracking-widest custom-font-bold mt-1 custom-card-header">Street Eats</p>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="./Chai Lounge new menu.pdf" target="_blank" rel="noopener noreferrer">View Menu</a>   
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Updated Card: Bowl/Wrap -->
+        <div class="custom-scroll-card flex flex-col items-center justify-center text-white">
+            <div class="custom-cards flex flex-col items-center justify-center text-white">
+                <div class="custom-card-image">
+                    <img src="./butterchicken.jpg" alt="Bowl/Wrap" class="custom-rounded-lg custom-shadow-lg custom-responsive-img" />
+                </div>
+                <div class="custom-card-buttons text-center p-2">
+                    <div class="custom-card-text flex flex-col items-center justify-center text-white p-2">
+        
+                        <h1 class="custom-text-2xl custom-font-bold mt-1 custom-card-header text-white">BOWL/WRAP</h1>
+                        <button class="custom-btn custom-btn-animate mt-1 bg-transparent custom-text-yellow-500 uppercase hover:text-white">
+                            <a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">Order Now</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <style>
+    .custom-scroll-container {
+        position: relative;
+        padding: 10px;
+    }
+    .font{
+        font-size: 4rem;
+        margin: 2rem;
+        justify-content: center;
+        align-items: center;
+        display: none;
+    }
+    .custom-scroll-wrapper {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    
+    .custom-scroll-card {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        width: 100%;
+        max-width: 480px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .custom-responsive-img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .custom-scroll-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .custom-scroll-wrapper {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .custom-card-buttons {
+        margin-top: 2px;
+        text-align: center;
+    }
+    
+    .custom-card-text {
+        text-align: center;
+    }
+    
+    .custom-btn {
+        background: none;
+        border: none;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
+    
+    .custom-btn:hover {
+        color: white;
+    }
+    
+    .custom-scroll-container .custom-scroll-card {
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .custom-scroll-wrapper, .custom-scroll-left, .custom-scroll-right {
+            display: none;
+        }
+    }
+    
+    @media (max-width: 1024px) {
+        .custom-scroll-wrapper {
+            display: flex;
+        }
+    }
+    </style>
+    
+    <script>
+    const customScrollWrapper = document.querySelector('.custom-scroll-wrapper');
+    const customCards = document.querySelectorAll('.custom-scroll-card');
+    
+    function setActiveCard() {
+        customCards.forEach(card => card.classList.remove('active'));
+    
+        const cardWidth = customCards[0].offsetWidth;
+        const scrollCenter = customScrollWrapper.scrollLeft + customScrollWrapper.offsetWidth / 2;
+    
+        customCards.forEach(card => {
+            const cardCenter = card.offsetLeft + cardWidth / 2;
+            if (Math.abs(cardCenter - scrollCenter) < cardWidth / 2) {
+                card.classList.add('active');
+            }
+        });
+    }
+    
+    customScrollWrapper.addEventListener('scroll', setActiveCard);
+    
+    setActiveCard();
+    
+    function autoScroll() {
+        if (customScrollWrapper.scrollLeft + customScrollWrapper.clientWidth >= customScrollWrapper.scrollWidth) {
+            customScrollWrapper.scrollLeft = 0;
+        } else {
+            customScrollWrapper.scrollBy({
+                left: customScrollWrapper.clientWidth,
+                behavior: 'smooth'
+            });
+        }
+    }
+    
+    setInterval(autoScroll, 3000);
+    
+    customScrollWrapper.addEventListener('wheel', (evt) => {
+        evt.preventDefault();
+        customScrollWrapper.scrollLeft += evt.deltaY;
+    });
+    </script>
+    
+    
+
+    <!-- More Content -->
+    <div class="desktop-cards desktop-car flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="lg:w-2/3 flex flex-col lg:flex-row items-center lg:items-start">
+            <div class="lg:w-1/2 p-8 m-4">
+                <p class="text-offwhite-500 uppercase tracking-widest">Feature</p>
+                <h1 class="text-5xl font-bold mt-2 card-header">BOWL/WRAP</h1>
+                <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">Order Now</a></button>
+            </div>
+            <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
+                <img src="./butterChicken.webp" alt="Bowl/Wrap" class="rounded-lg shadow-lg" />
+            </div>
+        </div>
+        <div class="lg:w-1/3 flex flex-col space-y-8 mt-8 lg:mt-0 lg:ml-8 m-4">
+            <div class="flex flex-col items-center">
+                <img src="./vadapav.webp" alt="Street Eats" class="rounded-lg shadow-lg" />
+                <p class="mt-4 text-lg">Street Eats</p>
+                <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500">View Menu</button>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="./secretMenu.jpg" alt="Secret Menu" class="rounded-lg shadow-lg" />
+                <p class="mt-4 text-lg">Secret Menu</p>
+                <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener noreferrer">Visit Cafe</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- More Content -->
+    <div class="desktop-cards flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
+            <img src="./careers.webp" alt="Join Our Team" class="rounded-lg shadow-lg" />
+        </div>
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
+            <p class="text-offwhite-500 uppercase tracking-widest">Join Our Team</p>
+            <h1 class="text-5xl font-bold mt-2 card-header">Become a Part of Chai Lounge</h1>
+            <p class="mt-4 text-lg">
+                At Chai Lounge, we are always looking for passionate and dedicated individuals to join our team. Apply today and start your journey with us.
+            </p>
+            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="./careers.html" target="_blank" rel="noopener noreferrer">Apply Now</a></button>
+        </div>
+    </div>
+
+    <!-- More Content -->
+    <div class="desktop-cards flex flex-col lg:flex-row items-center justify-center min-h-screen text-white p-8 lg:p-20" style="background-color: #000;">
+        <div class="lg:w-1/2 mt-8 lg:mt-0 m-4">
+            <img src="./getIntouch.webp" alt="Contact Us" class="rounded-lg shadow-lg" />
+        </div>
+        <div class="max-w-4xl lg:w-1/2 p-8 lg:p-16 bg-zinc-800 rounded-lg shadow-lg m-4">
+            <p class="text-offwhite-500 uppercase tracking-widest">Contact Us</p>
+            <h1 class="text-5xl font-bold mt-2 card-header">Get in Touch</h1>
+            <p class="mt-4 text-lg">
+                Have any questions or feedback? We would love to hear from you. Contact us today and let us know how we can assist you.
+            </p>
+            <button class="btn btn-custom btn-animate mt-6 bg-transparent border border-yellow-500 text-yellow-500 uppercase px-4 py-2 hover:bg-gray-700 hover:text-white hover:border-yellow-500"><a href="./contact.html" target="_blank" rel="noopener noreferrer">Contact Us</a></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">CHAI LOUNGE</div>
+                </div>
+                <div class="col-md-3 quick-links">
+                    <h5>Quick Links</h5>
+                    <p><a href="./contact.html">Contact Us</a></p>
+                    <p><a href="./careers.html">Careers</a></p>
+                </div>
+                <div class="col-md-3 hours">
+                    <h5>Hours</h5>
+                    <p>Monday To Friday: 08:00 AM - 10:00 PM</p>
+                    <p>Weekends: 08:00 AM - Late</p>
+                </div>
+                <div class="col-md-3 locations">
+                    <h5>Locations</h5>
+                    <p>Downtown Edmonton</p>
+                    <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener noreferrer">10119 Rice Howard Wy, Edmonton, AB T5J 0R5</a></p>
+                    <p><a href="tel:+15874159649" target="_blank" rel="noopener noreferrer">(587) 415-9649</a></p>
+                    <p><a href="mailto:info@chailounge.com">info@chailounge.com</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center social">
+                    <h5>Follow Us on Social</h5>
+                    <div class="social-icons">
+                        <a href="#" class="fab fa-facebook"></a>
+                        <a href="https://www.instagram.com/chailounge.ca/?utm_source=qr" target="_blank" rel="noopener noreferrer" class="fab fa-instagram"></a>
+                        <a href="#" class="fab fa-tiktok"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
+                    <p><a href="https://www.linkedin.com/in/raghav-mahajan-17611b24b/" target="_blank">SITE BY RAGHAV</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+    const toggleButton = document.getElementById('navbar-toggle');
+    const menu = document.getElementById('navbar-menu');
+    const closeMenuButton = document.getElementById('close-menu');
+
+
+    toggleButton.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        menu.classList.remove('show');
+    });
+
+</script>
+
+</body>
+
+</html>
