@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Our Team - Chai Lounge</title>
+  <title>Contact Our Team - Chai Lounge</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Bootstrap CSS -->
@@ -12,7 +12,6 @@
   <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet"/>
 
   <style>
-    /* Basic body styling */
     body {
       color: #f0f0f0;
       margin: 0;
@@ -29,10 +28,12 @@
       background-color: rgba(0, 0, 0, 0.9);
     }
 
-    /* --- Top Banner Ribbon --- */
-    /* We'll keep your "Apply Today" text. */
-    
-    /* --- NAVBAR: EXACT COPY from first page --- */
+    /* -- Top Banner Ribbon (same as first page) -- */
+    .bg-gold.text-center.py-2.w-full {
+      /* Uses Tailwind classes for styling */
+    }
+
+    /* -- NAVBAR: EXACT COPY from first page -- */
     .navbar-custom {
       display: flex;
       justify-content: space-between;
@@ -56,13 +57,13 @@
       height: 40px;
     }
     .custom-toggler .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'xmlns='http://www.w3.org/2000/svg'%3E%3Cpathstroke='rgba(187,136,62,1)'stroke-width='2'stroke-linecap='round'stroke-miterlimit='10'd='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187,136,62,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
     .navbar-toggler {
       border: none;
     }
 
-    /* Mobile menu (same as first page) */
+    /* -- Mobile Menu (matching first page) -- */
     .mobile-menu {
       background: #000;
       backdrop-filter: blur(20px);
@@ -129,79 +130,26 @@
       color: #ffffff;
     }
 
-    /* Page header & content styling for this careers page */
-    .page-header {
-      padding: 2rem 0;
-      text-align: center;
-    }
-    .page-header h1 {
-      margin: 0;
-      color: #bb883e;
-    }
-    .content {
-      padding: 2rem 0;
-    }
-    .content h2 {
-      color: #bb883e;
-      margin-bottom: 1rem;
-    }
-
-    /* Contact / careers form styling */
-    .form-control {
-      background-color: #333;
-      color: #f0f0f0;
+    /* CTA Buttons */
+    .section-cta {
+      display: inline-block;
       border: 1px solid #bb883e;
-    }
-    .form-control:focus {
-      border-color: #bb883e;
-      box-shadow: none;
-    }
-    .btn-submit {
-      background-color: #bb883e;
-      color: #000;
-      border: none;
-    }
-    .btn-submit:hover {
-      background-color: #a57435;
-    }
-    .contact-info {
-      color: #f0f0f0;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-    .contact-info img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-    }
-    .overlay h3 {
       color: #bb883e;
-      margin-bottom: 1rem;
+      background: transparent;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 0.875rem; 
     }
-    .overlay p {
-      margin: 0.5rem 0;
-      display: flex;
-      align-items: center;
-    }
-    .overlay .icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
+    .section-cta:hover {
+      border-color: gray;
+      color: #bb883e;
+      background: transparent;
+      text-decoration: none;
     }
 
     /* Footer: EXACT COPY from first page */
@@ -238,13 +186,91 @@
       }
     }
 
-    /* Media Queries for form layout, etc. */
+    /* Contact Page-Specific */
+    .page-header {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .page-header h1 {
+      margin: 0;
+      color: #bb883e;
+    }
+    .content {
+      padding: 2rem 0;
+    }
+    .content h2 {
+      color: #bb883e;
+      margin-bottom: 1rem;
+    }
+    .form-control {
+      background-color: #333;
+      color: #f0f0f0;
+      border: 1px solid #bb883e;
+    }
+    .form-control:focus {
+      border-color: #bb883e;
+      box-shadow: none;
+    }
+    .btn-submit {
+      background-color: #bb883e;
+      color: #000;
+      border: none;
+    }
+    .btn-submit:hover {
+      background-color: #a57435;
+    }
+    .contact-info {
+      color: #f0f0f0;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .contact-info h5 {
+      color: #bb883e;
+    }
+    .contact-info img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .overlay h3 {
+      color: #bb883e;
+      margin-bottom: 1rem;
+    }
+    .overlay p {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+    .overlay .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
     @media (max-width: 767.98px) {
       .page-header h1 {
         font-size: 1.5rem;
       }
       .content h2 {
         font-size: 1.25rem;
+      }
+      .contact-info h5 {
+        font-size: 1rem;
       }
       .form-control {
         font-size: 0.875rem;
@@ -267,6 +293,9 @@
       .content h2 {
         font-size: 1.5rem;
       }
+      .contact-info h5 {
+        font-size: 1.25rem;
+      }
       .form-control {
         font-size: 1rem;
       }
@@ -278,30 +307,56 @@
 </head>
 
 <body>
-  <!-- Top Banner: "Apply Today" text -->
+  <!-- Top Banner -->
   <div class="bg-gold text-center py-2 w-full">
-    <span>Apply Today and see our exciting staff in action.. <a href="#" class="text-white"></a></span>
+    <span>Fill out the form to reach us today <a href="#" class="text-white"></a></span>
   </div>
 
   <!-- EXACT same NAVBAR as the first page -->
   <nav class="bg-black text-white navbar-custom w-full">
     <div class="container mx-auto px-4 flex items-center justify-between">
-      <div class="text-2xl font-bold py-4">
-        <a href="./index.html" target="_blank" rel="noopener noreferrer">
-          <img src="../images/C.png" alt="Chai Lounge Logo" class="logo-img">
+      <div class="text-xl font-bold py-2">
+        <a href="#" rel="noopener noreferrer">
+          <img src="./images/C.png" alt="Chai Lounge Logo" class="logo-img" />
         </a>
       </div>
-      <div class="hidden md:flex space-x-4 items-center">
-        <a href="./Chai Lounge new menu.pdf" target="_blank" class="py-2">MENU</a>
-        <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">LOCATION</a>
-        <a href="./careers.html" class="py-2">CAREERS</a>
-        <a href="./contact.html" class="py-2">CONTACT US</a>
-        <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
-        <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER NOW</a>
+      <div class="hidden md:flex space-x-4 items-center text-sm sm:text-base md:text-base">
+        <a href="./Chai Lounge new menu.pdf" target="_blank" class="py-2">Menu</a>
+        <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">Location</a>
+        <a href="./careers.html" target="_blank" class="py-2">Careers</a>
+        <a href="./contact.html" target="_blank" class="py-2">Contact Us</a>
+        <a
+          href="./reservation.html"
+          target="_blank"
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
+                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
+        >
+          Reserve
+        </a>
+        <a
+          href="tel:+15874159649"
+          target="_blank"
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
+                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
+        >
+          Order Now
+        </a>
       </div>
       <div class="flex md:hidden items-center space-x-2">
-        <a href="./reservation.html" class="py-2 block border border-[#bb883e] px-4 text-[#bb883e] hover:bg-[#bb883e] hover:text-white">RESERVE</a>
-        <a href="tel:+15874159649" class="py-2 block bg-[#bb883e] text-black px-4 hover:bg-gray-700 hover:text-white hover:border-[#bb883e]">ORDER</a>
+        <a
+          href="./reservation.html"
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
+                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
+        >
+          Reserve
+        </a>
+        <a
+          href="tel:+15874159649"
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
+                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
+        >
+          Order
+        </a>
         <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -309,13 +364,15 @@
     </div>
     <div class="md:hidden mobile-menu" id="navbar-menu">
       <span class="close-menu" id="close-menu">&times;</span>
-      <a href="./Chai Lounge new menu.pdf" target="_blank" class="block py-2 pl-4 pr-2 text-sm">MENU</a>
-      <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="block py-2 pl-4 pr-2 text-sm">LOCATION</a>
-      <a href="./careers.html" class="block py-2 pl-4 pr-2 text-sm">CAREERS</a>
-      <a href="./contact.html" class="block py-2 pl-4 pr-2 text-sm">CONTACT US</a>
+      <img src="./images/C.png" alt="Chai Lounge Logo" class="w-20 h-auto mb-6 mx-auto" />
+      <a href="./Chai Lounge new menu.pdf" target="_blank" class="btn-animate section-cta mt-2">Menu</a>
+      <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="btn-animate section-cta mt-2">Location</a>
+      <a href="./careers.html" class="btn-animate section-cta mt-2">Careers</a>
+      <a href="./contact.html" class="btn-animate section-cta mt-2">Contact Us</a>
     </div>
   </nav>
-  <!-- Navbar Toggling Script -->
+
+  <!-- Script for navbar toggling (same as first page) -->
   <script>
     const toggleButton = document.getElementById('navbar-toggle');
     const menu = document.getElementById('navbar-menu');
@@ -324,6 +381,7 @@
     toggleButton.addEventListener('click', () => {
       menu.classList.toggle('show');
     });
+
     closeMenuButton.addEventListener('click', () => {
       menu.classList.remove('show');
     });
@@ -331,17 +389,17 @@
 
   <!-- Page Header -->
   <div class="page-header">
-    <div class="container">
-      <h1 class="text-5xl">Join the Team in Edmonton</h1>
+    <div class="container text-5xl off">
+      <h1 class="text-5xl">Contact Our Team Today in Edmonton</h1>
     </div>
   </div>
 
-  <!-- Main Content: same "Join Our Team" form/sections you had -->
+  <!-- Main Content -->
   <div class="container content">
     <div class="row">
       <div class="col-md-6">
-        <div class="contact-info position-relative">
-          <img src="../images/career.webp" alt="Chai Lounge" class="img-fluid" />
+        <div class="contact-info relative">
+          <img src="./images/contact.webp" alt="Chai Lounge" class="img-fluid" />
           <div class="overlay">
             <h3>Downtown Location</h3>
             <p>10119 Rice Howard Wy, T5J 0R5</p>
@@ -351,7 +409,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <h2 class="text-3xl form-group">Submit Your Resume</h2>
+        <h2 class="text-3xl form-group">Submit Your Concern</h2>
         <form id="applicationForm" action="/send-email" method="POST">
           <div class="form-group">
             <label for="firstName">Name</label>
@@ -387,28 +445,12 @@
             />
           </div>
           <div class="form-group">
-            <label for="resume">Attach Resume</label>
-            <div class="custom-file">
-              <input
-                type="file"
-                class="custom-file-input"
-                id="resume"
-                name="resume"
-                accept=".pdf, .doc, .docx"
-                required
-              />
-              <label class="custom-file-label" for="resume">
-                <i class="fas fa-paperclip"></i> Choose file
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
             <label for="message">Message</label>
             <textarea
               class="form-control"
               id="message"
               name="message"
-              rows="4"
+              rows="3"
               placeholder="Write Your Message Here"
             ></textarea>
           </div>
@@ -463,13 +505,12 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts for form submission -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    // Handle the resume form submission
-    document.getElementById('applicationForm').addEventListener('submit', function(event) {
+    document.getElementById('applicationForm').addEventListener('submit', function (event) {
       event.preventDefault();
 
       const formData = new FormData(this);
@@ -478,14 +519,24 @@
         method: 'POST',
         body: formData,
       })
-        .then(response => response.json())
-        .then(data => {
+      .then(response => response.json())
+      .then(data => {
           alert('Application submitted successfully!');
-        })
-        .catch(error => {
+      })
+      .catch(error => {
           console.error('Error:', error);
           alert('There was an error submitting your application. Please try again.');
-        });
+      });
+    });
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    });
+    document.getElementById('close-mobile-menu').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.remove('show');
     });
   </script>
 </body>
