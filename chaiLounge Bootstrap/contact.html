@@ -193,10 +193,16 @@
     }
     .page-header h1 {
       margin: 0;
-      color: #bb883e;
+      /* Remove the usual color so we see only the stroke */
+      -webkit-text-fill-color: transparent;
+
+      /* Give it a 1px gold stroke */
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: #bb883e;
     }
+
     .content {
-      padding: 2rem 0;
+      padding: 5rem;
     }
     .content h2 {
       color: #bb883e;
@@ -390,7 +396,7 @@
   <!-- Page Header -->
   <div class="page-header">
     <div class="container text-5xl off">
-      <h1 class="text-5xl">Contact Our Team Today in Edmonton</h1>
+      <h1 class="font-bold text-gold mb-4 text-2xl sm:text-4xl lg:text-6xl leading-tight">Contact Our Team Today in Edmonton</h1>
     </div>
   </div>
 
