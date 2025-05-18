@@ -304,16 +304,109 @@
         font-size: 1rem;
       }
     }
+    @media (max-width: 767px) {
+      .footer .row, .footer .col-md-3, .footer .col-12, .footer .social, .footer .locations, .footer .hours, .footer .quick-links {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      .footer .row {
+        flex-direction: column !important;
+      }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (max-width: 991px) {
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(24, 24, 24, 0.98);
+        z-index: 1000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 60px;
+        transition: all 0.3s ease;
+        overflow-y: auto;
+        box-shadow: 0 8px 32px 0 rgba(34,34,34,0.25);
+        animation: fadeInMenu 0.4s cubic-bezier(0.4,0,0.2,1);
+      }
+      @keyframes fadeInMenu {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: none; }
+      }
+      .mobile-menu.show {
+        display: flex;
+      }
+      .mobile-menu .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 2.8rem;
+        color: #fff;
+        cursor: pointer;
+        z-index: 1100;
+        transition: color 0.2s;
+      }
+      .mobile-menu .close-menu:hover {
+        color: #bb883e;
+      }
+      .mobile-menu img {
+        margin-bottom: 2.5rem;
+        border-radius: 50%;
+        box-shadow: 0 2px 16px 0 rgba(187,136,62,0.15);
+        background: #181818;
+        padding: 0.5rem;
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+      }
+      .mobile-menu a {
+        display: block;
+        width: 85%;
+        margin: 1.1rem auto;
+        padding: 1.1rem 0;
+        text-align: center;
+        font-size: 1.2rem;
+        background: #222;
+        color: #bb883e;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px 0 rgba(34,34,34,0.10);
+        border: 1.5px solid #bb883e;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      }
+      .mobile-menu a:hover {
+        background: #bb883e;
+        color: #181818;
+        box-shadow: 0 4px 16px 0 rgba(187,136,62,0.15);
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Top Banner: "Apply Today" text (keeping your original text) -->
+  <!-- Top Banner: "Reserve your table today and enjoy an unforgettable dining experience." -->
   <div class="bg-gold text-center py-2 w-full">
-    <span>Apply Today and see our exciting staff in action. <a href="#" class="text-white"></a></span>
+    <span>Reserve your table today and enjoy an unforgettable dining experience.</span>
   </div>
 
-  <!-- NAVBAR (from Contact page) -->
+  <!-- NAVBAR (from reservation.html) -->
   <nav class="bg-black text-white navbar-custom w-full">
     <div class="container mx-auto px-4 flex items-center justify-between">
       <!-- Logo -->
@@ -331,7 +424,7 @@
         <a
           href="./reservation.html"
           target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
                  px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
         >
           Reserve
@@ -339,7 +432,7 @@
         <a
           href="tel:+15874159649"
           target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
                  px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
         >
           Order Now
@@ -349,14 +442,14 @@
       <div class="flex md:hidden items-center space-x-2">
         <a
           href="./reservation.html"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
                  px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
         >
           Reserve
         </a>
         <a
           href="tel:+15874159649"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider
+          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
                  px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
         >
           Order
@@ -366,7 +459,6 @@
         </button>
       </div>
     </div>
-
     <!-- Mobile Menu -->
     <div class="md:hidden mobile-menu" id="navbar-menu">
       <span class="close-menu" id="close-menu">&times;</span>
@@ -378,7 +470,7 @@
     </div>
   </nav>
 
-  <!-- Navbar Toggling Script -->
+  <!-- Script for navbar toggling -->
   <script>
     const toggleButton = document.getElementById('navbar-toggle');
     const menu = document.getElementById('navbar-menu');
@@ -387,7 +479,6 @@
     toggleButton.addEventListener('click', () => {
       menu.classList.toggle('show');
     });
-
     closeMenuButton.addEventListener('click', () => {
       menu.classList.remove('show');
     });
@@ -549,6 +640,24 @@
       .catch(error => {
         console.error('Error:', error);
         alert('There was an error submitting your application. Please try again.');
+      });
+    });
+
+    // Scroll reveal animation for all sections
+    document.addEventListener('DOMContentLoaded', function() {
+      const reveals = document.querySelectorAll('.full-screen-section, .page-header, .content');
+      const revealOnScroll = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const observer = new IntersectionObserver(revealOnScroll, { threshold: 0.15 });
+      reveals.forEach(section => {
+        section.classList.add('reveal');
+        observer.observe(section);
       });
     });
   </script>
