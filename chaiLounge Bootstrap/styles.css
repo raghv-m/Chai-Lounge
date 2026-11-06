@@ -101,7 +101,7 @@ main{animation:pageIn .35s ease backwards;}
 
 /* Desktop links with underline slide on hover */
 .nav-links{display:none;}
-@media (min-width: 768px){
+@media (min-width: 1100px){
   .nav-links{display:flex; align-items:center; gap:1.6rem;}
 }
 .nav-links a{
@@ -129,7 +129,7 @@ main{animation:pageIn .35s ease backwards;}
 .nav-mobile-actions .btn-solid{
   min-height:44px; display:inline-flex; align-items:center;
 }
-@media (min-width: 768px){ .nav-mobile-actions{display:none;} }
+@media (min-width: 1100px){ .nav-mobile-actions{display:none;} }
 .nav-toggle{
   background:none; border:none; cursor:pointer;
   width:44px; height:44px; padding:10px;
@@ -221,7 +221,15 @@ main{animation:pageIn .35s ease backwards;}
   font-family:'Fraunces', Georgia, serif; font-size:1.05rem;
   overflow:hidden; white-space:nowrap;
 }
-.ticker span{display:inline-block; padding:.65rem 0;}
+/* The span holds the ticker text twice; sliding it by half its
+   own width loops the marquee seamlessly. */
+.ticker span{
+  display:inline-block; padding:.65rem 0;
+  animation:ticker-scroll 32s linear infinite;
+}
+@keyframes ticker-scroll{
+  to{transform:translateX(-50%);}
+}
 .ticker b{color:var(--gold); font-weight:600; padding:0 .9rem;}
 
 /* Sections */
@@ -262,6 +270,8 @@ section.block{padding:3.5rem 1rem;}
 .menu-cta-photo{display:block; width:100%; aspect-ratio:16 / 9; object-fit:cover;}
 .menu-cta-body{padding:1.3rem 1.4rem 1.5rem;}
 .menu-cta-body p{color:var(--ink-soft); max-width:65ch; margin:0 0 1.1rem;}
+/* The menu PDF link gets a real tap height inside the CTA text */
+.menu-cta-body p a{display:inline-block; padding:.6rem 0;}
 
 /* Dish rows: dotted leader lines to the price */
 .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
@@ -411,6 +421,15 @@ textarea.form-control{height:auto;}
   box-shadow:0 0 0 3px rgba(187,136,62,.22);
 }
 .form-control::placeholder{color:#7d6242;}
+/* Shown only when a form send actually fails */
+.form-error{
+  display:none; background:#f9e8e0; border:1px solid var(--maroon);
+  border-radius:12px; padding:1rem 1.2rem; color:var(--ink); margin-bottom:1rem;
+}
+.form-error.show{display:block;}
+.form-error a{color:var(--maroon); font-weight:600;}
+.form-note{color:var(--ink-soft); font-size:.92rem; margin-bottom:1rem;}
+.btn-solid:disabled{opacity:.6; cursor:wait;}
 .form-success{
   display:none; background:var(--paper-2); border:1px solid var(--gold);
   border-radius:12px; padding:1.1rem 1.2rem; color:var(--ink);
@@ -420,7 +439,7 @@ textarea.form-control{height:auto;}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--paper); border-top:1px solid var(--line); padding:3rem 1rem 2rem; color:var(--ink-soft);}
-.footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
+.footer h3{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
 .footer a{color:var(--ink-soft); text-decoration:none;}
 .footer a:hover{color:var(--maroon);}
 /* Footer links: taller tap area, same layout */
@@ -459,6 +478,13 @@ html.reveal-on [data-delay="3"]{transition-delay:.15s;}
   .dish{align-items:flex-start;}
   .dish > div{flex:1 1 auto;}
   .dish .dots{display:none;}
+  /* Top strip on phones: separators off so nothing wraps with a
+     stray dot, slightly smaller type, segments stack cleanly */
+  .top-strip{font-size:.8rem;}
+  .top-strip .sep{display:none;}
+  /* Carousel dots on phones sit in their own bar under the photo,
+     below the caption zone, so they can never land on caption text */
+  .carousel-dots{position:static; padding:.55rem 0 .5rem;}
 }
 
 @media (max-width: 480px){
@@ -471,6 +497,7 @@ html.reveal-on [data-delay="3"]{transition-delay:.15s;}
   main{animation:none;}
   html.reveal-on [data-reveal]{opacity:1; transform:none; transition:none;}
   .carousel-track{transition:none;}
+  .ticker span{animation:none;}
   .mobile-menu, .mobile-menu a.menu-link{transition:none;}
   .nav-toggle span, .carousel-arrow, .carousel-dots button::before{transition:none;}
 }

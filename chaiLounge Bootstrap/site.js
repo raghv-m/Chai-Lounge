@@ -182,18 +182,69 @@
     start();
   }
 
-  /* Front-end only forms: no back end, so a submit swaps in
-     a confirmation message instead of posting. */
+  /* ---------- Forms: real submissions through FormSubmit ----------
+     Each form posts its fields as JSON to the FormSubmit AJAX
+     endpoint for the site owner's inbox. The confirmation panel
+     appears only after the service confirms the send; on any
+     failure an error line inside the form tells the visitor to
+     call the cafe instead, so nothing is silently lost. */
   document.querySelectorAll('form[data-front-end]').forEach(function (form) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      var success = document.getElementById(form.getAttribute('data-success'));
-      form.style.display = 'none';
-      if (success) {
-        success.classList.add('show');
-        success.setAttribute('tabindex', '-1');
-        success.focus();
+      /* The forms carry novalidate, so run the browser checks here */
+      if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+        if (typeof form.reportValidity === 'function') { form.reportValidity(); }
+        return;
       }
+      var payload = {
+        _subject: form.getAttribute('data-subject') || 'Chai Lounge website form',
+        _template: 'table'
+      };
+      new FormData(form).forEach(function (value, key) { payload[key] = value; });
+      var button = form.querySelector('button[type="submit"]');
+      var errorBox = form.querySelector('.form-error');
+      if (errorBox) { errorBox.classList.remove('show'); }
+      if (button) { button.disabled = true; }
+      fetch('https://formsubmit.co/ajax/raaghvv0508@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (response) {
+        if (!response.ok) { throw new Error('Form send failed'); }
+        return response.json();
+      }).then(function (data) {
+        /* FormSubmit answers 200 with success "false" when the
+           inbox still needs its one-time activation click. */
+        if (data && String(data.success) === 'false') { throw new Error('Form send failed'); }
+        var success = document.getElementById(form.getAttribute('data-success'));
+        form.style.display = 'none';
+        if (success) {
+          success.classList.add('show');
+          success.setAttribute('tabindex', '-1');
+          success.focus();
+        }
+      }).catch(function () {
+        if (button) { button.disabled = false; }
+        if (errorBox) {
+          errorBox.classList.add('show');
+          errorBox.setAttribute('tabindex', '-1');
+          errorBox.focus();
+        }
+      });
     });
+  });
+
+  /* ---------- Top strip open status ----------
+     The cafe opens at 11 AM every day and stays open late on
+     Fridays and Saturdays, so no closing time is ever claimed.
+     Before 11 the strip says when it opens; from 11 on, open now. */
+  var openStatus = document.querySelector('[data-open-status]');
+  if (openStatus) {
+    openStatus.textContent = new Date().getHours() < 11 ? 'Opens today at 11 AM' : 'Open now';
+  }
+
+  /* ---------- Footer copyright year ---------- */
+  document.querySelectorAll('[data-year]').forEach(function (el) {
+    el.textContent = String(new Date().getFullYear());
   });
 })();
