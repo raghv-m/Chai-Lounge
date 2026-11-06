@@ -10,7 +10,7 @@
   var toggle = document.getElementById('navToggle');
   var mobileMenu = document.getElementById('mobileMenu');
 
-  function setMenu(open) {
+  function setMenu(open, returnFocus) {
     if (!toggle || !mobileMenu) { return; }
     toggle.classList.toggle('open', open);
     mobileMenu.classList.toggle('open', open);
@@ -18,6 +18,15 @@
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
     document.body.classList.toggle('menu-open', open);
+    if (open) {
+      /* Move keyboard focus into the menu so it can be used without a pointer */
+      var firstLink = mobileMenu.querySelector('.mobile-links a') || mobileMenu.querySelector('a');
+      if (firstLink) {
+        window.setTimeout(function () { firstLink.focus(); }, 80);
+      }
+    } else if (returnFocus) {
+      toggle.focus();
+    }
   }
 
   if (toggle && mobileMenu) {
@@ -28,7 +37,21 @@
       link.addEventListener('click', function () { setMenu(false); });
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') { setMenu(false); }
+      if (!mobileMenu.classList.contains('open')) { return; }
+      if (event.key === 'Escape') { setMenu(false, true); }
+      if (event.key === 'Tab') {
+        /* Keep Tab cycling inside the open menu (toggle + menu links) */
+        var focusables = [toggle].concat(
+          Array.prototype.slice.call(mobileMenu.querySelectorAll('a'))
+        );
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
     });
   }
 
@@ -51,7 +74,10 @@
     }
   }
 
-  /* ---------- Photo carousel ---------- */
+  /* ---------- Photo carousel ----------
+     Autoplay pauses on hover, focus and touch, stops for good once
+     the visitor navigates by hand, and never runs at all when the
+     visitor prefers reduced motion. */
   var carousel = document.querySelector('[data-carousel]');
   if (carousel) {
     var track = carousel.querySelector('.carousel-track');
@@ -59,16 +85,18 @@
     var prevBtn = carousel.querySelector('.carousel-arrow.prev');
     var nextBtn = carousel.querySelector('.carousel-arrow.next');
     var dotsWrap = carousel.querySelector('.carousel-dots');
+    var status = carousel.querySelector('[data-carousel-status]');
     var index = 0;
     var timer = null;
     var autoplay = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var userStopped = false;
 
     var dots = [];
     slides.forEach(function (_, i) {
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
-      dot.addEventListener('click', function () { goTo(i); restart(); });
+      dot.addEventListener('click', function () { goTo(i); stopForGood(); });
       dotsWrap.appendChild(dot);
       dots.push(dot);
     });
@@ -77,28 +105,48 @@
       index = (i + slides.length) % slides.length;
       track.style.transform = 'translateX(' + (-100 * index) + '%)';
       dots.forEach(function (dot, d) {
-        dot.classList.toggle('active', d === index);
+        var active = d === index;
+        dot.classList.toggle('active', active);
+        if (active) { dot.setAttribute('aria-current', 'true'); }
+        else { dot.removeAttribute('aria-current'); }
       });
+      slides.forEach(function (slide, s) {
+        slide.setAttribute('aria-hidden', s === index ? 'false' : 'true');
+      });
+      if (status) {
+        var img = slides[index].querySelector('img');
+        status.textContent = 'Photo ' + (index + 1) + ' of ' + slides.length +
+          (img && img.alt ? ': ' + img.alt : '');
+      }
     }
     function next() { goTo(index + 1); }
     function prev() { goTo(index - 1); }
     function start() {
-      if (!autoplay || timer) { return; }
+      if (!autoplay || userStopped || timer) { return; }
       timer = window.setInterval(next, 4500);
     }
     function stop() {
       if (timer) { window.clearInterval(timer); timer = null; }
     }
-    function restart() { stop(); start(); }
+    function stopForGood() { userStopped = true; stop(); }
 
-    if (nextBtn) { nextBtn.addEventListener('click', function () { next(); restart(); }); }
-    if (prevBtn) { prevBtn.addEventListener('click', function () { prev(); restart(); }); }
+    if (nextBtn) { nextBtn.addEventListener('click', function () { next(); stopForGood(); }); }
+    if (prevBtn) { prevBtn.addEventListener('click', function () { prev(); stopForGood(); }); }
     carousel.addEventListener('mouseenter', stop);
     carousel.addEventListener('mouseleave', start);
     carousel.addEventListener('focusin', stop);
     carousel.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
 
-    /* Touch swipe */
+    /* Arrow keys move between photos when the carousel has focus */
+    carousel.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight') { event.preventDefault(); next(); stopForGood(); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); prev(); stopForGood(); }
+    });
+
+    /* Touch swipe: pause while touching, swipe to change photo */
     var touchX = null;
     carousel.addEventListener('touchstart', function (event) {
       touchX = event.changedTouches[0].clientX;
@@ -107,11 +155,13 @@
     carousel.addEventListener('touchend', function (event) {
       if (touchX === null) { return; }
       var dx = event.changedTouches[0].clientX - touchX;
+      touchX = null;
       if (Math.abs(dx) > 40) {
         if (dx < 0) { next(); } else { prev(); }
+        stopForGood();
+      } else {
+        start();
       }
-      touchX = null;
-      start();
     }, { passive: true });
 
     goTo(0);

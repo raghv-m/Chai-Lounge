@@ -15,6 +15,10 @@
   --maroon:#7c2d16;
   --maroon-dark:#5d2110;
   --gold:#bb883e;
+  /* Darker gold for TEXT on cream: #bb883e is only ~2.9:1 on
+     #faf4e8 (fails WCAG AA); this variant is ~5.1:1. Pure gold
+     stays for decoration, borders and text on dark grounds. */
+  --gold-text:#8a5f1d;
   --line:#e2d3b8;
 }
 html{scroll-behavior:smooth;}
@@ -24,15 +28,24 @@ body{
   color:var(--ink);
   font-family:'Inter', system-ui, sans-serif;
   font-size:16px; line-height:1.65;
+  /* Belt-and-braces against stray horizontal scroll at 320-375px.
+     "clip" (unlike "hidden") does not break position:sticky. */
+  overflow-x:clip;
 }
 body.menu-open{overflow:hidden;}
-img{max-width:100%;}
+img{max-width:100%; height:auto;}
 h1,h2,h3,.serif{font-family:'Fraunces', Georgia, serif;}
 a{color:var(--maroon);}
 a:hover{color:var(--maroon-dark);}
 .sr-only{
   position:absolute; width:1px; height:1px; overflow:hidden;
   clip:rect(0 0 0 0); white-space:nowrap;
+}
+
+/* Visible keyboard focus everywhere (gold reads on cream and ink) */
+:focus-visible{
+  outline:3px solid var(--gold);
+  outline-offset:2px;
 }
 
 /* ---------- Page transition: soft fade and rise on load ---------- */
@@ -46,9 +59,16 @@ main{animation:pageIn .6s ease both;}
 .top-strip{
   background:var(--maroon); color:#f7ead2;
   font-size:.85rem; letter-spacing:.02em;
-  text-align:center; padding:.5rem 1rem;
+  text-align:center; padding:.35rem 1rem;
+  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  column-gap:.55rem; row-gap:0;
 }
-.top-strip a{color:#f7ead2; text-decoration:underline; text-underline-offset:3px;}
+.top-strip .sep{opacity:.75;}
+.top-strip a{
+  color:#f7ead2; text-decoration:underline; text-underline-offset:3px;
+  /* Proper tap target, not bare inline text */
+  display:inline-flex; align-items:center; min-height:44px; padding:.3rem .35rem;
+}
 
 /* ---------- Header and navigation ---------- */
 .navbar-custom{
@@ -78,7 +98,7 @@ main{animation:pageIn .6s ease both;}
 .brand-lounge-text{
   display:block; font-family:'Inter', sans-serif; font-weight:600;
   font-size:.6rem; letter-spacing:.36em; text-transform:uppercase;
-  color:var(--gold);
+  color:var(--gold-text);
 }
 .bench{display:block; width:100%; height:7px; margin-top:2px;}
 .brand-lg .brand-mark{height:58px;}
@@ -92,7 +112,8 @@ main{animation:pageIn .6s ease both;}
 }
 .nav-links a{
   color:var(--ink); text-decoration:none; font-weight:500;
-  position:relative; padding:.35rem 0;
+  position:relative; padding:.7rem 0; /* ~48px tall hit area */
+  display:inline-flex; align-items:center; min-height:44px;
 }
 .nav-links a:hover{color:var(--maroon); text-decoration:none;}
 .nav-links a:not(.btn-solid):not(.btn-outline)::after{
@@ -110,6 +131,10 @@ main{animation:pageIn .6s ease both;}
 
 /* Mobile actions and hamburger toggle */
 .nav-mobile-actions{display:flex; align-items:center; gap:.6rem;}
+/* The small "Order" pill keeps a full 44px tap height on phones */
+.nav-mobile-actions .btn-solid{
+  min-height:44px; display:inline-flex; align-items:center;
+}
 @media (min-width: 768px){ .nav-mobile-actions{display:none;} }
 .nav-toggle{
   background:none; border:none; cursor:pointer;
@@ -161,7 +186,9 @@ main{animation:pageIn .6s ease both;}
 
 /* ---------- Buttons ---------- */
 .btn-solid{
-  display:inline-block; background:var(--maroon); color:#fdf6e9 !important;
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:48px;
+  background:var(--maroon); color:#fdf6e9 !important;
   font-weight:600; letter-spacing:.03em;
   padding:.8rem 1.6rem; border-radius:999px;
   transition:background .25s ease; text-decoration:none !important;
@@ -169,7 +196,9 @@ main{animation:pageIn .6s ease both;}
 }
 .btn-solid:hover{background:var(--maroon-dark);}
 .btn-outline{
-  display:inline-block; background:transparent; color:var(--ink) !important;
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:48px;
+  background:transparent; color:var(--ink) !important;
   border:1.5px solid var(--ink); font-weight:600; letter-spacing:.03em;
   padding:.8rem 1.6rem; border-radius:999px; text-decoration:none !important;
   transition:all .25s ease; cursor:pointer;
@@ -178,7 +207,7 @@ main{animation:pageIn .6s ease both;}
 
 .kicker{
   font-size:.72rem; font-weight:700; letter-spacing:.3em;
-  text-transform:uppercase; color:var(--gold);
+  text-transform:uppercase; color:var(--gold-text);
 }
 
 /* ---------- Hero (home) ---------- */
@@ -203,7 +232,7 @@ main{animation:pageIn .6s ease both;}
 /* ---------- Sections ---------- */
 section.block{padding:3.5rem 1rem;}
 .section-title{font-size:clamp(2rem, 4vw, 3rem); font-weight:600; line-height:1.12;}
-.lede{color:var(--ink-soft); max-width:38rem;}
+.lede{color:var(--ink-soft); max-width:65ch;}
 
 /* Subpage header band */
 .page-head{
@@ -218,7 +247,7 @@ section.block{padding:3.5rem 1rem;}
   background:var(--card); border:1px solid var(--line); border-radius:16px;
   padding:1.4rem 1.4rem 1rem; height:100%;
 }
-.menu-card h3{font-size:1.45rem; font-weight:600; margin-bottom:.2rem;}
+.menu-card h3{font-size:clamp(1.28rem, 1.05rem + 1.2vw, 1.45rem); font-weight:600; margin-bottom:.2rem;}
 .menu-card h3 a{color:var(--ink); text-decoration:none;}
 .menu-card h3 a:hover{color:var(--maroon);}
 .menu-card .sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:1.1rem;}
@@ -232,18 +261,20 @@ section.block{padding:3.5rem 1rem;}
 .dish:last-child{border-bottom:none;}
 .dish .name{font-weight:600; color:var(--ink);}
 .dish .desc{display:block; font-weight:400; font-size:.86rem; color:var(--ink-soft);}
-.dots{flex:1;}
+.dots{flex:1 1 auto; min-width:1.25rem;}
 .menu-item-top .dots{border-bottom:2px dotted var(--line); transform:translateY(-4px);}
+.menu-item-top .name{min-width:0; overflow-wrap:break-word;}
+.dish > div{min-width:0;}
 .price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap;}
 
 /* ---------- Full menu page ---------- */
 .menu-cat{margin-bottom:3.2rem;}
 .menu-cat-head{
-  display:flex; align-items:baseline; gap:1rem;
+  display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap;
   border-bottom:2px solid var(--gold); padding-bottom:.5rem; margin-bottom:.6rem;
 }
-.menu-cat-head h2{font-size:1.9rem; font-weight:600; margin:0;}
-.menu-cat-head .sub{color:var(--ink-soft); font-size:.92rem;}
+.menu-cat-head h2{font-size:clamp(1.55rem, 1.25rem + 2vw, 1.9rem); font-weight:600; margin:0;}
+.menu-cat-head .sub{color:var(--ink-soft); font-size:.92rem; min-width:0;}
 .menu-item{
   display:flex; gap:.9rem; align-items:flex-start;
   padding:.85rem 0; border-bottom:1px dotted var(--line);
@@ -280,7 +311,7 @@ section.block{padding:3.5rem 1rem;}
 .carousel-slide figcaption b{color:#fdf6e9;}
 .carousel-arrow{
   position:absolute; top:50%; transform:translateY(-50%);
-  width:42px; height:42px; border-radius:50%;
+  width:48px; height:48px; border-radius:50%;
   background:rgba(250,244,232,.92); color:var(--maroon);
   border:1px solid var(--line); cursor:pointer;
   font-size:1.5rem; line-height:1; display:flex; align-items:center; justify-content:center;
@@ -290,16 +321,25 @@ section.block{padding:3.5rem 1rem;}
 .carousel-arrow.prev{left:.8rem;}
 .carousel-arrow.next{right:.8rem;}
 .carousel-dots{
-  position:absolute; left:0; right:0; bottom:4.4rem;
-  display:flex; justify-content:center; gap:.45rem; z-index:2;
+  position:absolute; left:0; right:0; bottom:3.4rem;
+  display:flex; justify-content:center; gap:.15rem; z-index:2;
 }
+/* The visible dot stays small; the button itself is a 44px target */
 .carousel-dots button{
-  width:9px; height:9px; border-radius:50%;
+  width:44px; height:44px; border-radius:50%;
+  border:none; background:transparent; cursor:pointer; padding:0;
+  position:relative;
+}
+.carousel-dots button::before{
+  content:""; position:absolute; left:50%; top:50%;
+  width:10px; height:10px; border-radius:50%;
+  transform:translate(-50%,-50%);
   border:1px solid rgba(250,244,232,.9);
-  background:rgba(250,244,232,.35); cursor:pointer; padding:0;
+  background:rgba(250,244,232,.35);
   transition:background .25s ease, transform .25s ease;
 }
-.carousel-dots button.active{background:var(--gold); transform:scale(1.25);}
+.carousel-dots button.active::before{background:var(--gold); transform:translate(-50%,-50%) scale(1.3);}
+.carousel-dots button:focus-visible{outline-offset:-3px;}
 @media (min-width: 768px){
   .carousel-slide img{height:380px;}
 }
@@ -307,8 +347,10 @@ section.block{padding:3.5rem 1rem;}
 /* ---------- Story ---------- */
 .story{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .story p{color:#42301d;}
+/* Long story copy: cap the line length and give paragraphs air */
+.story .col-lg-7 p{max-width:65ch; margin-bottom:1.25rem; line-height:1.75;}
 .pull{
-  font-family:'Fraunces', Georgia, serif; font-size:1.6rem; line-height:1.35;
+  font-family:'Fraunces', Georgia, serif; font-size:clamp(1.35rem, 1.1rem + 1.6vw, 1.6rem); line-height:1.35;
   color:var(--maroon); font-style:italic;
 }
 .story-photo, .visit-photo, .framed-photo{
@@ -322,6 +364,10 @@ section.block{padding:3.5rem 1rem;}
 }
 .visit-card h2{color:#fdf6e9;}
 .visit-card a{color:var(--gold);}
+/* Phone and directions links in the dark card get real tap height */
+.visit-card p a, .visit-row a{
+  display:inline-block; padding:.5rem .15rem; margin:-.5rem -.15rem;
+}
 .visit-row{display:flex; gap:1rem; padding:.85rem 0; border-bottom:1px solid rgba(243,233,212,.18);}
 .visit-row:last-child{border-bottom:none;}
 .visit-row .k{
@@ -338,12 +384,16 @@ section.block{padding:3.5rem 1rem;}
 .form-control{
   background:#fff; border:1px solid var(--line); color:var(--ink);
   border-radius:10px;
+  /* 48px targets, and 16px text so iOS does not zoom on focus */
+  min-height:48px; font-size:16px; padding:.6rem .9rem;
 }
+textarea.form-control{height:auto;}
+.form-control-file{min-height:44px; padding:.55rem 0; font-size:16px;}
 .form-control:focus{
   border-color:var(--gold); color:var(--ink);
   box-shadow:0 0 0 3px rgba(187,136,62,.22);
 }
-.form-control::placeholder{color:#a68d68;}
+.form-control::placeholder{color:#7d6242;}
 .form-success{
   display:none; background:var(--paper-2); border:1px solid var(--gold);
   border-radius:12px; padding:1.1rem 1.2rem; color:var(--ink);
@@ -356,6 +406,10 @@ section.block{padding:3.5rem 1rem;}
 .footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
 .footer a{color:var(--ink-soft); text-decoration:none;}
 .footer a:hover{color:var(--maroon);}
+/* Footer list links get a taller tap area without changing the layout */
+.footer p a{
+  display:inline-block; padding:.5rem .2rem; margin:-.5rem -.2rem;
+}
 .footer .brand{color:var(--ink);}
 
 /* ---------- Scroll reveal ---------- */
@@ -384,10 +438,18 @@ html.js [data-delay="3"]{transition-delay:.24s;}
   .snap-row > [class*="col-"]{flex:0 0 85%; max-width:85%; scroll-snap-align:start;}
 }
 
+@media (max-width: 480px){
+  /* Narrow screens: shrink the visit-card label column so values wrap less */
+  .visit-row .k{flex-basis:84px;}
+  .carousel-arrow.prev{left:.45rem;}
+  .carousel-arrow.next{right:.45rem;}
+}
+
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   main{animation:none;}
   html.js [data-reveal]{opacity:1; transform:none; transition:none;}
   .carousel-track{transition:none;}
   .mobile-menu, .mobile-menu a.menu-link{transition:none;}
+  .nav-toggle span, .carousel-arrow, .carousel-dots button::before{transition:none;}
 }

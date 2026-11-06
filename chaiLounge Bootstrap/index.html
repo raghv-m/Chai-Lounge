@@ -16,7 +16,7 @@
 <body>
   <!-- Top strip -->
   <div class="top-strip">
-    Edmonton, Alberta &nbsp;·&nbsp; Open today from 11 AM &nbsp;·&nbsp; <a href="tel:+15874159649">Call (587) 415-9649</a>
+    <span>Edmonton, Alberta</span><span class="sep" aria-hidden="true">·</span><span>Open today from 11 AM</span><span class="sep" aria-hidden="true">·</span><a href="tel:+15874159649">Call (587) 415-9649</a>
   </div>
 
   <!-- Header -->
@@ -105,7 +105,7 @@
             </p>
           </div>
           <div class="col-lg-6 py-4">
-            <img src="./images/chaiLounge.jpg" alt="Inside Chai Lounge in Edmonton" class="hero-photo" data-reveal data-delay="1" />
+            <img src="./images/chaiLounge.jpg" alt="Inside Chai Lounge in Edmonton" class="hero-photo" width="1200" height="900" data-reveal data-delay="1" />
           </div>
         </div>
       </div>
@@ -197,29 +197,29 @@
       <div class="container">
         <p class="kicker mb-2" data-reveal>From the counter</p>
         <h2 class="section-title mb-4" data-reveal data-delay="1">What lands on the table.</h2>
-        <div class="carousel" data-carousel data-reveal data-delay="2">
+        <div class="carousel" data-carousel data-reveal data-delay="2" role="region" aria-roledescription="carousel" aria-label="Chai Lounge photo gallery">
           <div class="carousel-track">
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="1 of 6">
               <img src="./images/chaiLounge.jpg" alt="Inside Chai Lounge in Edmonton" />
               <figcaption><b>The room.</b> Built for staying a while.</figcaption>
             </figure>
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="2 of 6">
               <img src="./images/vadapav.webp" alt="Vada pav at Chai Lounge" loading="lazy" />
               <figcaption><b>Vada pav.</b> Two to a plate, extra chutney if you ask.</figcaption>
             </figure>
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="3 of 6">
               <img src="./images/butterChicken.webp" alt="Butter chicken at Chai Lounge" loading="lazy" />
               <figcaption><b>Butter chicken.</b> The bowl most tables end up ordering.</figcaption>
             </figure>
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="4 of 6">
               <img src="./images/paneer.jpg" alt="Paneer dish at Chai Lounge" loading="lazy" />
               <figcaption><b>Paneer, three ways.</b> Pakora, chilli bites, or in a wrap.</figcaption>
             </figure>
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="5 of 6">
               <img src="https://picsum.photos/seed/stovetop-chai/1200/800" alt="Chai simmering in a pot on the stove" loading="lazy" />
               <figcaption><b>On the stove.</b> A fresh batch every time the last one runs out.</figcaption>
             </figure>
-            <figure class="carousel-slide">
+            <figure class="carousel-slide" role="group" aria-roledescription="slide" aria-label="6 of 6">
               <img src="https://picsum.photos/seed/cafe-table/1200/800" alt="Friends sitting around a cafe table with chai" loading="lazy" />
               <figcaption><b>The big table.</b> Families and study groups welcome.</figcaption>
             </figure>
@@ -227,6 +227,7 @@
           <button class="carousel-arrow prev" type="button" aria-label="Previous photo">&#8249;</button>
           <button class="carousel-arrow next" type="button" aria-label="Next photo">&#8250;</button>
           <div class="carousel-dots"></div>
+          <span class="sr-only" aria-live="polite" data-carousel-status></span>
         </div>
       </div>
     </section>
