@@ -240,7 +240,7 @@ section.block{padding:3.5rem 1rem;}
 /* ---------- Menu cards (home highlights) ---------- */
 .menu-card{
   background:var(--card); border:1px solid var(--line); border-radius:16px;
-  padding:1.4rem 1.4rem 1rem; height:100%;
+  padding:1.4rem 1.4rem 1rem;
 }
 .menu-card h3{font-size:clamp(1.28rem, 1.05rem + 1.2vw, 1.45rem); font-weight:600; margin-bottom:.2rem;}
 .menu-card h3 a{color:var(--ink); text-decoration:none;}
@@ -251,6 +251,17 @@ section.block{padding:3.5rem 1rem;}
   border:1px solid var(--line); border-radius:10px; margin-bottom:1.1rem;
   background:var(--paper-2);
 }
+
+/* Full-menu CTA card (home): photo, text and button in normal
+   stacked flow inside one clipped card. Nothing overlays the
+   photo and the text can never spill outside the card. */
+.menu-cta{
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  overflow:hidden; margin-top:1.5rem;
+}
+.menu-cta-photo{display:block; width:100%; aspect-ratio:16 / 9; object-fit:cover;}
+.menu-cta-body{padding:1.3rem 1.4rem 1.5rem;}
+.menu-cta-body p{color:var(--ink-soft); max-width:65ch; margin:0 0 1.1rem;}
 
 /* Dish rows: dotted leader lines to the price */
 .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
