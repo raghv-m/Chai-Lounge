@@ -1,8 +1,5 @@
-/* ============================================================
-   Chai Lounge - shared site script
-   Plain JavaScript, no libraries: animated mobile menu,
-   scroll reveal, photo carousel, front-end form confirmations.
-   ============================================================ */
+/* Chai Lounge - shared site script. Plain JavaScript, no
+   libraries: mobile menu, scroll reveal, carousel, forms. */
 (function () {
   'use strict';
 
@@ -55,13 +52,17 @@
     });
   }
 
-  /* ---------- Scroll reveal ---------- */
+  /* ---------- Scroll reveal ----------
+     Hidden state is armed from here (html.reveal-on), so a script
+     failure leaves content visible. Zero-threshold observer plus a
+     scroll listener plus a timed backstop: nothing stays blank. */
   var revealItems = document.querySelectorAll('[data-reveal]');
   if (revealItems.length) {
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion || !('IntersectionObserver' in window)) {
       revealItems.forEach(function (el) { el.classList.add('is-visible'); });
     } else {
+      document.documentElement.classList.add('reveal-on');
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -69,15 +70,28 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px 12% 0px' });
       revealItems.forEach(function (el) { observer.observe(el); });
+      var revealPassed = function () {
+        revealItems.forEach(function (el) {
+          if (!el.classList.contains('is-visible') &&
+              el.getBoundingClientRect().top < window.innerHeight * 0.98) {
+            el.classList.add('is-visible');
+            observer.unobserve(el);
+          }
+        });
+      };
+      window.addEventListener('scroll', revealPassed, { passive: true });
+      revealPassed();
+      window.setTimeout(function () {
+        revealItems.forEach(function (el) { el.classList.add('is-visible'); });
+      }, 3000);
     }
   }
 
   /* ---------- Photo carousel ----------
-     Autoplay pauses on hover, focus and touch, stops for good once
-     the visitor navigates by hand, and never runs at all when the
-     visitor prefers reduced motion. */
+     Autoplay pauses on hover/focus/touch, stops for good after any
+     manual navigation, and never runs under reduced motion. */
   var carousel = document.querySelector('[data-carousel]');
   if (carousel) {
     var track = carousel.querySelector('.carousel-track');
@@ -168,9 +182,8 @@
     start();
   }
 
-  /* ---------- Front-end only forms ----------
-     There is no back end on this static site, so submitting a
-     form swaps in a confirmation message instead of posting. */
+  /* Front-end only forms: no back end, so a submit swaps in
+     a confirmation message instead of posting. */
   document.querySelectorAll('form[data-front-end]').forEach(function (form) {
     form.addEventListener('submit', function (event) {
       event.preventDefault();

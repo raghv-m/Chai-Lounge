@@ -1,11 +1,8 @@
-/* ============================================================
-   Chai Lounge - shared design system
+/* Chai Lounge - shared design system.
    Palette: cream paper, ink brown, deep maroon, gold.
-   Type: Fraunces (display serif) + Inter (body).
-   Every page on the site links this one stylesheet.
-   ============================================================ */
+   Type: Fraunces (display serif) + Inter (body). */
 
-/* ---------- Design tokens and base (mobile first) ---------- */
+/* Design tokens and base (mobile first) */
 :root{
   --paper:#faf4e8;
   --paper-2:#f3e9d4;
@@ -15,9 +12,7 @@
   --maroon:#7c2d16;
   --maroon-dark:#5d2110;
   --gold:#bb883e;
-  /* Darker gold for TEXT on cream: #bb883e is only ~2.9:1 on
-     #faf4e8 (fails WCAG AA); this variant is ~5.1:1. Pure gold
-     stays for decoration, borders and text on dark grounds. */
+  /* Darker gold for text on cream: #bb883e is 2.9:1 (fails AA); this is 5.1:1. */
   --gold-text:#8a5f1d;
   --line:#e2d3b8;
 }
@@ -28,8 +23,7 @@ body{
   color:var(--ink);
   font-family:'Inter', system-ui, sans-serif;
   font-size:16px; line-height:1.65;
-  /* Belt-and-braces against stray horizontal scroll at 320-375px.
-     "clip" (unlike "hidden") does not break position:sticky. */
+  /* Guard against horizontal scroll at 320-375px; clip keeps sticky working. */
   overflow-x:clip;
 }
 body.menu-open{overflow:hidden;}
@@ -48,14 +42,14 @@ a:hover{color:var(--maroon-dark);}
   outline-offset:2px;
 }
 
-/* ---------- Page transition: soft fade and rise on load ---------- */
-main{animation:pageIn .6s ease both;}
+/* Page transition: soft fade/rise on load */
+main{animation:pageIn .35s ease backwards;}
 @keyframes pageIn{
-  from{opacity:0; transform:translateY(12px);}
+  from{opacity:.3; transform:translateY(6px);}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* ---------- Top strip ---------- */
+/* Top strip */
 .top-strip{
   background:var(--maroon); color:#f7ead2;
   font-size:.85rem; letter-spacing:.02em;
@@ -70,7 +64,7 @@ main{animation:pageIn .6s ease both;}
   display:inline-flex; align-items:center; min-height:44px; padding:.3rem .35rem;
 }
 
-/* ---------- Header and navigation ---------- */
+/* Header and navigation */
 .navbar-custom{
   position:sticky; top:0; z-index:1000;
   background:var(--paper);
@@ -82,7 +76,7 @@ main{animation:pageIn .6s ease both;}
   padding-top:.55rem; padding-bottom:.55rem;
 }
 
-/* Logo: SVG teacup "C" + "hai" wordmark + LOUNGE with bench underline */
+/* Logo: SVG teacup C + hai wordmark + LOUNGE, bench underline */
 .brand{
   display:flex; align-items:center; gap:.45rem;
   text-decoration:none !important; color:var(--ink) !important;
@@ -151,7 +145,7 @@ main{animation:pageIn .6s ease both;}
 .nav-toggle.open span:nth-child(2){opacity:0;}
 .nav-toggle.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
 
-/* Animated mobile menu: slides and fades, links stagger in */
+/* Animated mobile menu: slides/fades in, links stagger */
 .mobile-menu{
   position:fixed; inset:0; z-index:1050;
   background:var(--paper);
@@ -210,7 +204,7 @@ main{animation:pageIn .6s ease both;}
   text-transform:uppercase; color:var(--gold-text);
 }
 
-/* ---------- Hero (home) ---------- */
+/* Hero (home) */
 .hero{background:var(--paper); border-bottom:1px solid var(--line);}
 .hero h1{font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.04; font-weight:600; color:var(--ink);}
 .hero-photo{
@@ -229,7 +223,7 @@ main{animation:pageIn .6s ease both;}
 .ticker span{display:inline-block; padding:.65rem 0;}
 .ticker b{color:var(--gold); font-weight:600; padding:0 .9rem;}
 
-/* ---------- Sections ---------- */
+/* Sections */
 section.block{padding:3.5rem 1rem;}
 .section-title{font-size:clamp(2rem, 4vw, 3rem); font-weight:600; line-height:1.12;}
 .lede{color:var(--ink-soft); max-width:65ch;}
@@ -256,7 +250,7 @@ section.block{padding:3.5rem 1rem;}
   border:1px solid var(--line); border-radius:10px; margin-bottom:1.1rem;
 }
 
-/* Dish rows: dotted leader lines to the price (cards and menu page) */
+/* Dish rows: dotted leader lines to the price */
 .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
 .dish:last-child{border-bottom:none;}
 .dish .name{font-weight:600; color:var(--ink);}
@@ -290,6 +284,11 @@ section.block{padding:3.5rem 1rem;}
 .menu-item .desc{display:block; font-size:.88rem; color:var(--ink-soft); margin-top:.15rem;}
 
 /* ---------- Photo carousel ---------- */
+.carousel-section{
+  position:relative; z-index:0; isolation:isolate;
+  background:var(--paper);
+  padding:1rem 1rem 5rem;
+}
 .carousel{
   position:relative; overflow:hidden;
   border-radius:18px; border:1px solid var(--line);
@@ -324,7 +323,7 @@ section.block{padding:3.5rem 1rem;}
   position:absolute; left:0; right:0; bottom:3.4rem;
   display:flex; justify-content:center; gap:.15rem; z-index:2;
 }
-/* The visible dot stays small; the button itself is a 44px target */
+/* Visible dot stays small; the button is a 44px target */
 .carousel-dots button{
   width:44px; height:44px; border-radius:50%;
   border:none; background:transparent; cursor:pointer; padding:0;
@@ -347,7 +346,7 @@ section.block{padding:3.5rem 1rem;}
 /* ---------- Story ---------- */
 .story{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
 .story p{color:#42301d;}
-/* Long story copy: cap the line length and give paragraphs air */
+/* Story copy: capped line length, more paragraph air */
 .story .col-lg-7 p{max-width:65ch; margin-bottom:1.25rem; line-height:1.75;}
 .pull{
   font-family:'Fraunces', Georgia, serif; font-size:clamp(1.35rem, 1.1rem + 1.6vw, 1.6rem); line-height:1.35;
@@ -364,7 +363,7 @@ section.block{padding:3.5rem 1rem;}
 }
 .visit-card h2{color:#fdf6e9;}
 .visit-card a{color:var(--gold);}
-/* Phone and directions links in the dark card get real tap height */
+/* Dark-card links get real tap height */
 .visit-card p a, .visit-row a{
   display:inline-block; padding:.5rem .15rem; margin:-.5rem -.15rem;
 }
@@ -375,7 +374,7 @@ section.block{padding:3.5rem 1rem;}
   letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:.3rem;
 }
 
-/* ---------- Forms (contact, reservation, careers) ---------- */
+/* Forms */
 .form-card{
   background:var(--card); border:1px solid var(--line); border-radius:16px;
   padding:1.6rem;
@@ -384,7 +383,7 @@ section.block{padding:3.5rem 1rem;}
 .form-control{
   background:#fff; border:1px solid var(--line); color:var(--ink);
   border-radius:10px;
-  /* 48px targets, and 16px text so iOS does not zoom on focus */
+  /* 48px targets; 16px text stops iOS focus zoom */
   min-height:48px; font-size:16px; padding:.6rem .9rem;
 }
 textarea.form-control{height:auto;}
@@ -406,20 +405,21 @@ textarea.form-control{height:auto;}
 .footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
 .footer a{color:var(--ink-soft); text-decoration:none;}
 .footer a:hover{color:var(--maroon);}
-/* Footer list links get a taller tap area without changing the layout */
+/* Footer links: taller tap area, same layout */
 .footer p a{
   display:inline-block; padding:.5rem .2rem; margin:-.5rem -.2rem;
 }
 .footer .brand{color:var(--ink);}
 
 /* ---------- Scroll reveal ---------- */
-html.js [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
-html.js [data-reveal].is-visible{opacity:1; transform:translateY(0);}
-html.js [data-delay="1"]{transition-delay:.08s;}
-html.js [data-delay="2"]{transition-delay:.16s;}
-html.js [data-delay="3"]{transition-delay:.24s;}
+/* Hidden state applies only when site.js arms it (html.reveal-on). */
+html.reveal-on [data-reveal]{opacity:0; transform:translateY(10px); transition:opacity .45s ease, transform .45s ease;}
+html.reveal-on [data-reveal].is-visible{opacity:1; transform:translateY(0);}
+html.reveal-on [data-delay="1"]{transition-delay:.05s;}
+html.reveal-on [data-delay="2"]{transition-delay:.1s;}
+html.reveal-on [data-delay="3"]{transition-delay:.15s;}
 
-/* ---------- Scale up from tablet and desktop widths ---------- */
+/* Scale up from tablet/desktop widths */
 @media (min-width: 768px){
   section.block{padding:5rem 1rem;}
   .menu-card{padding:1.8rem 1.8rem 1.2rem;}
@@ -431,7 +431,7 @@ html.js [data-delay="3"]{transition-delay:.24s;}
   body{font-size:17px;}
 }
 
-/* Mobile swipe rows for the home menu cards: pure CSS scroll-snap. */
+/* Mobile swipe rows for home menu cards: CSS scroll-snap. */
 @media (max-width: 767.98px){
   .snap-row{flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:.75rem; scrollbar-width:none;}
   .snap-row::-webkit-scrollbar{display:none;}
@@ -448,7 +448,7 @@ html.js [data-delay="3"]{transition-delay:.24s;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   main{animation:none;}
-  html.js [data-reveal]{opacity:1; transform:none; transition:none;}
+  html.reveal-on [data-reveal]{opacity:1; transform:none; transition:none;}
   .carousel-track{transition:none;}
   .mobile-menu, .mobile-menu a.menu-link{transition:none;}
   .nav-toggle span, .carousel-arrow, .carousel-dots button::before{transition:none;}
