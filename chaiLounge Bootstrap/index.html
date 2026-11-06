@@ -5,259 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chai Lounge | Indian Chai Cafe in Edmonton</title>
   <meta name="description" content="Chai Lounge is an Indian chai cafe in Edmonton. Karak chai brewed on the stove, street snacks, chaat, rice bowls and late night chai."/>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="./styles.css" rel="stylesheet"/>
   <script>document.documentElement.classList.add('js');</script>
-
-  <style>
-    /* ---------- Design tokens and base styles (mobile first) ---------- */
-    :root{
-      --paper:#faf4e8;
-      --paper-2:#f3e9d4;
-      --ink:#2a1b10;
-      --ink-soft:#5b4632;
-      --maroon:#7c2d16;
-      --maroon-dark:#5d2110;
-      --gold:#bb883e;
-      --line:#e2d3b8;
-    }
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0; padding:0;
-      background:var(--paper);
-      color:var(--ink);
-      font-family:'Inter', system-ui, sans-serif;
-      font-size:16px; line-height:1.65;
-    }
-    img{max-width:100%;}
-    h1,h2,h3,.serif{font-family:'Fraunces', Georgia, serif;}
-    a{color:var(--maroon);}
-    a:hover{color:var(--maroon-dark);}
-
-    /* ---------- Top strip and navigation ---------- */
-    .top-strip{
-      background:var(--maroon); color:#f7ead2;
-      font-size:.85rem; letter-spacing:.02em;
-    }
-    .top-strip a{color:#f7ead2; text-decoration:underline; text-underline-offset:3px;}
-
-    .navbar-custom{
-      display:flex; justify-content:space-between; align-items:center;
-      position:sticky; top:0; z-index:1000;
-      background:var(--paper);
-      border-bottom:1px solid var(--line);
-      width:100%;
-    }
-    .navbar-custom a{color:var(--ink); text-decoration:none; font-weight:500;}
-    .navbar-custom a:hover{color:var(--maroon); text-decoration:none;}
-    .logo-img{height:42px;}
-    .wordmark{font-family:'Fraunces', Georgia, serif; font-weight:700; font-size:1.35rem; color:var(--ink); letter-spacing:.01em;}
-    .wordmark small{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold);}
-
-    /* ---------- Buttons ---------- */
-    .btn-solid{
-      display:inline-block; background:var(--maroon); color:#fdf6e9 !important;
-      font-weight:600; letter-spacing:.03em;
-      padding:.8rem 1.6rem; border-radius:999px;
-      transition:background .25s ease; text-decoration:none !important;
-    }
-    .btn-solid:hover{background:var(--maroon-dark);}
-    .btn-outline{
-      display:inline-block; background:transparent; color:var(--ink) !important;
-      border:1.5px solid var(--ink); font-weight:600; letter-spacing:.03em;
-      padding:.8rem 1.6rem; border-radius:999px; text-decoration:none !important;
-      transition:all .25s ease;
-    }
-    .btn-outline:hover{border-color:var(--maroon); color:var(--maroon) !important;}
-
-    .kicker{
-      font-size:.72rem; font-weight:700; letter-spacing:.3em;
-      text-transform:uppercase; color:var(--gold);
-    }
-    /* ---------- Hero ---------- */
-    .hero{
-      background:var(--paper);
-      border-bottom:1px solid var(--line);
-    }
-    .hero h1{font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.04; font-weight:600; color:var(--ink);}
-    .hero h1 em{font-style:italic; color:var(--maroon);}
-    .hero-photo{
-      border-radius:18px; border:1px solid var(--line);
-      box-shadow:0 24px 50px rgba(42,27,16,.18);
-      width:100%; height:100%; object-fit:cover;
-    }
-    .hero-note{border-left:3px solid var(--gold); padding-left:1rem; color:var(--ink-soft);}
-
-    /* ---------- Menu ticker ---------- */
-    .ticker{
-      background:var(--ink); color:#f3e9d4;
-      font-family:'Fraunces', Georgia, serif; font-size:1.05rem;
-      overflow:hidden; white-space:nowrap;
-    }
-    .ticker span{display:inline-block; padding:.65rem 0;}
-    .ticker b{color:var(--gold); font-weight:600; padding:0 .9rem;}
-
-    /* ---------- Sections and menu cards ---------- */
-    section.block{padding:3.5rem 1rem;}
-    .section-title{font-size:clamp(2rem, 4vw, 3rem); font-weight:600; line-height:1.12;}
-    .lede{color:var(--ink-soft); max-width:38rem;}
-
-    .menu-card{
-      background:#fffdf7; border:1px solid var(--line); border-radius:16px;
-      padding:1.4rem 1.4rem 1rem; height:100%;
-    }
-    .menu-card h3{font-size:1.45rem; font-weight:600; margin-bottom:.2rem;}
-    .menu-card .sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:1.1rem;}
-    .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
-    .dish:last-child{border-bottom:none;}
-    .dish .name{font-weight:600; color:var(--ink);}
-    .dish .desc{display:block; font-weight:400; font-size:.86rem; color:var(--ink-soft);}
-    .dish .dots{flex:1;}
-    .dish .price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap;}
-
-    /* ---------- Photo band ---------- */
-    .photo-band img{
-      width:100%; height:220px; object-fit:cover; border-radius:16px; border:1px solid var(--line);
-    }
-    .photo-band figcaption{font-size:.9rem; color:var(--ink-soft); margin-top:.55rem;}
-    .photo-band figcaption b{color:var(--ink);}
-
-    /* ---------- Placeholder photos: fill the gaps next to the real cafe
-       photos. Fixed aspect ratio and object-fit cover keep every frame
-       tidy at any screen width. ---------- */
-    .menu-card-photo{
-      display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover;
-      border:1px solid var(--line); border-radius:10px; margin-bottom:1.1rem;
-    }
-    .story-photo, .visit-photo{
-      display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover;
-      border:1px solid var(--line); border-radius:16px;
-    }
-
-    /* ---------- Story ---------- */
-    .story{ background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-    .story p{color:#42301d;}
-    .pull{
-      font-family:'Fraunces', Georgia, serif; font-size:1.6rem; line-height:1.35;
-      color:var(--maroon); font-style:italic;
-    }
-
-    /* ---------- Visit ---------- */
-    .visit-card{
-      background:var(--ink); color:#f3e9d4; border-radius:18px; padding:1.6rem;
-    }
-    .visit-card h2{color:#fdf6e9;}
-    .visit-card a{color:var(--gold);}
-    .visit-row{display:flex; gap:1rem; padding:.85rem 0; border-bottom:1px solid rgba(243,233,212,.18);}
-    .visit-row:last-child{border-bottom:none;}
-    .visit-row .k{flex:0 0 110px; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:.3rem;}
-
-    /* ---------- Footer ---------- */
-    .footer{background:var(--paper); border-top:1px solid var(--line); padding:3rem 1rem 2rem; color:var(--ink-soft);}
-    .footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
-    .footer a{color:var(--ink-soft); text-decoration:none;}
-    .footer a:hover{color:var(--maroon);}
-    .footer .social-icons a{font-size:1.3rem; margin-right:.8rem; color:var(--maroon);}
-
-    /* ---------- Mobile menu ---------- */
-    .mobile-menu{
-      background:var(--paper); position:fixed; top:0; left:0; width:100%; height:100%;
-      display:none; z-index:1050; padding:24px; flex-direction:column; align-items:center;
-    }
-    .mobile-menu.show{display:flex;}
-    .mobile-menu a{
-      display:block; width:85%; margin:.6rem auto; padding:1rem 0; text-align:center;
-      font-size:1.1rem; background:#fffdf7; color:var(--maroon); border-radius:12px;
-      text-decoration:none; font-weight:700; border:1.5px solid var(--gold);
-    }
-    .close-menu{position:absolute; top:16px; right:24px; font-size:2.4rem; color:var(--ink); cursor:pointer;}
-    .navbar-toggler{border:none; background:none;}
-    .custom-toggler .navbar-toggler-icon{
-      background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(124,45,22,1)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-    /* Scroll reveal: plain CSS transitions, driven by a small IntersectionObserver
-       script at the end of the page. Content is only hidden when JS is on, so
-       no-JS visitors see everything. */
-    html.js [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
-    html.js [data-reveal].is-visible{opacity:1; transform:translateY(0);}
-    html.js [data-delay="1"]{transition-delay:.08s;}
-    html.js [data-delay="2"]{transition-delay:.16s;}
-    html.js [data-delay="3"]{transition-delay:.24s;}
-
-    /* ---------- Scale up from tablet and desktop widths ---------- */
-    @media (min-width: 768px){
-      section.block{padding:5rem 1rem;}
-      .menu-card{padding:1.8rem 1.8rem 1.2rem;}
-      .photo-band img{height:300px;}
-      .visit-card{padding:2.4rem;}
-    }
-    @media (min-width: 992px){
-      body{font-size:17px;}
-    }
-
-    /* Mobile swipe rows: pure CSS scroll-snap, the next card peeks in as a hint.
-       Desktop keeps the normal grid. */
-    @media (max-width: 767.98px){
-      .snap-row{flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:.75rem; scrollbar-width:none;}
-      .snap-row::-webkit-scrollbar{display:none;}
-      .snap-row > [class*="col-"]{flex:0 0 85%; max-width:85%; scroll-snap-align:start;}
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto;}
-      html.js [data-reveal]{opacity:1; transform:none; transition:none;}
-    }
-  </style>
 </head>
 
 <body>
   <!-- Top strip -->
-  <div class="top-strip text-center py-2 px-3 w-full">
+  <div class="top-strip">
     Edmonton, Alberta &nbsp;·&nbsp; Open today from 11 AM &nbsp;·&nbsp; <a href="tel:+15874159649">Call (587) 415-9649</a>
   </div>
 
-  <!-- Navbar -->
-  <nav class="navbar-custom w-full">
-    <div class="container mx-auto px-4 flex items-center justify-between py-2">
-      <a href="./index.html" class="flex items-center" style="gap:.7rem;">
-        <img src="./images/C.png" alt="Chai Lounge logo" class="logo-img" />
-        <span class="wordmark">Chai Lounge<small>Edmonton</small></span>
-      </a>
-      <div class="hidden md:flex space-x-5 items-center text-sm lg:text-base">
-        <a href="#menu" class="py-2">Menu</a>
-        <a href="#story" class="py-2">Our Story</a>
-        <a href="#visit" class="py-2">Visit</a>
-        <a href="./contact.html" class="py-2">Contact</a>
-        <a href="./reservation.html" class="btn-outline" style="padding:.55rem 1.2rem;">Reserve</a>
-        <a href="tel:+15874159649" class="btn-solid" style="padding:.55rem 1.2rem;">Order Now</a>
+  <!-- Header -->
+  <nav class="navbar-custom">
+    <div class="container nav-inner">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="nav-links">
+        <a href="./menu.html">Menu</a>
+        <a href="./location.html">Location</a>
+        <a href="./careers.html">Careers</a>
+        <a href="./contact.html">Contact Us</a>
+        <a href="./reservation.html" class="btn-outline nav-btn">Reserve</a>
+        <a href="tel:+15874159649" class="btn-solid nav-btn">Order Now</a>
       </div>
-      <div class="flex md:hidden items-center space-x-2">
+      <div class="nav-mobile-actions">
         <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Order</a>
-        <button class="custom-toggler" id="navbar-toggle" aria-label="Open menu">
-          <span class="navbar-toggler-icon"></span>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-    <div class="md:hidden mobile-menu" id="navbar-menu">
-      <span class="close-menu" id="close-menu">&times;</span>
-      <img src="./images/C.png" alt="Chai Lounge logo" style="width:84px; height:84px; object-fit:contain; margin:2.2rem 0 1.4rem;" />
-      <a href="#menu">Menu</a>
-      <a href="#story">Our Story</a>
-      <a href="#visit">Visit</a>
-      <a href="./careers.html">Careers</a>
-      <a href="./contact.html">Contact Us</a>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="mobile-links">
+        <a class="menu-link" href="./menu.html">Menu</a>
+        <a class="menu-link" href="./location.html">Location</a>
+        <a class="menu-link" href="./careers.html">Careers</a>
+        <a class="menu-link" href="./contact.html">Contact Us</a>
+        <a class="menu-link" href="./reservation.html">Reserve a Table</a>
+        <a class="menu-link" href="tel:+15874159649">Call (587) 415-9649</a>
+      </div>
     </div>
   </nav>
 
   <main>
     <!-- Hero -->
     <header class="hero">
-      <div class="container mx-auto px-4 py-5">
+      <div class="container py-5">
         <div class="row align-items-center">
           <div class="col-lg-6 py-4">
             <p class="kicker mb-3" data-reveal>Indian chai cafe · Edmonton</p>
@@ -269,8 +96,8 @@
               every time the last one runs out.
             </p>
             <div class="mt-4 d-flex flex-wrap" style="gap:.8rem;" data-reveal data-delay="3">
-              <a href="#menu" class="btn-solid">See the menu</a>
-              <a href="#visit" class="btn-outline">Plan a visit</a>
+              <a href="./menu.html" class="btn-solid">See the menu</a>
+              <a href="./location.html" class="btn-outline">Plan a visit</a>
             </div>
             <p class="hero-note mt-5" data-reveal data-delay="3">
               Cutting chai for a quick stop, a full mug when you are staying a while.
@@ -289,7 +116,7 @@
       <span>Karak chai <b>·</b> Cutting chai <b>·</b> Samosa chaat <b>·</b> Vada pav <b>·</b> Bun maska <b>·</b> Mango lassi <b>·</b> Falooda shakes <b>·</b> Pav bhaji <b>·</b> Open late on weekends <b>·</b></span>
     </div>
 
-    <!-- Menu -->
+    <!-- Menu highlights -->
     <section class="block" id="menu">
       <div class="container">
         <p class="kicker mb-2" data-reveal>The menu</p>
@@ -302,105 +129,104 @@
         <div class="row snap-row">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="menu-card" data-reveal>
-                          <img class="menu-card-photo" src="https://picsum.photos/seed/karak-chai/900/700" alt="A glass of strong karak chai" loading="lazy" />
-              <h3>Chai</h3>
+              <img class="menu-card-photo" src="https://picsum.photos/seed/karak-chai/900/700" alt="A glass of strong karak chai" loading="lazy" />
+              <h3><a href="./menu.html#chai">Chai</a></h3>
               <p class="sub">Brewed on the stove. Can be iced.</p>
               <div class="dish"><div><span class="name">Karak Chai</span><span class="desc">Well brewed and strong. The house standard.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
               <div class="dish"><div><span class="name">Ginger Chai</span><span class="desc">Fresh ginger, no syrup.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
               <div class="dish"><div><span class="name">Elaichi Chai</span><span class="desc">A hint of green cardamom.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
-              <div class="dish"><div><span class="name">Mint Chai</span><span class="desc">Fresh mint leaves, no syrup.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
               <div class="dish"><div><span class="name">Rose Chai</span><span class="desc">Rose flavoured, finished with petals.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
-              <div class="dish"><div><span class="name">Gur Wali Chai</span><span class="desc">Made with jaggery instead of sugar.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
-              <div class="dish"><div><span class="name">Ajwain Chai</span><span class="desc">Karak with carom seeds. Settles a heavy meal.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
-              <div class="dish"><div><span class="name">Pista Chai</span><span class="desc">Pistachio flavour and pista powder.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
-              <div class="dish"><div><span class="name">French Vanilla Chai</span><span class="desc">Karak chai with vanilla.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
               <div class="dish"><div><span class="name">Dirty Chai</span><span class="desc">A shot of espresso in your chai.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="menu-card" data-reveal data-delay="1">
-                          <img class="menu-card-photo" src="https://picsum.photos/seed/filter-coffee/900/700" alt="A cup of coffee on a cafe table" loading="lazy" />
-              <h3>Coffee and other hots</h3>
+              <img class="menu-card-photo" src="https://picsum.photos/seed/filter-coffee/900/700" alt="A cup of coffee on a cafe table" loading="lazy" />
+              <h3><a href="./menu.html#coffee">Coffee and other hots</a></h3>
               <p class="sub">For the one person in the group who does not drink chai.</p>
-              <div class="dish"><div><span class="name">Indian Style Coffee</span><span class="desc">Frothy, sweet, made the South Indian way. Decaf available.</span></div><span class="dots"></span><span class="price">4.50</span></div>
+              <div class="dish"><div><span class="name">Indian Style Coffee</span><span class="desc">Frothy, sweet, made the South Indian way.</span></div><span class="dots"></span><span class="price">4.50</span></div>
               <div class="dish"><div><span class="name">Americano</span></div><span class="dots"></span><span class="price">3.00</span></div>
-              <div class="dish"><div><span class="name">Espresso</span></div><span class="dots"></span><span class="price">3.00</span></div>
               <div class="dish"><div><span class="name">Matcha</span></div><span class="dots"></span><span class="price">4.99</span></div>
               <div class="dish"><div><span class="name">London Fog</span></div><span class="dots"></span><span class="price">4.75</span></div>
               <div class="dish"><div><span class="name">Hot Chocolate</span></div><span class="dots"></span><span class="price">5.50</span></div>
-              <div class="dish"><div><span class="name">Herbal Tea</span></div><span class="dots"></span><span class="price">3.00</span></div>
             </div>
 
             <div class="menu-card mt-4" data-reveal data-delay="2">
-                          <img class="menu-card-photo" src="https://picsum.photos/seed/mango-lassi/900/700" alt="A tall cold lassi in a glass" loading="lazy" />
-              <h3>Cold ones</h3>
+              <img class="menu-card-photo" src="https://picsum.photos/seed/mango-lassi/900/700" alt="A tall cold lassi in a glass" loading="lazy" />
+              <h3><a href="./menu.html#cold">Cold ones</a></h3>
               <p class="sub">Lassis, falooda shakes and Italian sodas.</p>
               <div class="dish"><div><span class="name">Mango Lassi</span><span class="desc">Mango pulp, ice cream and milk.</span></div><span class="dots"></span><span class="price">5.99</span></div>
-              <div class="dish"><div><span class="name">Dry Fruit Lassi</span></div><span class="dots"></span><span class="price">6.50</span></div>
-              <div class="dish"><div><span class="name">Falooda Shake</span><span class="desc">Vanilla ice cream, chia seeds, vermicelli. Mango, rose, pista or dry fruit.</span></div><span class="dots"></span><span class="price">6.99 / 7.50</span></div>
-              <div class="dish"><div><span class="name">Italian Soda</span><span class="desc">Peach, strawberry, passion fruit, lime, watermelon or blue raspberry.</span></div><span class="dots"></span><span class="price">4.75</span></div>
-              <div class="dish"><div><span class="name">Rose Sharbat</span><span class="desc">Rose syrup in milk, dry petals on top. Vegan on request.</span></div><span class="dots"></span><span class="price">4.50</span></div>
+              <div class="dish"><div><span class="name">Falooda Shake</span><span class="desc">Vanilla ice cream, chia seeds, vermicelli.</span></div><span class="dots"></span><span class="price">6.99 / 7.50</span></div>
+              <div class="dish"><div><span class="name">Italian Soda</span><span class="desc">Six flavours, made to order.</span></div><span class="dots"></span><span class="price">4.75</span></div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-12 mb-4">
             <div class="menu-card" data-reveal data-delay="2">
-                          <img class="menu-card-photo" src="https://picsum.photos/seed/samosa-chaat/900/700" alt="A plate of street snacks and chaat" loading="lazy" />
-              <h3>Street snacks and chaat</h3>
+              <img class="menu-card-photo" src="https://picsum.photos/seed/samosa-chaat/900/700" alt="A plate of street snacks and chaat" loading="lazy" />
+              <h3><a href="./menu.html#snacks">Street snacks and chaat</a></h3>
               <p class="sub">The food that shows up at every chai stall back home.</p>
               <div class="dish"><div><span class="name">Veg Samosa (2 pc)</span><span class="desc">Crisp pastry, spiced potato and peas.</span></div><span class="dots"></span><span class="price">3.99</span></div>
-              <div class="dish"><div><span class="name">Vada Pav (2 pc)</span><span class="desc">Sweet and tangy potato patties in bread with house sauces.</span></div><span class="dots"></span><span class="price">9.99</span></div>
+              <div class="dish"><div><span class="name">Vada Pav (2 pc)</span><span class="desc">Sweet and tangy potato patties in bread.</span></div><span class="dots"></span><span class="price">9.99</span></div>
               <div class="dish"><div><span class="name">Samosa Chaat</span><span class="desc">Broken samosa, chickpea curry, yogurt and sauces.</span></div><span class="dots"></span><span class="price">10.99</span></div>
-              <div class="dish"><div><span class="name">Golgappe (6 pc)</span><span class="desc">Filled with potato and chickpea, mint and tamarind water on the side.</span></div><span class="dots"></span><span class="price">7.99</span></div>
               <div class="dish"><div><span class="name">Pav Bhaji</span><span class="desc">Smooth vegetable gravy with two buttered breads.</span></div><span class="dots"></span><span class="price">11.99</span></div>
-              <div class="dish"><div><span class="name">Chilli Paneer Bites</span><span class="desc">Fried paneer in an onion and pepper sauce.</span></div><span class="dots"></span><span class="price">12.99</span></div>
-              <div class="dish"><div><span class="name">Tandoori Fries</span><span class="desc">House spices and sauce over hot fries.</span></div><span class="dots"></span><span class="price">7.99</span></div>
-              <div class="dish"><div><span class="name">Stuffed Kulche (2 pc)</span><span class="desc">Soft breads stuffed with potato and chickpea.</span></div><span class="dots"></span><span class="price">9.99</span></div>
             </div>
 
             <div class="menu-card mt-4" data-reveal data-delay="3">
-                          <img class="menu-card-photo" src="https://picsum.photos/seed/rice-bowl/900/700" alt="A rice bowl served hot" loading="lazy" />
-              <h3>Bigger plates</h3>
+              <img class="menu-card-photo" src="https://picsum.photos/seed/rice-bowl/900/700" alt="A rice bowl served hot" loading="lazy" />
+              <h3><a href="./menu.html#plates">Bigger plates</a></h3>
               <p class="sub">Rice bowls, naan wraps and all day breakfast.</p>
-              <div class="dish"><div><span class="name">Butter Chicken Rice Bowl</span><span class="desc">Rice, spiced potato and vegetables with mint sauce.</span></div><span class="dots"></span><span class="price">14.99</span></div>
-              <div class="dish"><div><span class="name">Shahi Paneer Rice Bowl</span></div><span class="dots"></span><span class="price">13.99</span></div>
-              <div class="dish"><div><span class="name">Butter Chicken Naan Wrap</span><span class="desc">Curry, fries, ranch and vegetables wrapped in naan.</span></div><span class="dots"></span><span class="price">9.99</span></div>
+              <div class="dish"><div><span class="name">Butter Chicken Rice Bowl</span><span class="desc">Rice, spiced potato and vegetables, mint sauce.</span></div><span class="dots"></span><span class="price">14.99</span></div>
+              <div class="dish"><div><span class="name">Butter Chicken Naan Wrap</span><span class="desc">Curry, fries, ranch and vegetables in naan.</span></div><span class="dots"></span><span class="price">9.99</span></div>
               <div class="dish"><div><span class="name">Masala Omelette</span><span class="desc">Onions, tomatoes and green chilli, folded hot.</span></div><span class="dots"></span><span class="price">8.99</span></div>
-              <div class="dish"><div><span class="name">Gulab Jamun (2 pc)</span></div><span class="dots"></span><span class="price">4.99</span></div>
             </div>
           </div>
         </div>
 
-        <p class="mt-3" style="color:var(--ink-soft);" data-reveal>
-          That is about half of it. Sandwiches, wraps, burgers, tacos, mocktails and the full sweets list are on the
-          <a href="./Chai Lounge new menu.pdf" target="_blank">full menu (PDF)</a>.
-        </p>
+        <div class="mt-3 d-flex flex-wrap align-items-center" style="gap:1rem;" data-reveal>
+          <a href="./menu.html" class="btn-solid">See the full menu</a>
+          <span style="color:var(--ink-soft);">Sandwiches, wraps, burgers, tacos, mocktails and sweets are on the full menu page and in the
+          <a href="./Chai Lounge new menu.pdf" target="_blank">menu PDF</a>.</span>
+        </div>
       </div>
     </section>
 
-    <!-- Photo band -->
+    <!-- Photo carousel -->
     <section style="padding:0 1rem 5rem;">
       <div class="container">
-        <div class="row photo-band snap-row">
-          <div class="col-md-4 mb-4">
-            <figure data-reveal>
-              <img src="./images/vadapav.webp" alt="Vada pav at Chai Lounge" />
+        <p class="kicker mb-2" data-reveal>From the counter</p>
+        <h2 class="section-title mb-4" data-reveal data-delay="1">What lands on the table.</h2>
+        <div class="carousel" data-carousel data-reveal data-delay="2">
+          <div class="carousel-track">
+            <figure class="carousel-slide">
+              <img src="./images/chaiLounge.jpg" alt="Inside Chai Lounge in Edmonton" />
+              <figcaption><b>The room.</b> Built for staying a while.</figcaption>
+            </figure>
+            <figure class="carousel-slide">
+              <img src="./images/vadapav.webp" alt="Vada pav at Chai Lounge" loading="lazy" />
               <figcaption><b>Vada pav.</b> Two to a plate, extra chutney if you ask.</figcaption>
             </figure>
-          </div>
-          <div class="col-md-4 mb-4">
-            <figure data-reveal data-delay="1">
-              <img src="./images/butterChicken.webp" alt="Butter chicken at Chai Lounge" />
+            <figure class="carousel-slide">
+              <img src="./images/butterChicken.webp" alt="Butter chicken at Chai Lounge" loading="lazy" />
               <figcaption><b>Butter chicken.</b> The bowl most tables end up ordering.</figcaption>
             </figure>
-          </div>
-          <div class="col-md-4 mb-4">
-            <figure data-reveal data-delay="2">
-              <img src="./images/paneer.jpg" alt="Paneer dish at Chai Lounge" />
+            <figure class="carousel-slide">
+              <img src="./images/paneer.jpg" alt="Paneer dish at Chai Lounge" loading="lazy" />
               <figcaption><b>Paneer, three ways.</b> Pakora, chilli bites, or in a wrap.</figcaption>
             </figure>
+            <figure class="carousel-slide">
+              <img src="https://picsum.photos/seed/stovetop-chai/1200/800" alt="Chai simmering in a pot on the stove" loading="lazy" />
+              <figcaption><b>On the stove.</b> A fresh batch every time the last one runs out.</figcaption>
+            </figure>
+            <figure class="carousel-slide">
+              <img src="https://picsum.photos/seed/cafe-table/1200/800" alt="Friends sitting around a cafe table with chai" loading="lazy" />
+              <figcaption><b>The big table.</b> Families and study groups welcome.</figcaption>
+            </figure>
           </div>
+          <button class="carousel-arrow prev" type="button" aria-label="Previous photo">&#8249;</button>
+          <button class="carousel-arrow next" type="button" aria-label="Next photo">&#8250;</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </section>
@@ -480,27 +306,38 @@
         </div>
       </div>
     </section>
-
   </main>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-3">
-          <div class="serif" style="font-size:1.5rem; font-weight:700; color:var(--ink);">Chai Lounge</div>
-          <p class="mt-2">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
-          <div class="social-icons mt-3">
-            <a href="#" class="fab fa-facebook" aria-label="Facebook"></a>
-            <a href="#" class="fab fa-instagram" aria-label="Instagram"></a>
-            <a href="#" class="fab fa-tiktok" aria-label="TikTok"></a>
-          </div>
+          <a href="./index.html" class="brand brand-lg" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+          <p class="mt-3">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
         </div>
         <div class="col-md-2 mb-3">
           <h5>Explore</h5>
-          <p><a href="#menu">Menu</a></p>
-          <p><a href="#story">Our Story</a></p>
-          <p><a href="#visit">Visit</a></p>
+          <p><a href="./menu.html">Menu</a></p>
+          <p><a href="./location.html">Location</a></p>
           <p><a href="./careers.html">Careers</a></p>
+          <p><a href="./contact.html">Contact Us</a></p>
+          <p><a href="./reservation.html">Reserve</a></p>
         </div>
         <div class="col-md-3 mb-3">
           <h5>Hours</h5>
@@ -522,36 +359,6 @@
     </div>
   </footer>
 
-  <script>
-    const toggleButton = document.getElementById('navbar-toggle');
-    const menu = document.getElementById('navbar-menu');
-    const closeMenuButton = document.getElementById('close-menu');
-    toggleButton.addEventListener('click', () => { menu.classList.toggle('show'); });
-    closeMenuButton.addEventListener('click', () => { menu.classList.remove('show'); });
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('show')));
-  </script>
-  <script>
-    // Scroll reveal: IntersectionObserver adds .is-visible as elements enter
-    // the viewport. If reduced motion is set, or the browser has no
-    // IntersectionObserver, everything is shown straight away.
-    (function () {
-      var items = document.querySelectorAll('[data-reveal]');
-      if (!items.length) { return; }
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion || !('IntersectionObserver' in window)) {
-        items.forEach(function (el) { el.classList.add('is-visible'); });
-        return;
-      }
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-      items.forEach(function (el) { observer.observe(el); });
-    })();
-  </script>
+  <script src="./site.js"></script>
 </body>
 </html>

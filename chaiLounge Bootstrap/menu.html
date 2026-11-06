@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu | Chai Lounge, Edmonton</title>
+  <meta name="description" content="The full Chai Lounge menu: ten stove-brewed chais, coffee, lassis and falooda shakes, street snacks, chaat, rice bowls and naan wraps, with prices."/>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet"/>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <!-- Top strip -->
+  <div class="top-strip">
+    Edmonton, Alberta &nbsp;·&nbsp; Open today from 11 AM &nbsp;·&nbsp; <a href="tel:+15874159649">Call (587) 415-9649</a>
+  </div>
+
+  <!-- Header -->
+  <nav class="navbar-custom">
+    <div class="container nav-inner">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="nav-links">
+        <a href="./menu.html" class="active">Menu</a>
+        <a href="./location.html">Location</a>
+        <a href="./careers.html">Careers</a>
+        <a href="./contact.html">Contact Us</a>
+        <a href="./reservation.html" class="btn-outline nav-btn">Reserve</a>
+        <a href="tel:+15874159649" class="btn-solid nav-btn">Order Now</a>
+      </div>
+      <div class="nav-mobile-actions">
+        <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Order</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="mobile-links">
+        <a class="menu-link" href="./menu.html">Menu</a>
+        <a class="menu-link" href="./location.html">Location</a>
+        <a class="menu-link" href="./careers.html">Careers</a>
+        <a class="menu-link" href="./contact.html">Contact Us</a>
+        <a class="menu-link" href="./reservation.html">Reserve a Table</a>
+        <a class="menu-link" href="tel:+15874159649">Call (587) 415-9649</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-head">
+      <div class="container">
+        <p class="kicker mb-2" data-reveal>Menu</p>
+        <h1 data-reveal data-delay="1">The full board.</h1>
+        <p class="lede" data-reveal data-delay="2">
+          Everything below is made to order. For chai, small is a cutting glass and regular is a full mug,
+          and the two prices are shown side by side. Oat, almond and lactose free milk available.
+        </p>
+      </div>
+    </div>
+
+    <section class="block" style="padding-top:3rem;">
+      <div class="container">
+                <div class="menu-cat" id="chai">
+          <div class="menu-cat-head" data-reveal>
+            <h2>Chai</h2><span class="sub">Brewed on the stove, to order. Can be iced.</span>
+          </div>
+          <div class="row">
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/karak-cup/200/200" alt="A glass of karak chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Karak Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Well brewed and strong. The house standard.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/ginger-tea/200/200" alt="Ginger chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Ginger Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Fresh ginger, no syrup.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/cardamom-tea/200/200" alt="Elaichi chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Elaichi Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">A hint of green cardamom.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/mint-tea/200/200" alt="Mint chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Mint Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Fresh mint leaves, no syrup.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/rose-tea/200/200" alt="Rose chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Rose Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Rose flavoured, finished with petals.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/jaggery-tea/200/200" alt="Gur wali chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Gur Wali Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Made with jaggery instead of sugar.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/spice-tea/200/200" alt="Ajwain chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Ajwain Chai</span><span class="dots"></span><span class="price">3.99 / 4.50</span></div><span class="desc">Karak with carom seeds. Settles a heavy meal.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/pista-tea/200/200" alt="Pista chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Pista Chai</span><span class="dots"></span><span class="price">4.25 / 4.75</span></div><span class="desc">Pistachio flavour and pista powder.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/vanilla-chai/200/200" alt="French vanilla chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">French Vanilla Chai</span><span class="dots"></span><span class="price">4.25 / 4.75</span></div><span class="desc">Karak chai with vanilla.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/dirty-chai/200/200" alt="Dirty chai" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Dirty Chai</span><span class="dots"></span><span class="price">4.25 / 4.75</span></div><span class="desc">A shot of espresso in your chai.</span></div></div></div>
+          </div>
+        </div>
+                <div class="menu-cat" id="coffee">
+          <div class="menu-cat-head" data-reveal>
+            <h2>Coffee and other hots</h2><span class="sub">For the one person in the group who does not drink chai.</span>
+          </div>
+          <div class="row">
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/filter-coffee-cup/200/200" alt="Indian style coffee" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Indian Style Coffee</span><span class="dots"></span><span class="price">4.50</span></div><span class="desc">Frothy, sweet, made the South Indian way. Decaf available.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/americano/200/200" alt="Americano" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Americano</span><span class="dots"></span><span class="price">3.00</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/espresso/200/200" alt="Espresso" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Espresso</span><span class="dots"></span><span class="price">3.00</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/matcha/200/200" alt="Matcha" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Matcha</span><span class="dots"></span><span class="price">4.99</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/london-fog/200/200" alt="London fog" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">London Fog</span><span class="dots"></span><span class="price">4.75</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/hot-chocolate/200/200" alt="Hot chocolate" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Hot Chocolate</span><span class="dots"></span><span class="price">5.50</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/herbal-tea/200/200" alt="Herbal tea" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Herbal Tea</span><span class="dots"></span><span class="price">3.00</span></div></div></div></div>
+          </div>
+        </div>
+                <div class="menu-cat" id="cold">
+          <div class="menu-cat-head" data-reveal>
+            <h2>Cold ones</h2><span class="sub">Lassis, falooda shakes and Italian sodas.</span>
+          </div>
+          <div class="row">
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/mango-lassi-glass/200/200" alt="Mango lassi" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Mango Lassi</span><span class="dots"></span><span class="price">5.99</span></div><span class="desc">Mango pulp, ice cream and milk.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/dry-fruit-lassi/200/200" alt="Dry fruit lassi" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Dry Fruit Lassi</span><span class="dots"></span><span class="price">6.50</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/falooda/200/200" alt="Falooda shake" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Falooda Shake</span><span class="dots"></span><span class="price">6.99 / 7.50</span></div><span class="desc">Vanilla ice cream, chia seeds, vermicelli. Mango, rose, pista or dry fruit.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/italian-soda/200/200" alt="Italian soda" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Italian Soda</span><span class="dots"></span><span class="price">4.75</span></div><span class="desc">Peach, strawberry, passion fruit, lime, watermelon or blue raspberry.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/rose-sharbat/200/200" alt="Rose sharbat" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Rose Sharbat</span><span class="dots"></span><span class="price">4.50</span></div><span class="desc">Rose syrup in milk, dry petals on top. Vegan on request.</span></div></div></div>
+          </div>
+        </div>
+                <div class="menu-cat" id="snacks">
+          <div class="menu-cat-head" data-reveal>
+            <h2>Street snacks and chaat</h2><span class="sub">The food that shows up at every chai stall back home.</span>
+          </div>
+          <div class="row">
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/samosa/200/200" alt="Veg samosa" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Veg Samosa (2 pc)</span><span class="dots"></span><span class="price">3.99</span></div><span class="desc">Crisp pastry, spiced potato and peas.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="./images/vadapav.webp" alt="Vada pav" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Vada Pav (2 pc)</span><span class="dots"></span><span class="price">9.99</span></div><span class="desc">Sweet and tangy potato patties in bread with house sauces.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/samosa-chaat-plate/200/200" alt="Samosa chaat" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Samosa Chaat</span><span class="dots"></span><span class="price">10.99</span></div><span class="desc">Broken samosa, chickpea curry, yogurt and sauces.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/golgappe/200/200" alt="Golgappe" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Golgappe (6 pc)</span><span class="dots"></span><span class="price">7.99</span></div><span class="desc">Filled with potato and chickpea, mint and tamarind water on the side.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/pav-bhaji/200/200" alt="Pav bhaji" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Pav Bhaji</span><span class="dots"></span><span class="price">11.99</span></div><span class="desc">Smooth vegetable gravy with two buttered breads.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="./images/paneer.jpg" alt="Chilli paneer bites" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Chilli Paneer Bites</span><span class="dots"></span><span class="price">12.99</span></div><span class="desc">Fried paneer in an onion and pepper sauce.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/tandoori-fries/200/200" alt="Tandoori fries" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Tandoori Fries</span><span class="dots"></span><span class="price">7.99</span></div><span class="desc">House spices and sauce over hot fries.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/kulche/200/200" alt="Stuffed kulche" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Stuffed Kulche (2 pc)</span><span class="dots"></span><span class="price">9.99</span></div><span class="desc">Soft breads stuffed with potato and chickpea.</span></div></div></div>
+          </div>
+        </div>
+                <div class="menu-cat" id="plates">
+          <div class="menu-cat-head" data-reveal>
+            <h2>Bigger plates</h2><span class="sub">Rice bowls, naan wraps and all day breakfast.</span>
+          </div>
+          <div class="row">
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="./images/butterChicken.webp" alt="Butter chicken rice bowl" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Butter Chicken Rice Bowl</span><span class="dots"></span><span class="price">14.99</span></div><span class="desc">Rice, spiced potato and vegetables with mint sauce.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="./images/paneer.jpg" alt="Shahi paneer rice bowl" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Shahi Paneer Rice Bowl</span><span class="dots"></span><span class="price">13.99</span></div></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="./images/butterchicken.jpg" alt="Butter chicken naan wrap" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Butter Chicken Naan Wrap</span><span class="dots"></span><span class="price">9.99</span></div><span class="desc">Curry, fries, ranch and vegetables wrapped in naan.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/masala-omelette/200/200" alt="Masala omelette" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Masala Omelette</span><span class="dots"></span><span class="price">8.99</span></div><span class="desc">Onions, tomatoes and green chilli, folded hot.</span></div></div></div>
+              <div class="col-lg-6"><div class="menu-item"><img class="menu-thumb" src="https://picsum.photos/seed/gulab-jamun/200/200" alt="Gulab jamun" loading="lazy" /><div class="menu-item-body"><div class="menu-item-top"><span class="name">Gulab Jamun (2 pc)</span><span class="dots"></span><span class="price">4.99</span></div></div></div></div>
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft);" data-reveal>
+          Sandwiches, wraps, burgers, tacos, mocktails and the full sweets list are in the
+          <a href="./Chai Lounge new menu.pdf" target="_blank">full menu (PDF)</a>.
+          Prices are what is printed on the board in the cafe.
+        </p>
+        <div class="mt-4 d-flex flex-wrap" style="gap:.8rem;" data-reveal>
+          <a href="tel:+15874159649" class="btn-solid">Call to order: (587) 415-9649</a>
+          <a href="./reservation.html" class="btn-outline">Book a table</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="./index.html" class="brand brand-lg" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+          <p class="mt-3">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
+        </div>
+        <div class="col-md-2 mb-3">
+          <h5>Explore</h5>
+          <p><a href="./menu.html">Menu</a></p>
+          <p><a href="./location.html">Location</a></p>
+          <p><a href="./careers.html">Careers</a></p>
+          <p><a href="./contact.html">Contact Us</a></p>
+          <p><a href="./reservation.html">Reserve</a></p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h5>Hours</h5>
+          <p>Every day from 11:00 AM</p>
+          <p>Late on Fridays and Saturdays</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h5>Find us</h5>
+          <p>Edmonton, Alberta</p>
+          <p><a href="tel:+15874159649">(587) 415-9649</a></p>
+          <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Directions</a></p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12 text-center" style="font-size:.85rem;">
+          <p>© 2025 Chai Lounge. All rights reserved. &nbsp;·&nbsp; Site by <a href="https://raghv.dev" target="_blank" rel="noopener">Raghav Mahajan</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./site.js"></script>
+</body>
+</html>

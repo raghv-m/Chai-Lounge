@@ -3,662 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Our Team - Chai Lounge</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Bootstrap CSS -->
+  <title>Contact Us | Chai Lounge, Edmonton</title>
+  <meta name="description" content="Contact Chai Lounge in Edmonton. Call (587) 415-9649, send a message, find hours and directions."/>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Font Awesome -->
-  <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet"/>
-
-  <style>
-    body {
-      color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-    }
-
-    .bg-gold {
-      background-color: #bb883e;
-    }
-
-    .bg-black {
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-
-    /* -- Top Banner Ribbon (same as first page) -- */
-    .bg-gold.text-center.py-2.w-full {
-      /* Uses Tailwind classes for styling */
-    }
-
-    /* -- NAVBAR: EXACT COPY from first page -- */
-    .navbar-custom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #000;
-      width: 100%;
-    }
-    .navbar-custom a {
-      color: #f0f0f0;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .navbar-custom a:hover {
-      color: gray; 
-      text-decoration: none;
-    }
-    .logo-img {
-      height: 40px;
-    }
-    .custom-toggler .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(187,136,62,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-    .navbar-toggler {
-      border: none;
-    }
-
-    /* -- Mobile Menu (matching first page) -- */
-    .mobile-menu {
-      background: #000;
-      backdrop-filter: blur(20px);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;
-      z-index: 1050;
-      padding: 20px;
-      justify-content: flex-start;
-      align-items: center;
-      flex-direction: column;
-      transition: all 0.3s ease;
-    }
-    .mobile-menu.show {
-      display: flex;
-    }
-    .mobile-menu a,
-    .mobile-menu button {
-      color: #ffffff;
-      font-size: 1.5em;
-      margin: 10px 0;
-      text-transform: uppercase;
-      transition: color 0.3s, background-color 0.3s, border-color 0.3s;
-    }
-    .mobile-menu a:hover,
-    .mobile-menu button:hover {
-      background-color: #444444;
-      color: #ffffff;
-      border-color: #bb883e;
-    }
-    .close-menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2em;
-      color: #ffffff;
-    }
-
-    /* Button Animations (same as first page) */
-    .btn-animate {
-      position: relative;
-      overflow: hidden;
-      transition: color 0.4s;
-    }
-    .btn-animate::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.4s;
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-    .btn-animate:hover::before {
-      width: 0;
-      height: 0;
-    }
-    .btn-animate:hover {
-      color: #ffffff;
-    }
-
-    /* CTA Buttons */
-    .section-cta {
-      display: inline-block;
-      border: 1px solid #bb883e;
-      color: #bb883e;
-      background: transparent;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.375rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      font-size: 0.875rem; 
-    }
-    .section-cta:hover {
-      border-color: gray;
-      color: #bb883e;
-      background: transparent;
-      text-decoration: none;
-    }
-
-    /* Footer: EXACT COPY from first page */
-    .footer {
-      background-color: #000;
-      padding: 2rem 0;
-      color: #f0f0f0;
-    }
-    .footer .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-    .footer h5 {
-      color: #bb883e;
-      margin-bottom: 1rem;
-    }
-    .footer a {
-      color: #f0f0f0;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .footer a:hover {
-      color: gray;
-      text-decoration: none;
-    }
-    .footer .social-icons a {
-      margin-right: 0.5rem;
-      font-size: 1.5rem;
-    }
-    @media (max-width: 767.98px) {
-      .footer .row>div {
-        margin-bottom: 1rem;
-      }
-    }
-
-    /* Contact Page-Specific */
-    .page-header {
-      padding: 2rem 0;
-      text-align: center;
-    }
-    .page-header h1 {
-      margin: 0;
-      /* Remove the usual color so we see only the stroke */
-      -webkit-text-fill-color: transparent;
-
-      /* Give it a 1px gold stroke */
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: #bb883e;
-    }
-
-    .content {
-      padding: 5rem;
-    }
-    .content h2 {
-      color: #bb883e;
-      margin-bottom: 1rem;
-    }
-    .form-control {
-      background-color: #333;
-      color: #f0f0f0;
-      border: 1px solid #bb883e;
-    }
-    .form-control:focus {
-      border-color: #bb883e;
-      box-shadow: none;
-    }
-    .btn-submit {
-      background-color: #bb883e;
-      color: #000;
-      border: none;
-    }
-    .btn-submit:hover {
-      background-color: #a57435;
-    }
-    .contact-info {
-      color: #f0f0f0;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      position: relative;
-    }
-    .contact-info h5 {
-      color: #bb883e;
-    }
-    .contact-info img {
-      width: 100%;
-      border-radius: 5px;
-    }
-    .overlay {
-      position: absolute;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-    }
-    .overlay h3 {
-      color: #bb883e;
-      margin-bottom: 1rem;
-    }
-    .overlay p {
-      margin: 0.5rem 0;
-      display: flex;
-      align-items: center;
-    }
-    .overlay .icon {
-      width: 20px;
-      height: 20px;
-      margin-right: 10px;
-    }
-
-    @media (max-width: 767.98px) {
-      .page-header h1 {
-        font-size: 1.5rem;
-      }
-      .content h2 {
-        font-size: 1.25rem;
-      }
-      .contact-info h5 {
-        font-size: 1rem;
-      }
-      .form-control {
-        font-size: 0.875rem;
-      }
-      .btn-submit {
-        font-size: 0.875rem;
-      }
-      .form-group {
-        margin-bottom: 1rem;
-        padding: 0 1rem;
-      }
-      .content {
-        padding: 1rem 0;
-      }
-    }
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      .page-header h1 {
-        font-size: 2rem;
-      }
-      .content h2 {
-        font-size: 1.5rem;
-      }
-      .contact-info h5 {
-        font-size: 1.25rem;
-      }
-      .form-control {
-        font-size: 1rem;
-      }
-      .btn-submit {
-        font-size: 1rem;
-      }
-    }
-    @media (max-width: 767px) {
-      .footer .row, .footer .col-md-3, .footer .col-12, .footer .social, .footer .locations, .footer .hours, .footer .quick-links {
-        text-align: center !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-      .footer .row {
-        flex-direction: column !important;
-      }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    @media (max-width: 991px) {
-      .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(24, 24, 24, 0.98);
-        z-index: 1000;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 60px;
-        transition: all 0.3s ease;
-        overflow-y: auto;
-        box-shadow: 0 8px 32px 0 rgba(34,34,34,0.25);
-        animation: fadeInMenu 0.4s cubic-bezier(0.4,0,0.2,1);
-      }
-      @keyframes fadeInMenu {
-        from { opacity: 0; transform: translateY(-30px); }
-        to { opacity: 1; transform: none; }
-      }
-      .mobile-menu.show {
-        display: flex;
-      }
-      .mobile-menu .close-menu {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 2.8rem;
-        color: #fff;
-        cursor: pointer;
-        z-index: 1100;
-        transition: color 0.2s;
-      }
-      .mobile-menu .close-menu:hover {
-        color: #bb883e;
-      }
-      .mobile-menu img {
-        margin-bottom: 2.5rem;
-        border-radius: 50%;
-        box-shadow: 0 2px 16px 0 rgba(187,136,62,0.15);
-        background: #181818;
-        padding: 0.5rem;
-        width: 90px;
-        height: 90px;
-        object-fit: contain;
-      }
-      .mobile-menu a {
-        display: block;
-        width: 85%;
-        margin: 1.1rem auto;
-        padding: 1.1rem 0;
-        text-align: center;
-        font-size: 1.2rem;
-        background: #222;
-        color: #bb883e;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        box-shadow: 0 2px 8px 0 rgba(34,34,34,0.10);
-        border: 1.5px solid #bb883e;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      }
-      .mobile-menu a:hover {
-        background: #bb883e;
-        color: #181818;
-        box-shadow: 0 4px 16px 0 rgba(187,136,62,0.15);
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet"/>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
-  <!-- Top Banner -->
-  <div class="bg-gold text-center py-2 w-full">
-    <span>Reserve your table today and enjoy an unforgettable dining experience.</span>
+  <!-- Top strip -->
+  <div class="top-strip">
+    Edmonton, Alberta &nbsp;·&nbsp; Open today from 11 AM &nbsp;·&nbsp; <a href="tel:+15874159649">Call (587) 415-9649</a>
   </div>
 
-  <!-- NAVBAR (from reservation.html) -->
-  <nav class="bg-black text-white navbar-custom w-full">
-    <div class="container mx-auto px-4 flex items-center justify-between">
-      <!-- Logo -->
-      <div class="text-xl font-bold py-2">
-        <a href="./index.html" rel="noopener noreferrer">
-          <img src="./images/C.png" alt="Chai Lounge Logo" class="logo-img" />
-        </a>
+  <!-- Header -->
+  <nav class="navbar-custom">
+    <div class="container nav-inner">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="nav-links">
+        <a href="./menu.html">Menu</a>
+        <a href="./location.html">Location</a>
+        <a href="./careers.html">Careers</a>
+        <a href="./contact.html" class="active">Contact Us</a>
+        <a href="./reservation.html" class="btn-outline nav-btn">Reserve</a>
+        <a href="tel:+15874159649" class="btn-solid nav-btn">Order Now</a>
       </div>
-      <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-4 items-center text-sm sm:text-base md:text-base">
-        <a href="./Chai Lounge new menu.pdf" target="_blank" class="py-2">Menu</a>
-        <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">Location</a>
-        <a href="./careers.html" target="_blank" class="py-2">Careers</a>
-        <a href="./contact.html" target="_blank" class="py-2">Contact Us</a>
-        <a
-          href="./reservation.html"
-          target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
-        >
-          Reserve
-        </a>
-        <a
-          href="tel:+15874159649"
-          target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
-        >
-          Order Now
-        </a>
-      </div>
-      <!-- Mobile Icons -->
-      <div class="flex md:hidden items-center space-x-2">
-        <a
-          href="./reservation.html"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
-        >
-          Reserve
-        </a>
-        <a
-          href="tel:+15874159649"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
-        >
-          Order
-        </a>
-        <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
-          <span class="navbar-toggler-icon"></span>
+      <div class="nav-mobile-actions">
+        <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Order</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-    <!-- Mobile Menu -->
-    <div class="md:hidden mobile-menu" id="navbar-menu">
-      <span class="close-menu" id="close-menu">&times;</span>
-      <img src="./images/C.png" alt="Chai Lounge Logo" class="w-20 h-auto mb-6 mx-auto" />
-      <a href="./Chai Lounge new menu.pdf" target="_blank" class="btn-animate section-cta mt-2">Menu</a>
-      <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="btn-animate section-cta mt-2">Location</a>
-      <a href="./careers.html" class="btn-animate section-cta mt-2">Careers</a>
-      <a href="./contact.html" class="btn-animate section-cta mt-2">Contact Us</a>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="./index.html" class="brand" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+      <div class="mobile-links">
+        <a class="menu-link" href="./menu.html">Menu</a>
+        <a class="menu-link" href="./location.html">Location</a>
+        <a class="menu-link" href="./careers.html">Careers</a>
+        <a class="menu-link" href="./contact.html">Contact Us</a>
+        <a class="menu-link" href="./reservation.html">Reserve a Table</a>
+        <a class="menu-link" href="tel:+15874159649">Call (587) 415-9649</a>
+      </div>
     </div>
   </nav>
 
-  <!-- Script for navbar toggling -->
-  <script>
-    const toggleButton = document.getElementById('navbar-toggle');
-    const menu = document.getElementById('navbar-menu');
-    const closeMenuButton = document.getElementById('close-menu');
-
-    toggleButton.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-    closeMenuButton.addEventListener('click', () => {
-      menu.classList.remove('show');
-    });
-  </script>
-
-  <!-- Page Header -->
-  <div class="page-header">
-    <div class="container text-5xl off">
-      <h1 class="font-bold text-gold mb-4 text-2xl sm:text-4xl lg:text-6xl leading-tight">Contact Our Team Today in Edmonton</h1>
+  <main>
+    <div class="page-head">
+      <div class="container">
+        <p class="kicker mb-2" data-reveal>Contact us</p>
+        <h1 data-reveal data-delay="1">Talk to the lounge.</h1>
+        <p class="lede" data-reveal data-delay="2">
+          Questions, big orders, or feedback on the chai: call us, or send a note here.
+          For anything urgent, the phone is faster.
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Main Content -->
-  <div class="container content">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="contact-info relative">
-          <img src="./images/contact.webp" alt="Chai Lounge" class="img-fluid" />
-          <div class="overlay">
-            <h3>Downtown Location</h3>
-            <p>10119 Rice Howard Wy, T5J 0R5</p>
-            <p>Edmonton, Alberta</p>
-            <p><a href="mailto:info@chailounge.com" style="color: #f0f0f0;">info@chailounge.com</a></p>
+    <section class="block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-4">
+            <div class="visit-card" data-reveal>
+              <h2 class="serif" style="font-size:1.5rem; font-weight:600;">Chai Lounge, Edmonton</h2>
+              <div class="visit-row mt-3">
+                <div class="k">Phone</div>
+                <div><a href="tel:+15874159649">(587) 415-9649</a></div>
+              </div>
+              <div class="visit-row">
+                <div class="k">Find us</div>
+                <div>Edmonton, Alberta. <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Get directions</a></div>
+              </div>
+              <div class="visit-row">
+                <div class="k">Hours</div>
+                <div>Open every day from 11:00 AM.<br/>Open late on Fridays and Saturdays.</div>
+              </div>
+            </div>
+            <img class="framed-photo mt-4" src="./images/getIntouch.webp" alt="The counter at Chai Lounge" loading="lazy" data-reveal data-delay="1" />
+          </div>
+
+          <div class="col-lg-7 mb-4">
+            <div class="form-card" data-reveal data-delay="1">
+              <h2 class="serif mb-4" style="font-size:1.6rem; font-weight:600;">Send a message</h2>
+              <form data-front-end data-success="contactSuccess" novalidate>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="contactName">Name</label>
+                    <input type="text" class="form-control" id="contactName" name="name" placeholder="Your name" required />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="contactPhone">Phone (optional)</label>
+                    <input type="tel" class="form-control" id="contactPhone" name="phone" placeholder="Your phone number" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">Email</label>
+                  <input type="email" class="form-control" id="contactEmail" name="email" placeholder="Your email address" required />
+                </div>
+                <div class="form-group">
+                  <label for="contactMessage">Message</label>
+                  <textarea class="form-control" id="contactMessage" name="message" rows="5" placeholder="How can we help?" required></textarea>
+                </div>
+                <button type="submit" class="btn-solid">Send message</button>
+              </form>
+              <div class="form-success" id="contactSuccess">
+                <p class="serif mb-1">Thanks, your note is with us.</p>
+                <p class="mb-0">We read everything that comes in. If your message cannot wait, call us at
+                <a href="tel:+15874159649">(587) 415-9649</a>.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <h2 class="text-3xl form-group">Submit Your Concern</h2>
-        <form id="applicationForm" action="/send-email" method="POST">
-          <div class="form-group">
-            <label for="firstName">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="firstName"
-              name="name"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              name="email"
-              placeholder="Your Email Address"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="phone"
-              name="phone"
-              placeholder="Your Phone Number"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea
-              class="form-control"
-              id="message"
-              name="message"
-              rows="3"
-              placeholder="Write Your Message Here"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <!-- EXACT same FOOTER as the first page -->
-  <footer class="footer mt-4">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-3"><div class="logo">CHAI LOUNGE</div></div>
-        <div class="col-md-3 quick-links">
-          <h5>Quick Links</h5>
-          <p><a href="#breakfast">Breakfast</a></p>
-          <p><a href="#reservation">Reservation</a></p>
-          <p><a href="#drinks">Drinks</a></p>
+        <div class="col-md-4 mb-3">
+          <a href="./index.html" class="brand brand-lg" aria-label="Chai Lounge, back to the home page">
+    <svg class="brand-mark" viewBox="0 0 64 62" role="img" aria-label="Chai Lounge logo, a teacup shaped like the letter C">
+      <path d="M29 13 C27 10.5 31 9 29 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M39 13 C37 10.5 41 9 39 5.5" fill="none" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M42.6 21.7 A15 15 0 1 0 42.6 46.3" fill="none" stroke="#7c2d16" stroke-width="5" stroke-linecap="round"/>
+      <line x1="25.5" y1="22" x2="44" y2="22" stroke="#bb883e" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="15" y1="55" x2="53" y2="55" stroke="#7c2d16" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="brand-text">
+      <span class="brand-name">hai</span>
+      <span class="brand-lounge">
+        <span class="brand-lounge-text">Lounge</span>
+        <svg class="bench" viewBox="0 0 60 10" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="0.6" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="1" y="4.4" width="58" height="1.7" rx="0.85" fill="#7c2d16"/><rect x="7" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/><rect x="50.8" y="6.1" width="2.2" height="3.6" fill="#7c2d16"/></svg>
+      </span>
+    </span>
+  </a>
+          <p class="mt-3">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
         </div>
-        <div class="col-md-3 hours">
+        <div class="col-md-2 mb-3">
+          <h5>Explore</h5>
+          <p><a href="./menu.html">Menu</a></p>
+          <p><a href="./location.html">Location</a></p>
+          <p><a href="./careers.html">Careers</a></p>
+          <p><a href="./contact.html">Contact Us</a></p>
+          <p><a href="./reservation.html">Reserve</a></p>
+        </div>
+        <div class="col-md-3 mb-3">
           <h5>Hours</h5>
-          <p>Monday: 11:00 AM - Late</p>
-          <p>Weekends: 11:00 AM - Late</p>
+          <p>Every day from 11:00 AM</p>
+          <p>Late on Fridays and Saturdays</p>
         </div>
-        <div class="col-md-3 locations">
-          <h5>Locations</h5>
-          <p>Main Location</p>
-          <p>(123) 456-7890</p>
-          <p>1234 Main St, City, State, ZIP</p>
-          <p><a href="mailto:info@restaurant.com">info@restaurant.com</a></p>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-12 text-center social">
-          <h5>Follow Us on Social</h5>
-          <div class="social-icons">
-            <a href="#" class="fab fa-facebook"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-tiktok"></a>
-          </div>
+        <div class="col-md-3 mb-3">
+          <h5>Find us</h5>
+          <p>Edmonton, Alberta</p>
+          <p><a href="tel:+15874159649">(587) 415-9649</a></p>
+          <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Directions</a></p>
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-12 text-center text-xs sm:text-sm">
-          <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
-          <p>SITE BY <a href="#">Raghav Mahajan</a></p>
+        <div class="col-12 text-center" style="font-size:.85rem;">
+          <p>© 2025 Chai Lounge. All rights reserved. &nbsp;·&nbsp; Site by <a href="https://raghv.dev" target="_blank" rel="noopener">Raghav Mahajan</a></p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts for form submission -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    document.getElementById('applicationForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-
-      fetch('http://localhost:3000/send-email', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => response.json())
-      .then(data => {
-          alert('Application submitted successfully!');
-      })
-      .catch(error => {
-          console.error('Error:', error);
-          alert('There was an error submitting your application. Please try again.');
-      });
-    });
-
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    }
-    document.getElementById('mobile-menu-button').addEventListener('click', function () {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    });
-    document.getElementById('close-mobile-menu').addEventListener('click', function () {
-      document.getElementById('mobileMenu').classList.remove('show');
-    });
-
-    // Scroll reveal animation for all sections
-    document.addEventListener('DOMContentLoaded', function() {
-      const reveals = document.querySelectorAll('.full-screen-section, .page-header, .content');
-      const revealOnScroll = (entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      };
-      const observer = new IntersectionObserver(revealOnScroll, { threshold: 0.15 });
-      reveals.forEach(section => {
-        section.classList.add('reveal');
-        observer.observe(section);
-      });
-    });
-  </script>
+  <script src="./site.js"></script>
 </body>
 </html>
