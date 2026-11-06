@@ -66,7 +66,7 @@ main{animation:pageIn .35s ease backwards;}
 
 /* Header and navigation */
 .navbar-custom{
-  position:sticky; top:0; z-index:1000;
+  position:sticky; top:0; z-index:1600;
   background:var(--paper);
   border-bottom:1px solid var(--line);
   width:100%;
@@ -145,20 +145,21 @@ main{animation:pageIn .35s ease backwards;}
 .nav-toggle.open span:nth-child(2){opacity:0;}
 .nav-toggle.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
 
-/* Animated mobile menu: slides/fades in, links stagger */
+/* Animated mobile menu: the panel is a direct child of body (outside
+   the sticky header), fully opaque cream, and it SLIDES instead of
+   fading, so page content can never show through it in any state. */
 .mobile-menu{
-  position:fixed; inset:0; z-index:1050;
-  background:var(--paper);
+  position:fixed; top:0; right:0; bottom:0; left:0; z-index:1500;
+  background:var(--paper); background-color:var(--paper); opacity:1;
   display:flex; flex-direction:column; align-items:center;
-  padding:6.5rem 1.5rem 2rem;
-  opacity:0; visibility:hidden; transform:translateY(-18px);
-  transition:opacity .38s ease, transform .38s ease, visibility 0s linear .38s;
+  padding:7.5rem 1.5rem 2rem; overflow-y:auto;
+  visibility:hidden; transform:translateY(-102%);
+  transition:transform .38s ease, visibility 0s linear .38s;
 }
 .mobile-menu.open{
-  opacity:1; visibility:visible; transform:translateY(0);
-  transition:opacity .38s ease, transform .38s ease;
+  visibility:visible; transform:translateY(0);
+  transition:transform .38s ease;
 }
-.mobile-menu .brand{margin-bottom:2.2rem;}
 .mobile-links{display:flex; flex-direction:column; align-items:center; width:100%;}
 .mobile-menu a.menu-link{
   display:block; width:min(85%, 340px); margin:.45rem auto; padding:.95rem 0;
@@ -248,18 +249,19 @@ section.block{padding:3.5rem 1rem;}
 .menu-card-photo{
   display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover;
   border:1px solid var(--line); border-radius:10px; margin-bottom:1.1rem;
+  background:var(--paper-2);
 }
 
 /* Dish rows: dotted leader lines to the price */
 .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
 .dish:last-child{border-bottom:none;}
-.dish .name{font-weight:600; color:var(--ink);}
+.dish .name{font-weight:600; color:var(--ink); overflow-wrap:break-word;}
 .dish .desc{display:block; font-weight:400; font-size:.86rem; color:var(--ink-soft);}
 .dots{flex:1 1 auto; min-width:1.25rem;}
 .menu-item-top .dots{border-bottom:2px dotted var(--line); transform:translateY(-4px);}
 .menu-item-top .name{min-width:0; overflow-wrap:break-word;}
 .dish > div{min-width:0;}
-.price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap;}
+.price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap; flex:0 0 auto;}
 
 /* ---------- Full menu page ---------- */
 .menu-cat{margin-bottom:3.2rem;}
@@ -364,14 +366,19 @@ section.block{padding:3.5rem 1rem;}
 .visit-card h2{color:#fdf6e9;}
 .visit-card a{color:var(--gold);}
 /* Dark-card links get real tap height */
-.visit-card p a, .visit-row a{
+.visit-card p a{
   display:inline-block; padding:.5rem .15rem; margin:-.5rem -.15rem;
 }
-.visit-row{display:flex; gap:1rem; padding:.85rem 0; border-bottom:1px solid rgba(243,233,212,.18);}
+.visit-row a{display:inline-block; padding:.5rem .15rem;}
+.visit-row{display:grid; grid-template-columns:1fr; gap:.15rem; padding:.85rem 0; border-bottom:1px solid rgba(243,233,212,.18);}
 .visit-row:last-child{border-bottom:none;}
 .visit-row .k{
-  flex:0 0 110px; font-size:.72rem; font-weight:700;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:.3rem;
+  font-size:.72rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--gold);
+}
+@media (min-width: 576px){
+  .visit-row{grid-template-columns:110px 1fr; gap:.35rem 1rem;}
+  .visit-row .k{padding-top:.3rem;}
 }
 
 /* Forms */
@@ -431,16 +438,19 @@ html.reveal-on [data-delay="3"]{transition-delay:.15s;}
   body{font-size:17px;}
 }
 
-/* Mobile swipe rows for home menu cards: CSS scroll-snap. */
+/* Home menu cards on phones: plain vertical stack, full width.
+   (This block used to make them a sideways scroll-snap row with the
+   cards cut off at the screen edge.) */
 @media (max-width: 767.98px){
-  .snap-row{flex-wrap:nowrap; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding-bottom:.75rem; scrollbar-width:none;}
-  .snap-row::-webkit-scrollbar{display:none;}
-  .snap-row > [class*="col-"]{flex:0 0 85%; max-width:85%; scroll-snap-align:start;}
+  .snap-row{flex-wrap:wrap;}
+  .snap-row > [class*="col-"]{flex:0 0 100%; max-width:100%;}
+  /* Dish rows on phones: leader dots off, name wraps, price pinned */
+  .dish{align-items:flex-start;}
+  .dish > div{flex:1 1 auto;}
+  .dish .dots{display:none;}
 }
 
 @media (max-width: 480px){
-  /* Narrow screens: shrink the visit-card label column so values wrap less */
-  .visit-row .k{flex-basis:84px;}
   .carousel-arrow.prev{left:.45rem;}
   .carousel-arrow.next{right:.45rem;}
 }
