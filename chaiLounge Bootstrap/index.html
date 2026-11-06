@@ -15,6 +15,7 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <style>
+    /* ---------- Design tokens and base styles (mobile first) ---------- */
     :root{
       --paper:#faf4e8;
       --paper-2:#f3e9d4;
@@ -31,12 +32,14 @@
       background:var(--paper);
       color:var(--ink);
       font-family:'Inter', system-ui, sans-serif;
-      font-size:17px; line-height:1.65;
+      font-size:16px; line-height:1.65;
     }
+    img{max-width:100%;}
     h1,h2,h3,.serif{font-family:'Fraunces', Georgia, serif;}
     a{color:var(--maroon);}
     a:hover{color:var(--maroon-dark);}
 
+    /* ---------- Top strip and navigation ---------- */
     .top-strip{
       background:var(--maroon); color:#f7ead2;
       font-size:.85rem; letter-spacing:.02em;
@@ -56,6 +59,7 @@
     .wordmark{font-family:'Fraunces', Georgia, serif; font-weight:700; font-size:1.35rem; color:var(--ink); letter-spacing:.01em;}
     .wordmark small{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold);}
 
+    /* ---------- Buttons ---------- */
     .btn-solid{
       display:inline-block; background:var(--maroon); color:#fdf6e9 !important;
       font-weight:600; letter-spacing:.03em;
@@ -75,6 +79,7 @@
       font-size:.72rem; font-weight:700; letter-spacing:.3em;
       text-transform:uppercase; color:var(--gold);
     }
+    /* ---------- Hero ---------- */
     .hero{
       background:var(--paper);
       border-bottom:1px solid var(--line);
@@ -88,6 +93,7 @@
     }
     .hero-note{border-left:3px solid var(--gold); padding-left:1rem; color:var(--ink-soft);}
 
+    /* ---------- Menu ticker ---------- */
     .ticker{
       background:var(--ink); color:#f3e9d4;
       font-family:'Fraunces', Georgia, serif; font-size:1.05rem;
@@ -96,13 +102,14 @@
     .ticker span{display:inline-block; padding:.65rem 0;}
     .ticker b{color:var(--gold); font-weight:600; padding:0 .9rem;}
 
-    section.block{padding:5rem 1rem;}
+    /* ---------- Sections and menu cards ---------- */
+    section.block{padding:3.5rem 1rem;}
     .section-title{font-size:clamp(2rem, 4vw, 3rem); font-weight:600; line-height:1.12;}
     .lede{color:var(--ink-soft); max-width:38rem;}
 
     .menu-card{
       background:#fffdf7; border:1px solid var(--line); border-radius:16px;
-      padding:1.8rem 1.8rem 1.2rem; height:100%;
+      padding:1.4rem 1.4rem 1rem; height:100%;
     }
     .menu-card h3{font-size:1.45rem; font-weight:600; margin-bottom:.2rem;}
     .menu-card .sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:1.1rem;}
@@ -113,12 +120,26 @@
     .dish .dots{flex:1;}
     .dish .price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap;}
 
+    /* ---------- Photo band ---------- */
     .photo-band img{
-      width:100%; height:300px; object-fit:cover; border-radius:16px; border:1px solid var(--line);
+      width:100%; height:220px; object-fit:cover; border-radius:16px; border:1px solid var(--line);
     }
     .photo-band figcaption{font-size:.9rem; color:var(--ink-soft); margin-top:.55rem;}
     .photo-band figcaption b{color:var(--ink);}
 
+    /* ---------- Placeholder photos: fill the gaps next to the real cafe
+       photos. Fixed aspect ratio and object-fit cover keep every frame
+       tidy at any screen width. ---------- */
+    .menu-card-photo{
+      display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover;
+      border:1px solid var(--line); border-radius:10px; margin-bottom:1.1rem;
+    }
+    .story-photo, .visit-photo{
+      display:block; width:100%; aspect-ratio:4 / 3; object-fit:cover;
+      border:1px solid var(--line); border-radius:16px;
+    }
+
+    /* ---------- Story ---------- */
     .story{ background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
     .story p{color:#42301d;}
     .pull{
@@ -126,8 +147,9 @@
       color:var(--maroon); font-style:italic;
     }
 
+    /* ---------- Visit ---------- */
     .visit-card{
-      background:var(--ink); color:#f3e9d4; border-radius:18px; padding:2.4rem;
+      background:var(--ink); color:#f3e9d4; border-radius:18px; padding:1.6rem;
     }
     .visit-card h2{color:#fdf6e9;}
     .visit-card a{color:var(--gold);}
@@ -135,12 +157,14 @@
     .visit-row:last-child{border-bottom:none;}
     .visit-row .k{flex:0 0 110px; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:.3rem;}
 
+    /* ---------- Footer ---------- */
     .footer{background:var(--paper); border-top:1px solid var(--line); padding:3rem 1rem 2rem; color:var(--ink-soft);}
     .footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
     .footer a{color:var(--ink-soft); text-decoration:none;}
     .footer a:hover{color:var(--maroon);}
     .footer .social-icons a{font-size:1.3rem; margin-right:.8rem; color:var(--maroon);}
 
+    /* ---------- Mobile menu ---------- */
     .mobile-menu{
       background:var(--paper); position:fixed; top:0; left:0; width:100%; height:100%;
       display:none; z-index:1050; padding:24px; flex-direction:column; align-items:center;
@@ -164,6 +188,17 @@
     html.js [data-delay="1"]{transition-delay:.08s;}
     html.js [data-delay="2"]{transition-delay:.16s;}
     html.js [data-delay="3"]{transition-delay:.24s;}
+
+    /* ---------- Scale up from tablet and desktop widths ---------- */
+    @media (min-width: 768px){
+      section.block{padding:5rem 1rem;}
+      .menu-card{padding:1.8rem 1.8rem 1.2rem;}
+      .photo-band img{height:300px;}
+      .visit-card{padding:2.4rem;}
+    }
+    @media (min-width: 992px){
+      body{font-size:17px;}
+    }
 
     /* Mobile swipe rows: pure CSS scroll-snap, the next card peeks in as a hint.
        Desktop keeps the normal grid. */
@@ -266,6 +301,7 @@
       <div class="row snap-row">
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="menu-card" data-reveal>
+                        <img class="menu-card-photo" src="https://picsum.photos/seed/karak-chai/900/700" alt="A glass of strong karak chai" loading="lazy" />
             <h3>Chai</h3>
             <p class="sub">Brewed on the stove. Can be iced.</p>
             <div class="dish"><div><span class="name">Karak Chai</span><span class="desc">Well brewed and strong. The house standard.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
@@ -283,6 +319,7 @@
 
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="menu-card" data-reveal data-delay="1">
+                        <img class="menu-card-photo" src="https://picsum.photos/seed/filter-coffee/900/700" alt="A cup of coffee on a cafe table" loading="lazy" />
             <h3>Coffee and other hots</h3>
             <p class="sub">For the one person in the group who does not drink chai.</p>
             <div class="dish"><div><span class="name">Indian Style Coffee</span><span class="desc">Frothy, sweet, made the South Indian way. Decaf available.</span></div><span class="dots"></span><span class="price">4.50</span></div>
@@ -295,6 +332,7 @@
           </div>
 
           <div class="menu-card mt-4" data-reveal data-delay="2">
+                        <img class="menu-card-photo" src="https://picsum.photos/seed/mango-lassi/900/700" alt="A tall cold lassi in a glass" loading="lazy" />
             <h3>Cold ones</h3>
             <p class="sub">Lassis, falooda shakes and Italian sodas.</p>
             <div class="dish"><div><span class="name">Mango Lassi</span><span class="desc">Mango pulp, ice cream and milk.</span></div><span class="dots"></span><span class="price">5.99</span></div>
@@ -307,6 +345,7 @@
 
         <div class="col-lg-4 col-md-12 mb-4">
           <div class="menu-card" data-reveal data-delay="2">
+                        <img class="menu-card-photo" src="https://picsum.photos/seed/samosa-chaat/900/700" alt="A plate of street snacks and chaat" loading="lazy" />
             <h3>Street snacks and chaat</h3>
             <p class="sub">The food that shows up at every chai stall back home.</p>
             <div class="dish"><div><span class="name">Veg Samosa (2 pc)</span><span class="desc">Crisp pastry, spiced potato and peas.</span></div><span class="dots"></span><span class="price">3.99</span></div>
@@ -320,6 +359,7 @@
           </div>
 
           <div class="menu-card mt-4" data-reveal data-delay="3">
+                        <img class="menu-card-photo" src="https://picsum.photos/seed/rice-bowl/900/700" alt="A rice bowl served hot" loading="lazy" />
             <h3>Bigger plates</h3>
             <p class="sub">Rice bowls, naan wraps and all day breakfast.</p>
             <div class="dish"><div><span class="name">Butter Chicken Rice Bowl</span><span class="desc">Rice, spiced potato and vegetables with mint sauce.</span></div><span class="dots"></span><span class="price">14.99</span></div>
@@ -372,6 +412,9 @@
           <p class="kicker mb-2">Our story</p>
           <h2 class="section-title">A chai shop first. A cafe second.</h2>
           <p class="pull mt-4">"Chai is not a drink you rush. It is the reason you sat down."</p>
+          <figure class="mt-4 mb-0" data-reveal data-delay="2">
+            <img class="story-photo" src="https://picsum.photos/seed/stovetop-chai/900/700" alt="Chai simmering in a pot on the stove" loading="lazy" />
+          </figure>
         </div>
         <div class="col-lg-7" data-reveal data-delay="1">
           <p>
@@ -410,6 +453,7 @@
             <a href="tel:+15874159649" class="btn-solid">Call (587) 415-9649</a>
             <a href="./reservation.html" class="btn-outline">Book a table</a>
           </div>
+          <img class="visit-photo mt-4" src="https://picsum.photos/seed/cafe-table/900/700" alt="Friends sitting around a cafe table with chai" loading="lazy" data-reveal />
         </div>
         <div class="col-lg-6 mb-4">
           <div class="visit-card" data-reveal data-delay="1">
