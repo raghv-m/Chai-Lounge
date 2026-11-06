@@ -44,10 +44,10 @@
         <a href="./careers.html" class="active">Careers</a>
         <a href="./contact.html">Contact Us</a>
         <a href="./reservation.html" class="btn-outline nav-btn">Reserve</a>
-        <a href="tel:+15874159649" class="btn-solid nav-btn">Order Now</a>
+        <a href="tel:+15874159649" class="btn-solid nav-btn">Call to order</a>
       </div>
       <div class="nav-mobile-actions">
-        <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Order</a>
+        <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Call</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </button>
@@ -96,7 +96,8 @@
           <div class="col-lg-7 mb-4">
             <div class="form-card" data-reveal data-delay="1">
               <h2 class="serif mb-4" style="font-size:1.6rem; font-weight:600;">Submit your resume</h2>
-              <form data-front-end data-success="careersSuccess" novalidate>
+              <!-- TODO(owner): replace REPLACE_WITH_YOUR_FORM_ID with this form's Formspree ID -->
+              <form data-success="careersSuccess" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="appName">Name</label>
@@ -130,6 +131,7 @@
                   <label for="appMessage">Message</label>
                   <textarea class="form-control" id="appMessage" name="message" rows="4" placeholder="A line or two about you, and when you can work"></textarea>
                 </div>
+                <p class="form-error" role="alert" hidden>Sorry, that did not send. Please try again, or call us at <a href="tel:+15874159649">(587) 415-9649</a>.</p>
                 <button type="submit" class="btn-solid">Send application</button>
               </form>
               <div class="form-success" id="careersSuccess">
@@ -168,7 +170,7 @@
           <p class="mt-3">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
         </div>
         <div class="col-md-2 mb-3">
-          <h5>Explore</h5>
+          <h3 class="footer-h">Explore</h3>
           <p><a href="./menu.html">Menu</a></p>
           <p><a href="./location.html">Location</a></p>
           <p><a href="./careers.html">Careers</a></p>
@@ -176,12 +178,12 @@
           <p><a href="./reservation.html">Reserve</a></p>
         </div>
         <div class="col-md-3 mb-3">
-          <h5>Hours</h5>
+          <h3 class="footer-h">Hours</h3>
           <p>Every day from 11:00 AM</p>
           <p>Late on Fridays and Saturdays</p>
         </div>
         <div class="col-md-3 mb-3">
-          <h5>Find us</h5>
+          <h3 class="footer-h">Find us</h3>
           <p>Edmonton, Alberta</p>
           <p><a href="tel:+15874159649">(587) 415-9649</a></p>
           <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Directions</a></p>
@@ -189,7 +191,7 @@
       </div>
       <div class="row mt-4">
         <div class="col-12 text-center" style="font-size:.85rem;">
-          <p>© 2025 Chai Lounge. All rights reserved. &nbsp;·&nbsp; Site by <a href="https://raghv.dev" target="_blank" rel="noopener">Raghav Mahajan</a></p>
+          <p>© 2026 Chai Lounge. All rights reserved. &nbsp;·&nbsp; Site by <a href="https://raghv.dev" target="_blank" rel="noopener">Raghav Mahajan</a></p>
         </div>
       </div>
     </div>

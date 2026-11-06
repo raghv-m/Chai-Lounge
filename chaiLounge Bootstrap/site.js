@@ -182,18 +182,37 @@
     start();
   }
 
-  /* Front-end only forms: no back end, so a submit swaps in
-     a confirmation message instead of posting. */
-  document.querySelectorAll('form[data-front-end]').forEach(function (form) {
+  /* Forms post to Formspree (see each form's action). The success
+     message shows only when the service accepts the submission;
+     on any failure the form stays and .form-error is shown. */
+  document.querySelectorAll('form[data-success]').forEach(function (form) {
+    var button = form.querySelector('[type="submit"]');
+    var errorBox = form.querySelector('.form-error');
+    var success = document.getElementById(form.getAttribute('data-success'));
+
+    function showError() {
+      if (button) { button.disabled = false; }
+      if (errorBox) { errorBox.hidden = false; }
+    }
+
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      var success = document.getElementById(form.getAttribute('data-success'));
-      form.style.display = 'none';
-      if (success) {
-        success.classList.add('show');
-        success.setAttribute('tabindex', '-1');
-        success.focus();
-      }
+      if (button) { button.disabled = true; }
+      if (errorBox) { errorBox.hidden = true; }
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) { showError(); return; }
+        form.reset();
+        form.style.display = 'none';
+        if (success) {
+          success.classList.add('show');
+          success.setAttribute('tabindex', '-1');
+          success.focus();
+        }
+      }).catch(showError);
     });
   });
 })();
