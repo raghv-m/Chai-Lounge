@@ -3,649 +3,475 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chai Lounge</title>
-  <!-- Tailwind CSS -->
+  <title>Chai Lounge | Indian Chai Cafe in Edmonton</title>
+  <meta name="description" content="Chai Lounge is an Indian chai cafe in Edmonton. Karak chai brewed on the stove, street snacks, chaat, rice bowls and late night chai."/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Font Awesome -->
   <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
+    :root{
+      --paper:#faf4e8;
+      --paper-2:#f3e9d4;
+      --ink:#2a1b10;
+      --ink-soft:#5b4632;
+      --maroon:#7c2d16;
+      --maroon-dark:#5d2110;
+      --gold:#bb883e;
+      --line:#e2d3b8;
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0; padding:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:'Inter', system-ui, sans-serif;
+      font-size:17px; line-height:1.65;
+    }
+    h1,h2,h3,.serif{font-family:'Fraunces', Georgia, serif;}
+    a{color:var(--maroon);}
+    a:hover{color:var(--maroon-dark);}
+
+    .top-strip{
+      background:var(--maroon); color:#f7ead2;
+      font-size:.85rem; letter-spacing:.02em;
+    }
+    .top-strip a{color:#f7ead2; text-decoration:underline; text-underline-offset:3px;}
+
+    .navbar-custom{
+      display:flex; justify-content:space-between; align-items:center;
+      position:sticky; top:0; z-index:1000;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      width:100%;
+    }
+    .navbar-custom a{color:var(--ink); text-decoration:none; font-weight:500;}
+    .navbar-custom a:hover{color:var(--maroon); text-decoration:none;}
+    .logo-img{height:42px;}
+    .wordmark{font-family:'Fraunces', Georgia, serif; font-weight:700; font-size:1.35rem; color:var(--ink); letter-spacing:.01em;}
+    .wordmark small{display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold);}
+
+    .btn-solid{
+      display:inline-block; background:var(--maroon); color:#fdf6e9 !important;
+      font-weight:600; letter-spacing:.03em;
+      padding:.8rem 1.6rem; border-radius:999px;
+      transition:background .25s ease; text-decoration:none !important;
+    }
+    .btn-solid:hover{background:var(--maroon-dark);}
+    .btn-outline{
+      display:inline-block; background:transparent; color:var(--ink) !important;
+      border:1.5px solid var(--ink); font-weight:600; letter-spacing:.03em;
+      padding:.8rem 1.6rem; border-radius:999px; text-decoration:none !important;
+      transition:all .25s ease;
+    }
+    .btn-outline:hover{border-color:var(--maroon); color:var(--maroon) !important;}
+
+    .kicker{
+      font-size:.72rem; font-weight:700; letter-spacing:.3em;
+      text-transform:uppercase; color:var(--gold);
+    }
+    .hero{
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+    }
+    .hero h1{font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.04; font-weight:600; color:var(--ink);}
+    .hero h1 em{font-style:italic; color:var(--maroon);}
+    .hero-photo{
+      border-radius:18px; border:1px solid var(--line);
+      box-shadow:0 24px 50px rgba(42,27,16,.18);
+      width:100%; height:100%; object-fit:cover;
+    }
+    .hero-note{border-left:3px solid var(--gold); padding-left:1rem; color:var(--ink-soft);}
+
+    .ticker{
+      background:var(--ink); color:#f3e9d4;
+      font-family:'Fraunces', Georgia, serif; font-size:1.05rem;
+      overflow:hidden; white-space:nowrap;
+    }
+    .ticker span{display:inline-block; padding:.65rem 0;}
+    .ticker b{color:var(--gold); font-weight:600; padding:0 .9rem;}
+
+    section.block{padding:5rem 1rem;}
+    .section-title{font-size:clamp(2rem, 4vw, 3rem); font-weight:600; line-height:1.12;}
+    .lede{color:var(--ink-soft); max-width:38rem;}
+
+    .menu-card{
+      background:#fffdf7; border:1px solid var(--line); border-radius:16px;
+      padding:1.8rem 1.8rem 1.2rem; height:100%;
+    }
+    .menu-card h3{font-size:1.45rem; font-weight:600; margin-bottom:.2rem;}
+    .menu-card .sub{color:var(--ink-soft); font-size:.9rem; margin-bottom:1.1rem;}
+    .dish{display:flex; align-items:baseline; gap:.6rem; padding:.5rem 0; border-bottom:1px dotted var(--line);}
+    .dish:last-child{border-bottom:none;}
+    .dish .name{font-weight:600; color:var(--ink);}
+    .dish .desc{display:block; font-weight:400; font-size:.86rem; color:var(--ink-soft);}
+    .dish .dots{flex:1;}
+    .dish .price{font-family:'Fraunces', Georgia, serif; font-weight:600; color:var(--maroon); white-space:nowrap;}
+
+    .photo-band img{
+      width:100%; height:300px; object-fit:cover; border-radius:16px; border:1px solid var(--line);
+    }
+    .photo-band figcaption{font-size:.9rem; color:var(--ink-soft); margin-top:.55rem;}
+    .photo-band figcaption b{color:var(--ink);}
+
+    .story{ background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+    .story p{color:#42301d;}
+    .pull{
+      font-family:'Fraunces', Georgia, serif; font-size:1.6rem; line-height:1.35;
+      color:var(--maroon); font-style:italic;
     }
 
-    .bg-gold {
-      background-color: #bb883e;
+    .visit-card{
+      background:var(--ink); color:#f3e9d4; border-radius:18px; padding:2.4rem;
     }
+    .visit-card h2{color:#fdf6e9;}
+    .visit-card a{color:var(--gold);}
+    .visit-row{display:flex; gap:1rem; padding:.85rem 0; border-bottom:1px solid rgba(243,233,212,.18);}
+    .visit-row:last-child{border-bottom:none;}
+    .visit-row .k{flex:0 0 110px; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); padding-top:.3rem;}
 
-    .bg-black {
-      background-color: rgba(0, 0, 0, 0.9);
-    }
+    .footer{background:var(--paper); border-top:1px solid var(--line); padding:3rem 1rem 2rem; color:var(--ink-soft);}
+    .footer h5{font-family:'Fraunces', Georgia, serif; color:var(--ink); font-size:1.05rem; margin-bottom:.9rem;}
+    .footer a{color:var(--ink-soft); text-decoration:none;}
+    .footer a:hover{color:var(--maroon);}
+    .footer .social-icons a{font-size:1.3rem; margin-right:.8rem; color:var(--maroon);}
 
-    /* Navbar & Hover State */
-    .navbar-custom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #000;
-      width: 100%;
+    .mobile-menu{
+      background:var(--paper); position:fixed; top:0; left:0; width:100%; height:100%;
+      display:none; z-index:1050; padding:24px; flex-direction:column; align-items:center;
     }
-
-    .navbar-custom a {
-      color: #f0f0f0;
-      text-decoration: none;
-      transition: color 0.3s;
+    .mobile-menu.show{display:flex;}
+    .mobile-menu a{
+      display:block; width:85%; margin:.6rem auto; padding:1rem 0; text-align:center;
+      font-size:1.1rem; background:#fffdf7; color:var(--maroon); border-radius:12px;
+      text-decoration:none; font-weight:700; border:1.5px solid var(--gold);
     }
-
-    .navbar-custom a:hover {
-      color: gray; 
-      text-decoration: none;
+    .close-menu{position:absolute; top:16px; right:24px; font-size:2.4rem; color:var(--ink); cursor:pointer;}
+    .navbar-toggler{border:none; background:none;}
+    .custom-toggler .navbar-toggler-icon{
+      background-image:url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(124,45,22,1)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
-
-    .logo-img {
-      height: 40px;
-    }
-
-    .custom-toggler .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30'xmlns='http://www.w3.org/2000/svg'%3E%3Cpathstroke='rgba(187,136,62,1)'stroke-width='2'stroke-linecap='round'stroke-miterlimit='10'd='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-
-    .navbar-toggler {
-      border: none;
-    }
-
-    .footer {
-      background-color: #000;
-      padding: 2rem 1rem;
-      color: #f0f0f0;
-    }
-
-    .footer .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .footer h5 {
-      color: #bb883e;
-      margin-bottom: 1rem;
-    }
-
-    .footer a {
-      color: #f0f0f0;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .footer a:hover {
-      color: gray;
-      text-decoration: none;
-    }
-
-    .footer .social-icons a {
-      margin-right: 0.5rem;
-      font-size: 1.5rem;
-    }
-
-    @media (max-width: 767.98px) {
-      .footer .row > div {
-        margin-bottom: 1rem;
-      }
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      background: #000;
-      backdrop-filter: blur(20px);
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: none;
-      z-index: 1050;
-      padding: 20px;
-      justify-content: flex-start;
-      align-items: center;
-      flex-direction: column;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-menu.show {
-      display: flex;
-    }
-
-    .close-menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 2em;
-      color: #ffffff;
-    }
-
-    /* Button Animations */
-    .btn-animate {
-      position: relative;
-      overflow: hidden;
-      transition: color 0.4s;
-    }
-
-    .btn-animate::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: all 0.4s;
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    .btn-animate:hover::before {
-      width: 0;
-      height: 0;
-    }
-
-    /* Section CTA Buttons (for sections and mobile menu) */
-    .section-cta {
-      display: inline-block;
-      border: 1px solid #bb883e;
-      color: #bb883e;
-      background: transparent;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.75rem 1.5rem; /* uniform size for all buttons */
-      border-radius: 0.375rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      font-size: 0.875rem; /* ~text-sm */
-    }
-
-    .section-cta:hover {
-      border-color: gray;
-      color: #bb883e; /* stays gold */
-      background: transparent; /* remains transparent */
-      text-decoration: none;
-    }
-
-    /* Remove horizontal scroll behavior since not requested anymore */
-    .scroll-container {
-      /* vertical stacking by default */
-    }
-
-    section.full-screen-section {
-      padding: 4rem 1rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-  </style>
-  <style>
-    /* Drinks section horizontal scroll for mobile */
-    @media (max-width: 767px) {
-      .drinks-scroll {
-        display: flex !important;
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 1rem;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding-bottom: 0;
-        background: none !important;
-        border-radius: 0 !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
-      }
-      .drinks-scroll::-webkit-scrollbar {
-        display: none;
-        width: 0 !important;
-        height: 0 !important;
-        background: transparent !important;
-      }
-      .drinks-scroll > div {
-        min-width: 140px;
-        flex: 0 0 auto;
-        background: transparent !important;
-        border-radius: 0 !important;
-        padding: 0.5rem 0.5rem 1rem 0.5rem;
-        margin-bottom: 0.5rem;
-        align-items: center !important;
-        text-align: center !important;
-      }
-      .full-screen-section {
-        padding: 2rem 0.5rem;
-        text-align: center !important;
-        align-items: center !important;
-        justify-content: center !important;
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      .full-screen-section > div {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      .full-screen-section img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-      }
-      .full-screen-section h1,
-      .full-screen-section span,
-      .full-screen-section p,
-      .full-screen-section a {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .space-y-4 > * + * {
-        margin-top: 1.5rem;
-      }
-      /* Footer center alignment on mobile */
-      .footer .row, .footer .col-md-3, .footer .col-12, .footer .social, .footer .locations, .footer .hours, .footer .quick-links {
-        text-align: center !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-      }
-      .footer .row {
-        flex-direction: column !important;
-      }
-    }
-    /* Desktop and all screens: revert to original layout */
-    @media (min-width: 768px) {
-      .full-screen-section {
-        display: block;
-        text-align: left;
-        align-items: unset;
-        justify-content: unset;
-      }
-      .full-screen-section > div {
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        justify-content: space-between;
-        width: 100%;
-      }
-      .full-screen-section img {
-        margin-left: 0;
-        margin-right: 0;
-        border-radius: 12px;
-      }
-      .full-screen-section h1,
-      .full-screen-section span,
-      .full-screen-section p,
-      .full-screen-section a {
-        text-align: left;
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
-    @media (max-width: 991px) {
-      .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(24, 24, 24, 0.98);
-        z-index: 1000;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 60px;
-        transition: all 0.3s ease;
-        overflow-y: auto;
-        box-shadow: 0 8px 32px 0 rgba(34,34,34,0.25);
-        animation: fadeInMenu 0.4s cubic-bezier(0.4,0,0.2,1);
-      }
-      @keyframes fadeInMenu {
-        from { opacity: 0; transform: translateY(-30px); }
-        to { opacity: 1; transform: none; }
-      }
-      .mobile-menu.show {
-        display: flex;
-      }
-      .mobile-menu .close-menu {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 2.8rem;
-        color: #fff;
-        cursor: pointer;
-        z-index: 1100;
-        transition: color 0.2s;
-      }
-      .mobile-menu .close-menu:hover {
-        color: #bb883e;
-      }
-      .mobile-menu img {
-        margin-bottom: 2.5rem;
-        border-radius: 50%;
-        box-shadow: 0 2px 16px 0 rgba(187,136,62,0.15);
-        background: #181818;
-        padding: 0.5rem;
-        width: 90px;
-        height: 90px;
-        object-fit: contain;
-      }
-      .mobile-menu a {
-        display: block;
-        width: 85%;
-        margin: 1.1rem auto;
-        padding: 1.1rem 0;
-        text-align: center;
-        font-size: 1.2rem;
-        background: #222;
-        color: #bb883e;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-        box-shadow: 0 2px 8px 0 rgba(34,34,34,0.10);
-        border: 1.5px solid #bb883e;
-        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-      }
-      .mobile-menu a:hover {
-        background: #bb883e;
-        color: #181818;
-        box-shadow: 0 4px 16px 0 rgba(187,136,62,0.15);
-      }
-    }
+    .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+    .reveal.visible{opacity:1; transform:none;}
   </style>
 </head>
 
 <body>
-  <!-- Top Banner -->
-  <div class="bg-gold text-center py-2 w-full text-sm sm:text-base">
-    <span>
-      <a href="https://maps.app.goo.gl/N7VSaroPwPcHz6Yh7" target="_blank" class="text-white">
-        Chai Lounge is open now!! Click here to visit us today
-      </a>
-    </span>
+  <!-- Top strip -->
+  <div class="top-strip text-center py-2 px-3 w-full">
+    Edmonton, Alberta &nbsp;·&nbsp; Open today from 11 AM &nbsp;·&nbsp; <a href="tel:+15874159649">Call (587) 415-9649</a>
   </div>
 
-  <!-- NAVBAR (from reservation.html) -->
-  <nav class="bg-black text-white navbar-custom w-full">
-    <div class="container mx-auto px-4 flex items-center justify-between">
-      <!-- Logo -->
-      <div class="text-xl font-bold py-2">
-        <a href="./index.html" rel="noopener noreferrer">
-          <img src="./images/C.png" alt="Chai Lounge Logo" class="logo-img" />
-        </a>
+  <!-- Navbar -->
+  <nav class="navbar-custom w-full">
+    <div class="container mx-auto px-4 flex items-center justify-between py-2">
+      <a href="./index.html" class="flex items-center" style="gap:.7rem;">
+        <img src="./images/C.png" alt="Chai Lounge logo" class="logo-img" />
+        <span class="wordmark">Chai Lounge<small>Edmonton</small></span>
+      </a>
+      <div class="hidden md:flex space-x-5 items-center text-sm lg:text-base">
+        <a href="#menu" class="py-2">Menu</a>
+        <a href="#story" class="py-2">Our Story</a>
+        <a href="#visit" class="py-2">Visit</a>
+        <a href="./contact.html" class="py-2">Contact</a>
+        <a href="./reservation.html" class="btn-outline" style="padding:.55rem 1.2rem;">Reserve</a>
+        <a href="tel:+15874159649" class="btn-solid" style="padding:.55rem 1.2rem;">Order Now</a>
       </div>
-      <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-4 items-center text-sm sm:text-base md:text-base">
-        <a href="./Chai Lounge new menu.pdf" target="_blank" class="py-2">Menu</a>
-        <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" class="py-2">Location</a>
-        <a href="./careers.html" target="_blank" class="py-2">Careers</a>
-        <a href="./contact.html" target="_blank" class="py-2">Contact Us</a>
-        <a
-          href="./reservation.html"
-          target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
-        >
-          Reserve
-        </a>
-        <a
-          href="tel:+15874159649"
-          target="_blank"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-gray-700 hover:text-white"
-        >
-          Order Now
-        </a>
-      </div>
-      <!-- Mobile Icons -->
       <div class="flex md:hidden items-center space-x-2">
-        <a
-          href="./reservation.html"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
-        >
-          Reserve
-        </a>
-        <a
-          href="tel:+15874159649"
-          class="btn-animate inline-block bg-[#bb883e] text-black font-semibold uppercase tracking-wider 
-                 px-3 py-2 rounded text-xs sm:text-sm hover:bg-gray-700 hover:text-white"
-        >
-          Order
-        </a>
-        <button class="text-white focus:outline-none custom-toggler" id="navbar-toggle">
+        <a href="tel:+15874159649" class="btn-solid" style="padding:.5rem 1rem; font-size:.85rem;">Order</a>
+        <button class="custom-toggler" id="navbar-toggle" aria-label="Open menu">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </div>
-    <!-- Mobile Menu -->
     <div class="md:hidden mobile-menu" id="navbar-menu">
       <span class="close-menu" id="close-menu">&times;</span>
-      <img src="./images/C.png" alt="Chai Lounge Logo" class="w-20 h-auto mb-6 mx-auto" />
-      <a href="./Chai Lounge new menu.pdf" target="_blank" class="btn-animate section-cta mt-2">Menu</a>
-      <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" class="btn-animate section-cta mt-2">Location</a>
-      <a href="./careers.html" class="btn-animate section-cta mt-2">Careers</a>
-      <a href="./contact.html" class="btn-animate section-cta mt-2">Contact Us</a>
+      <img src="./images/C.png" alt="Chai Lounge logo" style="width:84px; height:84px; object-fit:contain; margin:2.2rem 0 1.4rem;" />
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#visit">Visit</a>
+      <a href="./careers.html">Careers</a>
+      <a href="./contact.html">Contact Us</a>
     </div>
   </nav>
 
-  <!-- Sections stacked in a column -->
-  <div class="scroll-container" id="scroll-container">
-    <!-- Breakfast & Brunch Section -->
-    <section class="full-screen-section inline-block bg-black text-light w-full">
-      <div class="flex flex-col lg:flex-row max-w-7xl mx-auto w-full">
-        <div class="lg:w-1/2 p-4 sm:p-8 lg:p-16 bg-black flex flex-col justify-center">
-            <span class="text-4xl font-bold text-gold">Start Your Day at Chai Lounge</span>
-          <h1 class="font-bold text-gold mb-4 text-2xl sm:text-4xl lg:text-6xl leading-tight">
-            Introducing <br />
-            Breakfast & Brunch <br />
-            At Chai Lounge
-          </h1>
-          <p class="mb-8 text-muted text-sm sm:text-base lg:text-lg leading-relaxed">
-            Rise and shine to tasty mornings! We're thrilled to introduce a 
-            selection of breakfast and brunch items. Begin every day with a smile.
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container mx-auto px-4 py-5">
+      <div class="row align-items-center">
+        <div class="col-lg-6 py-4">
+          <p class="kicker mb-3">Indian chai cafe · Edmonton</p>
+          <h1>Real chai, brewed slow on the stove.</h1>
+          <p class="mt-4 lede" style="font-size:1.12rem;">
+            Chai Lounge is a small Indian cafe in Edmonton built around one thing done properly:
+            chai the way it is made at home. Strong tea, fresh ginger, cardamom, milk, and time.
+            No syrup shortcuts in the karak, no powders. Just a pot on the stove and a fresh batch
+            every time the last one runs out.
           </p>
-          <div class="space-y-4">
-          <a href="./Chai Lounge new menu.pdf" class="btn-animate section-cta">
-            Explore Our Menu
-          </a>
+          <div class="mt-4 d-flex flex-wrap" style="gap:.8rem;">
+            <a href="#menu" class="btn-solid">See the menu</a>
+            <a href="#visit" class="btn-outline">Plan a visit</a>
           </div>
+          <p class="hero-note mt-5">
+            Cutting chai for a quick stop, a full mug when you are staying a while.
+            First time here? Start with the karak and a vada pav.
+          </p>
         </div>
-        <div class="lg:w-1/2 mt-4 lg:mt-0">
-          <img src="./images/breakfastandlunch.jpg" alt="Breakfast Image" class="w-full h-full object-cover"/>
+        <div class="col-lg-6 py-4">
+          <img src="./images/chaiLounge.jpg" alt="Inside Chai Lounge in Edmonton" class="hero-photo" />
         </div>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <!-- Restaurant Reservation Section -->
-    <section class="full-screen-section inline-block bg-black text-light w-full">
-        <div class="flex flex-col lg:flex-row max-w-7xl mx-auto w-full">
-          <!-- Image always visible, above text on mobile -->
-          <div class="w-full lg:w-1/2 order-1 lg:order-2 mb-4 lg:mb-0">
-            <img alt="restaurant interior" src="./images/cullinarydelight.jpg" class="w-full h-full object-cover"/>
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <span>Karak chai <b>·</b> Cutting chai <b>·</b> Samosa chaat <b>·</b> Vada pav <b>·</b> Bun maska <b>·</b> Mango lassi <b>·</b> Falooda shakes <b>·</b> Pav bhaji <b>·</b> Open late on weekends <b>·</b></span>
+  </div>
+
+  <!-- Menu -->
+  <section class="block" id="menu">
+    <div class="container">
+      <p class="kicker mb-2">The menu</p>
+      <h2 class="section-title mb-3">Chai first. Everything else after.</h2>
+      <p class="lede mb-5">
+        Ten chais, all brewed to order. Small is a cutting glass, regular is a full mug.
+        Oat, almond and lactose free milk available. Prices are what is printed on the board in the cafe.
+      </p>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="menu-card">
+            <h3>Chai</h3>
+            <p class="sub">Brewed on the stove. Can be iced.</p>
+            <div class="dish"><div><span class="name">Karak Chai</span><span class="desc">Well brewed and strong. The house standard.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Ginger Chai</span><span class="desc">Fresh ginger, no syrup.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Elaichi Chai</span><span class="desc">A hint of green cardamom.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Mint Chai</span><span class="desc">Fresh mint leaves, no syrup.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Rose Chai</span><span class="desc">Rose flavoured, finished with petals.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Gur Wali Chai</span><span class="desc">Made with jaggery instead of sugar.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Ajwain Chai</span><span class="desc">Karak with carom seeds. Settles a heavy meal.</span></div><span class="dots"></span><span class="price">3.99 / 4.50</span></div>
+            <div class="dish"><div><span class="name">Pista Chai</span><span class="desc">Pistachio flavour and pista powder.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
+            <div class="dish"><div><span class="name">French Vanilla Chai</span><span class="desc">Karak chai with vanilla.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
+            <div class="dish"><div><span class="name">Dirty Chai</span><span class="desc">A shot of espresso in your chai.</span></div><span class="dots"></span><span class="price">4.25 / 4.75</span></div>
           </div>
-          <div class="w-full lg:w-1/2 p-4 sm:p-8 lg:p-16 bg-black flex flex-col justify-center order-2 lg:order-1">
-            <span class="text-4xl font-bold text-gold">Reserve a Table</span>
-            <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 text-gold leading-tight">
-              A New Season Of Culinary Delights
-            </h1>
-            <p class="mb-8 text-muted text-sm sm:text-base lg:text-lg leading-relaxed">
-              From the freshest ingredients to the most innovative techniques, 
-              enjoy an exceptional dining experience. Savor the flavors of the season.
-            </p>
-            <div class="space-y-4">
-              <a href="./reservation.html" class="btn-animate section-cta">
-                Reserve at Chai Lounge
-              </a>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="menu-card">
+            <h3>Coffee and other hots</h3>
+            <p class="sub">For the one person in the group who does not drink chai.</p>
+            <div class="dish"><div><span class="name">Indian Style Coffee</span><span class="desc">Frothy, sweet, made the South Indian way. Decaf available.</span></div><span class="dots"></span><span class="price">4.50</span></div>
+            <div class="dish"><div><span class="name">Americano</span></div><span class="dots"></span><span class="price">3.00</span></div>
+            <div class="dish"><div><span class="name">Espresso</span></div><span class="dots"></span><span class="price">3.00</span></div>
+            <div class="dish"><div><span class="name">Matcha</span></div><span class="dots"></span><span class="price">4.99</span></div>
+            <div class="dish"><div><span class="name">London Fog</span></div><span class="dots"></span><span class="price">4.75</span></div>
+            <div class="dish"><div><span class="name">Hot Chocolate</span></div><span class="dots"></span><span class="price">5.50</span></div>
+            <div class="dish"><div><span class="name">Herbal Tea</span></div><span class="dots"></span><span class="price">3.00</span></div>
+          </div>
+
+          <div class="menu-card mt-4">
+            <h3>Cold ones</h3>
+            <p class="sub">Lassis, falooda shakes and Italian sodas.</p>
+            <div class="dish"><div><span class="name">Mango Lassi</span><span class="desc">Mango pulp, ice cream and milk.</span></div><span class="dots"></span><span class="price">5.99</span></div>
+            <div class="dish"><div><span class="name">Dry Fruit Lassi</span></div><span class="dots"></span><span class="price">6.50</span></div>
+            <div class="dish"><div><span class="name">Falooda Shake</span><span class="desc">Vanilla ice cream, chia seeds, vermicelli. Mango, rose, pista or dry fruit.</span></div><span class="dots"></span><span class="price">6.99 / 7.50</span></div>
+            <div class="dish"><div><span class="name">Italian Soda</span><span class="desc">Peach, strawberry, passion fruit, lime, watermelon or blue raspberry.</span></div><span class="dots"></span><span class="price">4.75</span></div>
+            <div class="dish"><div><span class="name">Rose Sharbat</span><span class="desc">Rose syrup in milk, dry petals on top. Vegan on request.</span></div><span class="dots"></span><span class="price">4.50</span></div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="menu-card">
+            <h3>Street snacks and chaat</h3>
+            <p class="sub">The food that shows up at every chai stall back home.</p>
+            <div class="dish"><div><span class="name">Veg Samosa (2 pc)</span><span class="desc">Crisp pastry, spiced potato and peas.</span></div><span class="dots"></span><span class="price">3.99</span></div>
+            <div class="dish"><div><span class="name">Vada Pav (2 pc)</span><span class="desc">Sweet and tangy potato patties in bread with house sauces.</span></div><span class="dots"></span><span class="price">9.99</span></div>
+            <div class="dish"><div><span class="name">Samosa Chaat</span><span class="desc">Broken samosa, chickpea curry, yogurt and sauces.</span></div><span class="dots"></span><span class="price">10.99</span></div>
+            <div class="dish"><div><span class="name">Golgappe (6 pc)</span><span class="desc">Filled with potato and chickpea, mint and tamarind water on the side.</span></div><span class="dots"></span><span class="price">7.99</span></div>
+            <div class="dish"><div><span class="name">Pav Bhaji</span><span class="desc">Smooth vegetable gravy with two buttered breads.</span></div><span class="dots"></span><span class="price">11.99</span></div>
+            <div class="dish"><div><span class="name">Chilli Paneer Bites</span><span class="desc">Fried paneer in an onion and pepper sauce.</span></div><span class="dots"></span><span class="price">12.99</span></div>
+            <div class="dish"><div><span class="name">Tandoori Fries</span><span class="desc">House spices and sauce over hot fries.</span></div><span class="dots"></span><span class="price">7.99</span></div>
+            <div class="dish"><div><span class="name">Stuffed Kulche (2 pc)</span><span class="desc">Soft breads stuffed with potato and chickpea.</span></div><span class="dots"></span><span class="price">9.99</span></div>
+          </div>
+
+          <div class="menu-card mt-4">
+            <h3>Bigger plates</h3>
+            <p class="sub">Rice bowls, naan wraps and all day breakfast.</p>
+            <div class="dish"><div><span class="name">Butter Chicken Rice Bowl</span><span class="desc">Rice, spiced potato and vegetables with mint sauce.</span></div><span class="dots"></span><span class="price">14.99</span></div>
+            <div class="dish"><div><span class="name">Shahi Paneer Rice Bowl</span></div><span class="dots"></span><span class="price">13.99</span></div>
+            <div class="dish"><div><span class="name">Butter Chicken Naan Wrap</span><span class="desc">Curry, fries, ranch and vegetables wrapped in naan.</span></div><span class="dots"></span><span class="price">9.99</span></div>
+            <div class="dish"><div><span class="name">Masala Omelette</span><span class="desc">Onions, tomatoes and green chilli, folded hot.</span></div><span class="dots"></span><span class="price">8.99</span></div>
+            <div class="dish"><div><span class="name">Gulab Jamun (2 pc)</span></div><span class="dots"></span><span class="price">4.99</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-3" style="color:var(--ink-soft);">
+        That is about half of it. Sandwiches, wraps, burgers, tacos, mocktails and the full sweets list are on the
+        <a href="./Chai Lounge new menu.pdf" target="_blank">full menu (PDF)</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Photo band -->
+  <section style="padding:0 1rem 4.5rem;">
+    <div class="container">
+      <div class="row photo-band">
+        <div class="col-md-4 mb-4">
+          <figure>
+            <img src="./images/vadapav.webp" alt="Vada pav at Chai Lounge" />
+            <figcaption><b>Vada pav.</b> Two to a plate, extra chutney if you ask.</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4 mb-4">
+          <figure>
+            <img src="./images/butterChicken.webp" alt="Butter chicken at Chai Lounge" />
+            <figcaption><b>Butter chicken.</b> The bowl most tables end up ordering.</figcaption>
+          </figure>
+        </div>
+        <div class="col-md-4 mb-4">
+          <figure>
+            <img src="./images/paneer.jpg" alt="Paneer dish at Chai Lounge" />
+            <figcaption><b>Paneer, three ways.</b> Pakora, chilli bites, or in a wrap.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="block story" id="story">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <p class="kicker mb-2">Our story</p>
+          <h2 class="section-title">A chai shop first. A cafe second.</h2>
+          <p class="pull mt-4">"Chai is not a drink you rush. It is the reason you sat down."</p>
+        </div>
+        <div class="col-lg-7">
+          <p>
+            Chai Lounge opened in Edmonton with a short menu and a long memory. Most of the recipes come from
+            family kitchens in India, where chai is made on the stove, argued over, and poured small and often.
+            We kept that habit here. The karak is brewed strong enough to stand a spoon in, the ginger is fresh,
+            and the cardamom goes in whole.
+          </p>
+          <p>
+            The food followed the tea. Samosas, vada pav, chaat and pav bhaji are what people actually eat with
+            chai, so that is what we serve, next to rice bowls and naan wraps for anyone who shows up hungry.
+            Nothing on the menu is there to fill space.
+          </p>
+          <p>
+            The room is built for staying. Students camp here with laptops, families take the big table on
+            weekends, and half the neighbourhood seems to drop in after dinner for one last cutting chai.
+            On cold Edmonton nights, that last part matters more than anything else we do.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section class="block" id="visit" style="padding-top:4.5rem;">
+    <div class="container">
+      <div class="row align-items-stretch">
+        <div class="col-lg-6 mb-4">
+          <p class="kicker mb-2">Visit</p>
+          <h2 class="section-title mb-3">Come sit for a while.</h2>
+          <p class="lede">
+            Walk-ins are always welcome. For a group of six or more, call ahead and we will push tables together.
+            Takeout orders are usually ready in fifteen minutes.
+          </p>
+          <div class="mt-4 d-flex flex-wrap" style="gap:.8rem;">
+            <a href="tel:+15874159649" class="btn-solid">Call (587) 415-9649</a>
+            <a href="./reservation.html" class="btn-outline">Book a table</a>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="visit-card">
+            <h2 class="serif" style="font-size:1.6rem; font-weight:600;">Chai Lounge, Edmonton</h2>
+            <div class="visit-row mt-3">
+              <div class="k">Find us</div>
+              <div>Edmonton, Alberta. <a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Get directions</a></div>
+            </div>
+            <div class="visit-row">
+              <div class="k">Hours</div>
+              <div>Open every day from 11:00 AM.<br/>Open late on Fridays and Saturdays.</div>
+            </div>
+            <div class="visit-row">
+              <div class="k">Phone</div>
+              <div><a href="tel:+15874159649">(587) 415-9649</a></div>
+            </div>
+            <div class="visit-row">
+              <div class="k">Good to know</div>
+              <div>Free Wi-Fi, plenty of outlets, and no one will rush you out for ordering one chai and staying an hour.</div>
             </div>
           </div>
         </div>
-      </section>
-
-    <!-- Exciting Drinks Menu Section -->
-    <section class="full-screen-section inline-block bg-black text-light w-full">
-        <div class="flex flex-col lg:flex-row max-w-7xl mx-auto w-full">
-          <div class="lg:w-1/2 p-4 sm:p-8 lg:p-16 bg-black flex flex-col justify-center">
-            <span class="text-4xl font-bold text-gold">Tasty Cocktails</span>
-          <h1 class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-4 mb-6 text-gold leading-tight">
-            Exciting New Drinks Menu At Chai Lounge
-          </h1>
-          <p class="mb-8 text-muted text-sm sm:text-base lg:text-lg leading-relaxed">
-            Whether you're joining us for pre-game or a night-cap, lunch or dinner, 
-            enjoy our handcrafted Tasty Cocktails!
-          </p>
-          <p class="mb-8 text-muted text-sm sm:text-base lg:text-lg leading-relaxed">View our wide selection below.</p>
-          <div class="space-y-4">
-            <a href="./Chai Lounge new menu.pdf" class="btn-animate section-cta">
-              View Drinks Menu
-            </a>
-          </div>
-        </div>
-        <!-- Drinks Images Grid: horizontal scroll on mobile -->
-        <div class="col-span-12 md:col-span-7 grid grid-cols-3 gap-4 sm:gap-6 bg-card p-4 sm:p-6 rounded-lg drinks-scroll">
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=3" alt="Mister Truffle" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Mister Truffle</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=4" alt="Murabba Mule" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Murabba Mule</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=5" alt="Netflix & Chill" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Netflix & Chill</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=6" alt="Hibiscus Paloma" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Hibiscus Paloma</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=7" alt="2 PM in Goa" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">2 PM in Goa</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=8" alt="Adam & Eve" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Adam & Eve</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=9" alt="Coorg Negroni" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Coorg Negroni</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=10" alt="Farm Bird" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Farm Bird</p>
-          </div>
-          <div class="flex flex-col items-center space-y-2">
-            <img src="https://picsum.photos/200/200?random=10" alt="Farm Bird" class="rounded"/>
-            <p class="text-gold text-sm sm:text-base">Nothing Bird</p>
-          </div>
-        </div>
       </div>
-    </section>
-  </div> <!-- end of scroll-container -->
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer mt-4">
+  <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-3"><div class="logo">CHAI LOUNGE</div></div>
-        <div class="col-md-3 quick-links">
-          <h5>Quick Links</h5>
-          <p><a href="#breakfast">Breakfast</a></p>
-          <p><a href="#reservation">Reservation</a></p>
-          <p><a href="#drinks">Drinks</a></p>
-        </div>
-        <div class="col-md-3 hours">
-          <h5>Hours</h5>
-          <p>Monday: 11:00 AM - Late</p>
-          <p>Weekends: 11:00 AM - Late</p>
-        </div>
-        <div class="col-md-3 locations">
-          <h5>Locations</h5>
-          <p>Main Location</p>
-          <p>(123) 456-7890</p>
-          <p>1234 Main St, City, State, ZIP</p>
-          <p><a href="mailto:info@restaurant.com">info@restaurant.com</a></p>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-12 text-center social">
-          <h5>Follow Us on Social</h5>
-          <div class="social-icons">
-            <a href="#" class="fab fa-facebook"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-tiktok"></a>
+        <div class="col-md-4 mb-3">
+          <div class="serif" style="font-size:1.5rem; font-weight:700; color:var(--ink);">Chai Lounge</div>
+          <p class="mt-2">Indian chai cafe in Edmonton.<br/>Brewed on the stove, poured all day.</p>
+          <div class="social-icons mt-3">
+            <a href="#" class="fab fa-facebook" aria-label="Facebook"></a>
+            <a href="#" class="fab fa-instagram" aria-label="Instagram"></a>
+            <a href="#" class="fab fa-tiktok" aria-label="TikTok"></a>
           </div>
         </div>
+        <div class="col-md-2 mb-3">
+          <h5>Explore</h5>
+          <p><a href="#menu">Menu</a></p>
+          <p><a href="#story">Our Story</a></p>
+          <p><a href="#visit">Visit</a></p>
+          <p><a href="./careers.html">Careers</a></p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h5>Hours</h5>
+          <p>Every day from 11:00 AM</p>
+          <p>Late on Fridays and Saturdays</p>
+        </div>
+        <div class="col-md-3 mb-3">
+          <h5>Find us</h5>
+          <p>Edmonton, Alberta</p>
+          <p><a href="tel:+15874159649">(587) 415-9649</a></p>
+          <p><a href="https://maps.app.goo.gl/WGxcqWGU9m6MbFcM6" target="_blank" rel="noopener">Directions</a></p>
+        </div>
       </div>
       <div class="row mt-4">
-        <div class="col-12 text-center text-xs sm:text-sm">
-          <p>2024 COPYRIGHT © CHAI LOUNGE | ALL RIGHTS RESERVED.</p>
-          <p>SITE BY <a href="#">Raghav Mahajan</a></p>
+        <div class="col-12 text-center" style="font-size:.85rem;">
+          <p>© 2025 Chai Lounge. All rights reserved. &nbsp;·&nbsp; Site by <a href="https://raghv.dev" target="_blank" rel="noopener">Raghav Mahajan</a></p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Script for navbar toggling -->
   <script>
     const toggleButton = document.getElementById('navbar-toggle');
     const menu = document.getElementById('navbar-menu');
     const closeMenuButton = document.getElementById('close-menu');
-
-    toggleButton.addEventListener('click', () => {
-      menu.classList.toggle('show');
-    });
-    closeMenuButton.addEventListener('click', () => {
-      menu.classList.remove('show');
-    });
+    toggleButton.addEventListener('click', () => { menu.classList.toggle('show'); });
+    closeMenuButton.addEventListener('click', () => { menu.classList.remove('show'); });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('show')));
   </script>
-
-  <!-- Script for scroll reveal animation -->
   <script>
-    // Scroll reveal animation for all sections
     document.addEventListener('DOMContentLoaded', function() {
-      const reveals = document.querySelectorAll('.full-screen-section');
-      const revealOnScroll = (entries, observer) => {
+      const targets = document.querySelectorAll('section, header.hero');
+      const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
         });
-      };
-      const observer = new IntersectionObserver(revealOnScroll, { threshold: 0.15 });
-      reveals.forEach(section => {
-        section.classList.add('reveal');
-        observer.observe(section);
-      });
+      }, { threshold: 0.08 });
+      targets.forEach(t => { t.classList.add('reveal'); observer.observe(t); });
     });
   </script>
 </body>
