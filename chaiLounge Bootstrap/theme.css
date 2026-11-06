@@ -196,6 +196,8 @@ body.theme-noir :focus-visible{outline-color:var(--h-gold);}
   background:var(--h-gold); border-radius:3px;
 }
 .theme-noir section.block{background:var(--h-char);}
+/* The story band stays cream (needs this specificity to beat the rule above) */
+.theme-noir section.block.story{background:#faf4e8;}
 .theme-noir .menu-cat-head{border-bottom-color:var(--h-gold);}
 .theme-noir .menu-cat-head h2{color:var(--h-cream);}
 .theme-noir .menu-item{border-bottom-color:var(--h-line); transition:background .2s ease;}
